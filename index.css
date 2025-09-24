@@ -51,14 +51,15 @@ header {
   padding: 0 10px 0 10px;
   text-decoration: none;
   color: black;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .underline {
   margin-top: -10px;
-  border: none;
+  border: 1px solic black;
   background-color: black;
-  height: 1.5px;
+  height: 0.75px;
   width: 50%;
   display: none;
 }

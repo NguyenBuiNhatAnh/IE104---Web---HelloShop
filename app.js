@@ -27,6 +27,14 @@ function a() {
   });
 }
 
+function b() {
+  const allproduct = products;
+  const allcollection = document.getElementById("all-collection");
+
+  allproduct.forEach(product => {
+    allcollection.appendChild(ProductItem(product));
+  })
+}
 
 // Hàm render nội dung dựa trên hash hiện tại
 let first = true;
@@ -48,6 +56,9 @@ function renderContent() {
         document.getElementById("app").innerHTML = html;
         if(filePath=="pages/home.html"){
           a();
+        }
+        if(filePath=="pages/collection.html"){
+          b();
         }
       })
       .catch(() => {

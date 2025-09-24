@@ -1,8 +1,8 @@
-// app.js
-// Định nghĩa các route và nội dung tương ứng
+
 import { ProductItem } from "./components/productItem.js";
 import { products } from "./assets/assets.js";
 
+// Định nghĩa các route và nội dung tương ứng
 const routes = {
   "": "pages/home.html",
   "collection": "pages/collection.html",
@@ -12,11 +12,18 @@ const routes = {
 
 function a() {
   const productList = products.slice(0, 10);
+  const proBestseller = products.slice(0,5);
   const latestProducts = document.getElementById("latest-products");
+  const bestseller = document.getElementById("best-seller");
 
   productList.forEach(product => {
     const itemElement = ProductItem(product);
     latestProducts.appendChild(itemElement);
+  });
+
+  proBestseller.forEach(product => {
+    const itemElement = ProductItem(product);
+    bestseller.appendChild(itemElement);
   });
 }
 

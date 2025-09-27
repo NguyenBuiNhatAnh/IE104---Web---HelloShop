@@ -37,7 +37,6 @@ function b() {
 }
 
 // Hàm render nội dung dựa trên hash hiện tại
-let first = true;
 function renderContent() {
   const hash = window.location.hash.replace("#/", "");
   const filePath = routes[hash];
@@ -49,10 +48,6 @@ function renderContent() {
         return response.text();
       })
       .then(html => {
-        if(!first){
-          updateActiveLinks()
-        }
-        first = false;
         document.getElementById("app").innerHTML = html;
         if(filePath=="pages/home.html"){
           a();
@@ -81,6 +76,7 @@ document.addEventListener("click", e => {
 
 // Bắt sự kiện thay đổi hash (khi người dùng điều hướng hoặc reload)
 window.addEventListener("hashchange", renderContent);
+window.addEventListener("hashchange", updateActiveLinks);
 
 // Render lần đầu khi trang được tải
 renderContent();
@@ -100,7 +96,6 @@ export function openDropdown() {
 // Bắt sự kiện khi click vào thẻ a thì style cho thẻ đó
 export function updateActiveLinks() {
   const currentURL = window.location.hash;
-  console.log(currentURL);
   const links = document.querySelectorAll('a');
 
   links.forEach(link => {
@@ -129,8 +124,67 @@ export function closeMenu() {
   divmobilemenu.style.display = "none"
 }
 
+//function khi nhấn vào product chuyển qua trang product tương ứng
+export function navigateProduct(event) {
+  const idProduct = event.currentTarget.getAttribute('href').slice(11);
+  let imageProduct;
+  let productItem;
+
+  products.forEach(product => {
+    if (idProduct === product._id) {
+      imageProduct = product.image;
+      productItem = product;
+    }
+  });
+
+  fetch("pages/product.html")
+    .then(response => response.text()) // cần chuyển response thành text
+    .then(html => {
+      const app = document.getElementById("app");
+      app.innerHTML = html;
+
+      const img1 = document.createElement("img");
+      const img2 = document.createElement("img");
+      const img3 = document.createElement("img");
+      const img4 = document.createElement("img");
+      img1.src = imageProduct[0];
+      document.getElementById("sub-image").appendChild(img1);
+      if(imageProduct[1]) {
+        img2.src = imageProduct[1];
+        document.getElementById("sub-image").appendChild(img2);
+      }
+      if(imageProduct[2]) {
+        img3.src = imageProduct[2];
+        document.getElementById("sub-image").appendChild(img3);
+      }
+      if(imageProduct[3]) {
+        img4.src = imageProduct[3];
+        document.getElementById("sub-image").appendChild(img4);
+      }
+
+      const mainImg = document.createElement("img");
+      mainImg.src = imageProduct[0];
+      document.getElementById("main-image").appendChild(mainImg);
+
+      document.getElementById("name").innerText = productItem.name;
+      document.getElementById("star").innerHTML = `&#9733;&#9733;&#9733;&#9733;&#9733;`;
+      document.getElementById("price").innerText = "$"+productItem.price;
+      document.getElementById("desc").innerText = productItem.description;
+
+      productItem.sizes.forEach(sizePro => {
+        let button = document.createElement("button");
+        button.textContent = sizePro;
+        document.getElementById("button-size-wrapper").appendChild(button);
+      })
+      
+    });
+}
+
+
 window.openDropdown = openDropdown;
 window.updateActiveLinks = updateActiveLinks;
 window.openMenu = openMenu;
 window.closeMenu = closeMenu;
+window.navigateProduct = navigateProduct;
+
        

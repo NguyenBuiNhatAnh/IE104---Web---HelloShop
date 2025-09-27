@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Outfit:wght@100..900&family=Prata&display=swap');
 
-
-
 body {
     font-family: "Outfit", sans-serif;
     font-optical-sizing: auto;
@@ -37,8 +35,8 @@ header {
 
 @media (min-width: 1024px) {
   #hello {
-    padding-left: 7vw;
-    padding-right: 7vw;
+    padding-left: 7.5vw;
+    padding-right: 7.5vw;
   }
 }
 

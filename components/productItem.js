@@ -1,4 +1,4 @@
-function ProductItem({ id, image, name, price }) {
+function ProductItem({ _id, image, name, price }) {
   const currency = "$"; // bạn có thể thay bằng VNĐ hoặc biến context khác
 
   // Thẻ link bao ngoài
@@ -8,7 +8,8 @@ function ProductItem({ id, image, name, price }) {
   // Khung ảnh
   const imageWrapper = document.createElement("a");
   imageWrapper.className = "image-wrapper";
-  imageWrapper.href = `/products/${id}`;
+  imageWrapper.href = `/#/product/${_id}`;
+  imageWrapper.onclick = navigateProduct
 
   const img = document.createElement("img");
   img.src = image[0];

@@ -101,6 +101,35 @@
     margin: 8px 0 0 0;
 }
 
+.desc-and-review {
+    display: flex;
+    margin-top: 40px;
+}
+
+.desc-and-review > p {
+    padding: 12px 20px;
+    margin: 0px;
+    border: 1px solid #e5e7eb;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.content-of-desc-review {
+    padding: 24px;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 54px;
+}
+
+.content-of-desc-review > p {
+    width: 60%;
+    color: #6a7282;
+}
+
+.related {
+    text-align: center;
+}
 
 
 

@@ -7,7 +7,8 @@ const routes = {
   "": "pages/home.html",
   "collection": "pages/collection.html",
   "about": "pages/about.html",
-  "contact": "pages/contact.html"
+  "contact": "pages/contact.html",
+  "product": "pages/product.html"
 };
 
 function a() {
@@ -39,7 +40,16 @@ function b() {
 // Hàm render nội dung dựa trên hash hiện tại
 function renderContent() {
   const hash = window.location.hash.replace("#/", "");
-  const filePath = routes[hash];
+  let filePath = routes[hash];
+  console.log(hash.slice(8));
+  let idProduct;
+
+  if(hash.slice(0,7)=="product"){
+    filePath = routes["product"];
+    idProduct = hash.split("/")[1];
+    console.log(idProduct);
+  }
+  console.log(filePath)
 
   if (filePath) {
     fetch(filePath)
@@ -49,17 +59,23 @@ function renderContent() {
       })
       .then(html => {
         document.getElementById("app").innerHTML = html;
-        if(filePath=="pages/home.html"){
+        if(filePath == "pages/home.html"){
           a();
         }
-        if(filePath=="pages/collection.html"){
+        else if(filePath === "pages/collection.html"){
           b();
         }
+        else if(filePath === "pages/product.html"){
+          navigateProduct(idProduct);
+        }
+
       })
       .catch(() => {
+        console.log("hello");
         document.getElementById("app").innerHTML = "<h1>404</h1><p>Không tìm thấy trang.</p>";
       });
   } else {
+    console.log("hi");
     document.getElementById("app").innerHTML = "<h1>404</h1><p>Không tìm thấy trang.</p>";
   }
 }
@@ -125,8 +141,7 @@ export function closeMenu() {
 }
 
 //function khi nhấn vào product chuyển qua trang product tương ứng
-export function navigateProduct(event) {
-  const idProduct = event.currentTarget.getAttribute('href').slice(11);
+export function navigateProduct(idProduct) {
   let imageProduct;
   let productItem;
 
@@ -147,8 +162,10 @@ export function navigateProduct(event) {
       const img2 = document.createElement("img");
       const img3 = document.createElement("img");
       const img4 = document.createElement("img");
-      img1.src = imageProduct[0];
-      document.getElementById("sub-image").appendChild(img1);
+      if(imageProduct[0]) {
+        img1.src = imageProduct[0];
+        document.getElementById("sub-image").appendChild(img1);
+      }
       if(imageProduct[1]) {
         img2.src = imageProduct[1];
         document.getElementById("sub-image").appendChild(img2);
@@ -176,7 +193,16 @@ export function navigateProduct(event) {
         button.textContent = sizePro;
         document.getElementById("button-size-wrapper").appendChild(button);
       })
-      
+
+      const relatedProducts = [];
+      products.forEach(product => {
+        if(product.category == productItem.category && product.subCategory == productItem.subCategory) {
+          relatedProducts.push(product);
+        }
+      })
+      relatedProducts.forEach(product => {
+        document.getElementById("related-products").appendChild(ProductItem(product));
+      })
     });
 }
 

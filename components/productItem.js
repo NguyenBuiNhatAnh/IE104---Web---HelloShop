@@ -9,7 +9,6 @@ function ProductItem({ _id, image, name, price }) {
   const imageWrapper = document.createElement("a");
   imageWrapper.className = "image-wrapper";
   imageWrapper.href = `/#/product/${_id}`;
-  imageWrapper.onclick = navigateProduct
 
   const img = document.createElement("img");
   img.src = image[0];

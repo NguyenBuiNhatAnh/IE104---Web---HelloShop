@@ -8,10 +8,33 @@
 .collection-filter {
     display: inline-block;
     width: 240px;
+    align-items: center;
 }
 
 .collection-filter > p {
     font-size: 20px;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.collection-filter > img {
+    height: 12px;
+    padding-bottom: 0.75px;
+}
+
+.xoay90 {
+    transform: rotate(90deg);
+}
+
+@media (min-width: 640px) {
+    .collection-filter > img {
+        height: 12px;
+        padding-bottom: 0.75px;
+        display: none;
+}
 }
 
 .categories, .type {
@@ -84,11 +107,18 @@
 
 @media (min-width: 640px) {
     .categories, .type {
-        display: block;
+        display: block !important;
     }
+
+    .collection-filter {
+        background-color: white;
+        color: black;
+    }
+
     .collection-container {
         flex-direction: row;
         gap: 32px;
     }
 }
+
 

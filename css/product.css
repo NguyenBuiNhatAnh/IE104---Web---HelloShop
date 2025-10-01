@@ -41,6 +41,17 @@
     margin-top: 4px;
 }
 
+.star {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 16px;
+}
+
+.star > img {
+    width: 12px;
+}
+
 #price {
     margin-top: 20px;
     font-size: 30px;
@@ -84,6 +95,7 @@
     border-radius: 30px;
     transition: background 0.5s;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .info > button:hover {
@@ -131,5 +143,11 @@
     text-align: center;
 }
 
+.button-item.active {
+    border: 1px solid black !important;
+}
 
+.sub-image-item {
+    cursor: pointer;
+}
 

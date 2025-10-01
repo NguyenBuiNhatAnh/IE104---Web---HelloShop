@@ -2,8 +2,9 @@
 <div class="collection-container">
     <!-- Left side -->
     <div class="collection-filter">
-        <p>FILTERS</p>
-        <div class="categories">
+        <p onclick="openAndCloseFilter()">FILTERS</p>
+        <img onclick="openAndCloseFilter()" id="drd-icon" src="../assets/dropdown_icon.png" alt="">
+        <div id="ft1" class="categories">
             <p>CATEGORIES</p>
             <div class="select-categories">
                 <p>
@@ -17,7 +18,7 @@
                 </p>
             </div>
         </div>
-        <div class="type">
+        <div id="ft2" class="type">
             <p>TYPE</p>
             <div class="select-type">
                 <p>

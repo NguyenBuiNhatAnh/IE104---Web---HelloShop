@@ -11,7 +11,7 @@ const routes = {
   "product": "pages/product.html"
 };
 
-function a() {
+function renderHome() {
   const productList = products.slice(0, 10);
   const proBestseller = products.slice(0,5);
   const latestProducts = document.getElementById("latest-products");
@@ -28,7 +28,7 @@ function a() {
   });
 }
 
-function b() {
+function renderCollection() {
   const allproduct = products;
   const allcollection = document.getElementById("all-collection");
 
@@ -41,15 +41,12 @@ function b() {
 function renderContent() {
   const hash = window.location.hash.replace("#/", "");
   let filePath = routes[hash];
-  console.log(hash.slice(8));
   let idProduct;
 
   if(hash.slice(0,7)=="product"){
     filePath = routes["product"];
     idProduct = hash.split("/")[1];
-    console.log(idProduct);
   }
-  console.log(filePath)
 
   if (filePath) {
     fetch(filePath)
@@ -60,10 +57,10 @@ function renderContent() {
       .then(html => {
         document.getElementById("app").innerHTML = html;
         if(filePath == "pages/home.html"){
-          a();
+          renderHome();
         }
         else if(filePath === "pages/collection.html"){
-          b();
+          renderCollection();
         }
         else if(filePath === "pages/product.html"){
           navigateProduct(idProduct);
@@ -99,6 +96,7 @@ renderContent();
 
 let visible = false;
 export function openDropdown() {
+  
   const dropdown = document.getElementById("drd");
   if (!visible) {
     visible = true;
@@ -164,33 +162,43 @@ export function navigateProduct(idProduct) {
       const img4 = document.createElement("img");
       if(imageProduct[0]) {
         img1.src = imageProduct[0];
+        img1.classList = "sub-image-item";
+        img1.onclick = (event) => changeImage(event);
         document.getElementById("sub-image").appendChild(img1);
       }
       if(imageProduct[1]) {
         img2.src = imageProduct[1];
+        img2.classList = "sub-image-item";
+        img2.onclick = (event) => changeImage(event);
         document.getElementById("sub-image").appendChild(img2);
       }
       if(imageProduct[2]) {
         img3.src = imageProduct[2];
+        img3.classList = "sub-image-item";
+        img3.onclick = (event) => changeImage(event);
         document.getElementById("sub-image").appendChild(img3);
       }
       if(imageProduct[3]) {
         img4.src = imageProduct[3];
+        img4.classList = "sub-image-item";
+        img4.onclick = (event) => changeImage(event);
         document.getElementById("sub-image").appendChild(img4);
       }
 
       const mainImg = document.createElement("img");
       mainImg.src = imageProduct[0];
+      mainImg.id = 'main-image-item';
       document.getElementById("main-image").appendChild(mainImg);
 
       document.getElementById("name").innerText = productItem.name;
-      document.getElementById("star").innerHTML = `&#9733;&#9733;&#9733;&#9733;&#9733;`;
       document.getElementById("price").innerText = "$"+productItem.price;
       document.getElementById("desc").innerText = productItem.description;
 
       productItem.sizes.forEach(sizePro => {
         let button = document.createElement("button");
         button.textContent = sizePro;
+        button.className = "button-item";
+        button.onclick = (event) => effectSizeChosen(event);
         document.getElementById("button-size-wrapper").appendChild(button);
       })
 
@@ -206,11 +214,50 @@ export function navigateProduct(idProduct) {
     });
 }
 
+let close = true;
+export function openAndCloseFilter() {
+  if(close) {
+    document.getElementById("drd-icon").classList.remove("xoay90");
+    document.getElementById("ft1").style.display = "none";
+    document.getElementById("ft2").style.display = "none";
+  }
+  else {
+    document.getElementById("drd-icon").classList.add("xoay90");
+    document.getElementById("ft1").style.display = "block";
+    document.getElementById("ft2").style.display = "block";
+  }
+  close = !close;
+}
+
+let sizeOfProduct = "";
+function effectSizeChosen(event) {
+  const buttons = document.getElementsByClassName('button-item');
+  let buttonChange;
+  [...buttons].forEach(button => {
+    button.classList.remove('active');
+    if(button===event.target){
+      button.classList.add('active');
+    }
+  });
+}
+
+function changeImage(event) {
+  const images = document.getElementsByClassName('sub-image-item');
+  const mainImage = document.getElementById('main-image-item');
+  [...images].forEach(image => {
+    if(image===event.target){
+      mainImage.src = image.src;
+    }
+  });
+}
+
+
 
 window.openDropdown = openDropdown;
 window.updateActiveLinks = updateActiveLinks;
 window.openMenu = openMenu;
 window.closeMenu = closeMenu;
 window.navigateProduct = navigateProduct;
+window.openAndCloseFilter = openAndCloseFilter;
 
        

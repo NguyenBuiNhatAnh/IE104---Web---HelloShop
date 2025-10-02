@@ -1,85 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/iconweb.png" type="image/png" />
+    <title>HelloShop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prata&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="./css/collection.css" />
+    <link rel="stylesheet" href="./css/about.css" />
+    <link rel="stylesheet" href="./css/contact.css" />
+    <link rel="stylesheet" href="./css/product.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="./assets/iconweb.png" type="image/png">
-  <title>HelloShop</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prata&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="./css/home.css">
-  <link rel="stylesheet" href="./css/collection.css">
-  <link rel="stylesheet" href="./css/about.css">
-  <link rel="stylesheet" href="./css/contact.css">
-  <link rel="stylesheet" href="./css/product.css">
-</head>
+  <body>
+    <div id="hello">
+      <header>
+        <div class="logo">
+          <a href="#/"><img src="assets/hello.png" width="144px" /></a>
+        </div>
+        <nav>
+          <a href="#/" data-link class="nav-item active">
+            <p>HOME</p>
+            <hr class="underline" />
+          </a>
+          <a href="#/collection" data-link class="nav-item">
+            <p>COLLECTION</p>
+            <hr class="underline" />
+          </a>
+          <a href="#/about" data-link class="nav-item">
+            <p>ABOUT</p>
+            <hr class="underline" />
+          </a>
+          <a href="#/contact" data-link class="nav-item">
+            <p>CONTACT</p>
+            <hr class="underline" />
+          </a>
+        </nav>
+        <div class="subnav">
+          <img src="assets/search_icon.png" width="20px" alt="" />
 
-<body>
-  <div id="hello">
-    <header>
-      <div class="logo">
-        <a href="#/"><img src="assets/hello.png" width="144px"></a>
+          <div class="profile-wrapper">
+            <img
+              src="assets/profile_icon.png"
+              id="profile-icon"
+              class="profile-icon"
+              onclick="openDropdown()"
+              alt="Profile"
+            />
+            <div class="dropdown" id="drd">
+              <p>My Profile</p>
+              <p>Orders</p>
+              <p>Logout</p>
+            </div>
+          </div>
+          <img src="assets/cart_icon.png" width="20px" alt="" />
+          <img
+            onclick="openMenu()"
+            class="menu-icon"
+            src="assets/menu_icon.png"
+            width="20px"
+            alt=""
+          />
+        </div>
+      </header>
+      <div id="mobile-menu" class="mobile-nav">
+        <div id="div-mobile-menu">
+          <div onclick="closeMenu()">
+            <img src="assets/dropdown_icon.png" height="16px" alt="" />
+            <p>Back</p>
+          </div>
+          <a onclick="closeMenu()" class="link-menu active" href="#/">HOME</a>
+          <a onclick="closeMenu()" class="link-menu" href="#/collection"
+            >COLLECTION</a
+          >
+          <a onclick="closeMenu()" class="link-menu" href="#/about">ABOUT</a>
+          <a onclick="closeMenu()" class="link-menu" href="#/contact"
+            >CONTACT</a
+          >
+        </div>
       </div>
-      <nav>
-        <a href="#/" data-link class="nav-item active">
-          <p>HOME</p>
-          <hr class="underline">
-        </a>
-        <a href="#/collection" data-link class="nav-item">
-          <p>COLLECTION</p>
-          <hr class="underline">
-        </a>
-        <a href="#/about" data-link class="nav-item">
-          <p>ABOUT</p>
-          <hr class="underline">
-        </a>
-        <a href="#/contact" data-link class="nav-item">
-          <p>CONTACT</p>
-          <hr class="underline">
-        </a>
-      </nav>
-      <div class="subnav">
-        <img src="assets/search_icon.png" width="20px" alt="">
 
-        <div class="profile-wrapper">
-          <img src="assets/profile_icon.png" id="profile-icon" class="profile-icon" onclick="openDropdown()"
-            alt="Profile">
-          <div class="dropdown" id="drd">
-            <p>My Profile</p>
-            <p>Orders</p>
-            <p>Logout</p>
+      <main id="app"></main>
+
+      <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-column">
+            <h3>HelloShop</h3>
+            <p>Chuyên cung cấp sản phẩm chất lượng, giá tốt.</p>
+          </div>
+
+          <div class="footer-column">
+            <h4>Liên kết nhanh</h4>
+            <ul>
+              <li><a href="#">Trang chủ</a></li>
+              <li><a href="#">Sản phẩm</a></li>
+              <li><a href="#">Giỏ hàng</a></li>
+              <li><a href="#">Liên hệ</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Liên hệ</h4>
+            <p>Email: <a href="mailto:Hello@shop.vn">Hello@shop.vn</a></p>
+            <p>Hotline: <a href="tel:+84987654321">0987 654 321</a></p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-tiktok"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
           </div>
         </div>
-        <img src="assets/cart_icon.png" width="20px" alt="">
-        <img onclick="openMenu()" class="menu-icon" src="assets/menu_icon.png" width="20px" alt="">
-      </div>
-    </header>
-    <div id="mobile-menu" class="mobile-nav">
-      <div id="div-mobile-menu">
-        <div onclick="closeMenu()">
-          <img src="assets/dropdown_icon.png" height="16px" alt="">
-          <p>Back</p>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 HelloShop. All rights reserved.</p>
         </div>
-        <a onclick="closeMenu()" class="link-menu active" href="#/">HOME</a>
-        <a onclick="closeMenu()" class="link-menu" href="#/collection">COLLECTION</a>
-        <a onclick="closeMenu()" class="link-menu" href="#/about">ABOUT</a>
-        <a onclick="closeMenu()" class="link-menu" href="#/contact">CONTACT</a>
-      </div>
+      </footer>
     </div>
 
-    <main id="app">
-
-    </main>
-
-    <footer>
-
-    </footer>
-  </div>
-
-  <script type="module" src="app.js"></script>
-</body>
-
+    <script type="module" src="app.js"></script>
+  </body>
 </html>

@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Outfit:wght@100..900&family=Prata&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Outfit:wght@100..900&family=Prata&display=swap");
 
 body {
-    font-family: "Outfit", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 header {
   display: flex;
   justify-content: space-between; /* Cách đều ba phần */
-  align-items: center;            /* Căn giữa theo chiều dọc */
-  height: 80px;                   /* Chiều cao tùy chỉnh */       /* Màu nền tùy chọn */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  height: 80px; /* Chiều cao tùy chỉnh */ /* Màu nền tùy chọn */
 }
 
 #hello {
@@ -94,14 +94,10 @@ nav {
   display: block;
 }
 
-
-
 .profile-wrapper {
   position: relative;
   display: inline-block;
 }
-
-
 
 .profile-icon {
   width: 20px;
@@ -114,7 +110,7 @@ nav {
   right: 0;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   min-width: 150px;
   display: none;
   z-index: 1000;
@@ -151,7 +147,7 @@ nav {
   margin-left: 10px;
 }
 
-.mobile-nav > div > div{
+.mobile-nav > div > div {
   display: flex;
   color: #374151;
   align-items: center;
@@ -171,9 +167,9 @@ nav {
 }
 
 .mobile-nav > div > a {
-  padding-top: 8px;       
+  padding-top: 8px;
   padding-bottom: 8px;
-  padding-left: 24px;      
+  padding-left: 24px;
   border: 1px solid #e5e7eb;
   text-decoration: none;
   font-weight: 550;
@@ -186,3 +182,66 @@ nav {
 }
 
 /* footer */
+
+.footer {
+  background-color: white;
+  color: black;
+  padding: 40px 20px 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+  margin-bottom: 15px;
+  color: #1abc9c;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #1abc9c;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  color: black;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #1abc9c;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #7f8c8d;
+  padding-top: 15px;
+  font-size: 14px;
+}

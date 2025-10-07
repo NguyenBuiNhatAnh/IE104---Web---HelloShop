@@ -15,10 +15,11 @@
   <link rel="stylesheet" href="./css/about.css">
   <link rel="stylesheet" href="./css/contact.css">
   <link rel="stylesheet" href="./css/product.css">
+  <link rel="stylesheet" href="./css/cart.css">
 </head>
 
 <body>
-  <div id="hello">
+
     <header>
       <div class="logo">
         <a href="#/"><img src="assets/hello.png" width="144px"></a>
@@ -53,7 +54,10 @@
             <p>Logout</p>
           </div>
         </div>
-        <img src="assets/cart_icon.png" width="20px" alt="">
+        <a href="#/cart" style="position: relative;">
+          <img src="assets/cart_icon.png" width="20px" alt="">
+          <p id="cart-amount">0</p>
+        </a>
         <img onclick="openMenu()" class="menu-icon" src="assets/menu_icon.png" width="20px" alt="">
       </div>
     </header>
@@ -69,15 +73,15 @@
         <a onclick="closeMenu()" class="link-menu" href="#/contact">CONTACT</a>
       </div>
     </div>
-
+  <div id="hello">
     <main id="app">
 
     </main>
-
+  </div>
     <footer>
 
     </footer>
-  </div>
+
 
   <script type="module" src="app.js"></script>
 </body>

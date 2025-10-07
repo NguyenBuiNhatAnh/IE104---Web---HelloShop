@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Outfit:wght@100..900&family=Prata&display=swap');
 
 body {
+    margin: 0;
+    padding-top: 84px; /* nếu header cao 80px */
     font-family: "Outfit", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -8,10 +10,22 @@ body {
 }
 
 header {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: white; /* hoặc màu bạn muốn */
+  transition: top 0.3s ease-in-out;
   display: flex;
   justify-content: space-between; /* Cách đều ba phần */
   align-items: center;            /* Căn giữa theo chiều dọc */
-  height: 80px;                   /* Chiều cao tùy chỉnh */       /* Màu nền tùy chọn */
+  height: 80px;                /* Chiều cao tùy chỉnh */       /* Màu nền tùy chọn */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+}
+
+.hidden-header {
+  top: -100px; /* cho header chạy lên trên, ẩn đi */
 }
 
 #hello {
@@ -66,7 +80,7 @@ nav {
   display: flex;
 }
 
-.subnav > img {
+.subnav > a > img {
   cursor: pointer;
 }
 
@@ -102,10 +116,23 @@ nav {
 }
 
 
-
 .profile-icon {
   width: 20px;
   cursor: pointer;
+}
+
+#cart-amount {
+  position: absolute;
+  left: 3px;
+  bottom: -8px;
+  width: 16px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  aspect-ratio: 1/1;
+  line-height: 16px;
+  border-radius: 100%;
+  font-size: 8px;
 }
 
 .dropdown {

@@ -1,6 +1,87 @@
 
 import { ProductItem } from "./components/productItem.js";
 import { products } from "./assets/assets.js";
+import { CartItem } from "./components/cartItem.js";
+
+let cartItems = [];
+let currentSize = undefined;
+let productId = undefined;
+let cartItemAmoun = 0;
+
+export function cartItemAmount() {
+  if(cartItems[0]) {
+    let sum = 0;
+    cartItems.forEach(item => {
+      console.log(cartItemAmoun);
+      sum += item.quantity;
+    })
+    cartItemAmoun = sum;
+  }
+  else cartItemAmoun = 0;
+  document.getElementById("cart-amount").textContent = cartItemAmoun;
+}
+
+export function changeQuantity(event) {
+  const idInput = event.target.id;
+  cartItems.forEach(item => {
+    if((item._id + item.size + "input") === idInput) {
+      item.quantity = parseInt(event.target.value);
+    }
+  })
+  cartItemAmount();
+}
+window.changeQuantity = changeQuantity;
+
+export function removeCartItem(event) {
+  let i = 0;
+  let j = 0;
+  const idCartItem = event.target.id;
+  cartItems.forEach(item => {
+    if ((item._id + item.size) === idCartItem) {
+      j = i
+    }
+    i++;
+  })
+  cartItems.splice(j, 1);
+  document.getElementById("cart-page").textContent = "";
+  cartItemAmount();
+  renderCart();
+}
+window.removeCartItem = removeCartItem;
+
+export function addCartItem() {
+  if (currentSize) {
+    let currentProduct = undefined;
+    let lived = false;
+    cartItems.forEach(item => {
+      if (item._id === productId && item.size === currentSize) {
+        item.quantity++;
+        lived = true;
+        cartItemAmount();
+      }
+    })
+    if (!lived) {
+      products.forEach((product) => {
+        if (product._id === productId) {
+          currentProduct = product;
+        }
+      })
+
+      let cartItem = {};
+      cartItem._id = currentProduct._id;
+      cartItem.image = currentProduct.image;
+      cartItem.name = currentProduct.name;
+      cartItem.size = currentSize;
+      cartItem.price = currentProduct.price;
+      cartItem.quantity = 1;
+
+      cartItems.push(cartItem);
+      cartItemAmount();
+    }
+  }
+}
+
+window.addCartItem = addCartItem;
 
 // Định nghĩa các route và nội dung tương ứng
 const routes = {
@@ -8,12 +89,13 @@ const routes = {
   "collection": "pages/collection.html",
   "about": "pages/about.html",
   "contact": "pages/contact.html",
-  "product": "pages/product.html"
+  "product": "pages/product.html",
+  "cart": "pages/cart.html"
 };
 
 function renderHome() {
   const productList = products.slice(0, 10);
-  const proBestseller = products.slice(0,5);
+  const proBestseller = products.slice(0, 5);
   const latestProducts = document.getElementById("latest-products");
   const bestseller = document.getElementById("best-seller");
 
@@ -37,15 +119,24 @@ function renderCollection() {
   })
 }
 
+function renderCart() {
+  const cartPage = document.getElementById("cart-page");
+
+  cartItems.forEach(item => {
+    cartPage.appendChild(CartItem(item));
+  })
+}
+
 // Hàm render nội dung dựa trên hash hiện tại
 function renderContent() {
   const hash = window.location.hash.replace("#/", "");
   let filePath = routes[hash];
   let idProduct;
 
-  if(hash.slice(0,7)=="product"){
+  if (hash.slice(0, 7) == "product") {
     filePath = routes["product"];
     idProduct = hash.split("/")[1];
+    productId = idProduct;
   }
 
   if (filePath) {
@@ -56,16 +147,19 @@ function renderContent() {
       })
       .then(html => {
         document.getElementById("app").innerHTML = html;
-        if(filePath == "pages/home.html"){
+        if (filePath == "pages/home.html") {
           renderHome();
         }
-        else if(filePath === "pages/collection.html"){
+        else if (filePath === "pages/collection.html") {
           renderCollection();
         }
-        else if(filePath === "pages/product.html"){
+        else if (filePath === "pages/product.html") {
           navigateProduct(idProduct);
         }
-
+        else if (filePath === "pages/cart.html") {
+          renderCart();
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       })
       .catch(() => {
         console.log("hello");
@@ -96,7 +190,7 @@ renderContent();
 
 let visible = false;
 export function openDropdown() {
-  
+
   const dropdown = document.getElementById("drd");
   if (!visible) {
     visible = true;
@@ -160,25 +254,25 @@ export function navigateProduct(idProduct) {
       const img2 = document.createElement("img");
       const img3 = document.createElement("img");
       const img4 = document.createElement("img");
-      if(imageProduct[0]) {
+      if (imageProduct[0]) {
         img1.src = imageProduct[0];
         img1.classList = "sub-image-item";
         img1.onclick = (event) => changeImage(event);
         document.getElementById("sub-image").appendChild(img1);
       }
-      if(imageProduct[1]) {
+      if (imageProduct[1]) {
         img2.src = imageProduct[1];
         img2.classList = "sub-image-item";
         img2.onclick = (event) => changeImage(event);
         document.getElementById("sub-image").appendChild(img2);
       }
-      if(imageProduct[2]) {
+      if (imageProduct[2]) {
         img3.src = imageProduct[2];
         img3.classList = "sub-image-item";
         img3.onclick = (event) => changeImage(event);
         document.getElementById("sub-image").appendChild(img3);
       }
-      if(imageProduct[3]) {
+      if (imageProduct[3]) {
         img4.src = imageProduct[3];
         img4.classList = "sub-image-item";
         img4.onclick = (event) => changeImage(event);
@@ -191,7 +285,7 @@ export function navigateProduct(idProduct) {
       document.getElementById("main-image").appendChild(mainImg);
 
       document.getElementById("name").innerText = productItem.name;
-      document.getElementById("price").innerText = "$"+productItem.price;
+      document.getElementById("price").innerText = "$" + productItem.price;
       document.getElementById("desc").innerText = productItem.description;
 
       productItem.sizes.forEach(sizePro => {
@@ -204,7 +298,7 @@ export function navigateProduct(idProduct) {
 
       const relatedProducts = [];
       products.forEach(product => {
-        if(product.category == productItem.category && product.subCategory == productItem.subCategory) {
+        if (product.category == productItem.category && product.subCategory == productItem.subCategory) {
           relatedProducts.push(product);
         }
       })
@@ -216,7 +310,7 @@ export function navigateProduct(idProduct) {
 
 let close = true;
 export function openAndCloseFilter() {
-  if(close) {
+  if (close) {
     document.getElementById("drd-icon").classList.remove("xoay90");
     document.getElementById("ft1").style.display = "none";
     document.getElementById("ft2").style.display = "none";
@@ -229,14 +323,14 @@ export function openAndCloseFilter() {
   close = !close;
 }
 
-let sizeOfProduct = "";
 function effectSizeChosen(event) {
   const buttons = document.getElementsByClassName('button-item');
   let buttonChange;
   [...buttons].forEach(button => {
     button.classList.remove('active');
-    if(button===event.target){
+    if (button === event.target) {
       button.classList.add('active');
+      currentSize = button.textContent;
     }
   });
 }
@@ -245,11 +339,28 @@ function changeImage(event) {
   const images = document.getElementsByClassName('sub-image-item');
   const mainImage = document.getElementById('main-image-item');
   [...images].forEach(image => {
-    if(image===event.target){
+    if (image === event.target) {
       mainImage.src = image.src;
     }
   });
 }
+
+let lastScrollTop = 0;
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  let currentScroll = window.scrollY;
+
+  if (currentScroll > lastScrollTop) {
+    // Kéo xuống -> ẩn header
+    header.classList.add("hidden-header");
+  } else {
+    // Kéo lên -> hiện header
+    header.classList.remove("hidden-header");
+  }
+
+  lastScrollTop = currentScroll;
+});
+
 
 
 
@@ -260,4 +371,4 @@ window.closeMenu = closeMenu;
 window.navigateProduct = navigateProduct;
 window.openAndCloseFilter = openAndCloseFilter;
 
-       
+

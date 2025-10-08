@@ -9,6 +9,10 @@ body {
     font-style: normal;
 }
 
+button {
+  all: unset;
+}
+
 header {
   position: fixed; 
   top: 0;
@@ -21,7 +25,8 @@ header {
   justify-content: space-between; /* Cách đều ba phần */
   align-items: center;            /* Căn giữa theo chiều dọc */
   height: 80px;                /* Chiều cao tùy chỉnh */       /* Màu nền tùy chọn */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding-inline: 32px;
 }
 
 .hidden-header {
@@ -161,9 +166,10 @@ nav {
 }
 
 .mobile-nav {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
+  z-index: 1100;
   height: 200px;
   background-color: white;
   width: 0;

@@ -1,8 +1,23 @@
 
+.product-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
 .image-and-info {
     display: flex;
+    flex-direction: column;
     gap: 16px;
     margin-top: 32px;
+}
+
+@media (min-width: 640px) {
+    .image-and-info {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 32px;
+}
 }
 
 .image-product-detail {

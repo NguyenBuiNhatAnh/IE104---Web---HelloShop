@@ -52,7 +52,7 @@
 }
 
 .cart-item > input {
-    max-width: 20px;
+    max-width: 30px;
     padding-inline: 8px;
     padding-block: 4px;
 }
@@ -118,6 +118,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 640px) {
+    .sub-empty {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .shop {
+        margin-left: 30px;
+    }
 }
 
 

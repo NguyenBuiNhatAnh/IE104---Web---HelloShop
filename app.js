@@ -113,7 +113,8 @@ const routes = {
   "about": "pages/about.html",
   "contact": "pages/contact.html",
   "product": "pages/product.html",
-  "cart": "pages/cart.html"
+  "cart": "pages/cart.html",
+  "placeorder": "pages/placeorder.html"
 };
 
 function renderHome() {

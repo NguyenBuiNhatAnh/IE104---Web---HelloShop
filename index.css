@@ -1,19 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Outfit:wght@100..900&family=Prata&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Outfit:wght@100..900&family=Prata&display=swap");
 
 body {
-    font-family: "Outfit", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 header {
   display: flex;
   justify-content: space-between; /* Cách đều ba phần */
-  align-items: center;            /* Căn giữa theo chiều dọc */
-  height: 80px;                   /* Chiều cao tùy chỉnh */       /* Màu nền tùy chọn */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  height: 80px; /* Chiều cao tùy chỉnh */ /* Màu nền tùy chọn */
 }
 
 #hello {
@@ -96,14 +94,10 @@ nav {
   display: block;
 }
 
-
-
 .profile-wrapper {
   position: relative;
   display: inline-block;
 }
-
-
 
 .profile-icon {
   width: 20px;
@@ -116,7 +110,7 @@ nav {
   right: 0;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   min-width: 150px;
   display: none;
   z-index: 1000;
@@ -153,7 +147,7 @@ nav {
   margin-left: 10px;
 }
 
-.mobile-nav > div > div{
+.mobile-nav > div > div {
   display: flex;
   color: #374151;
   align-items: center;
@@ -173,9 +167,9 @@ nav {
 }
 
 .mobile-nav > div > a {
-  padding-top: 8px;       
+  padding-top: 8px;
   padding-bottom: 8px;
-  padding-left: 24px;      
+  padding-left: 24px;
   border: 1px solid #e5e7eb;
   text-decoration: none;
   font-weight: 550;
@@ -186,5 +180,39 @@ nav {
   background-color: black;
   color: white;
 }
+/* Cái này là của Kiệt thêm vào */
+body {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 
+  /*Thêm dòng này để nội dung không bị header che */
+  padding-top: 100px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+
+  /* === BẮT ĐẦU PHẦN QUAN TRỌNG CẦN BỔ SUNG === */
+  position: fixed; /*Cố định header ở đầu trang */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white; /* Đảm bảo header có nền trắng */
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  /*Hiệu ứng trượt mượt mà*/
+  transition: top 0.4s ease-in-out;
+  /* === KẾT THÚC PHẦN BỔ SUNG === */
+}
+
+/* 3. Thêm class này để định nghĩa trạng thái "bị ẩn" */
+header.header-hidden {
+  top: -80px; /* Di chuyển header lên trên, ra khỏi màn hình */
+}
 /* footer */

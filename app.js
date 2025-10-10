@@ -1,27 +1,26 @@
-
 import { ProductItem } from "./components/productItem.js";
 import { products } from "./assets/assets.js";
 
 // Định nghĩa các route và nội dung tương ứng
 const routes = {
   "": "pages/home.html",
-  "collection": "pages/collection.html",
-  "about": "pages/about.html",
-  "contact": "pages/contact.html"
+  collection: "pages/collection.html",
+  about: "pages/about.html",
+  contact: "pages/contact.html",
 };
 
 function a() {
   const productList = products.slice(0, 10);
-  const proBestseller = products.slice(0,5);
+  const proBestseller = products.slice(0, 5);
   const latestProducts = document.getElementById("latest-products");
   const bestseller = document.getElementById("best-seller");
 
-  productList.forEach(product => {
+  productList.forEach((product) => {
     const itemElement = ProductItem(product);
     latestProducts.appendChild(itemElement);
   });
 
-  proBestseller.forEach(product => {
+  proBestseller.forEach((product) => {
     const itemElement = ProductItem(product);
     bestseller.appendChild(itemElement);
   });
@@ -31,9 +30,9 @@ function b() {
   const allproduct = products;
   const allcollection = document.getElementById("all-collection");
 
-  allproduct.forEach(product => {
+  allproduct.forEach((product) => {
     allcollection.appendChild(ProductItem(product));
-  })
+  });
 }
 
 // Hàm render nội dung dựa trên hash hiện tại
@@ -44,33 +43,35 @@ function renderContent() {
 
   if (filePath) {
     fetch(filePath)
-      .then(response => {
+      .then((response) => {
         if (!response.ok) throw new Error("File not found");
         return response.text();
       })
-      .then(html => {
-        if(!first){
-          updateActiveLinks()
+      .then((html) => {
+        if (!first) {
+          updateActiveLinks();
         }
         first = false;
         document.getElementById("app").innerHTML = html;
-        if(filePath=="pages/home.html"){
+        if (filePath == "pages/home.html") {
           a();
         }
-        if(filePath=="pages/collection.html"){
+        if (filePath == "pages/collection.html") {
           b();
         }
       })
       .catch(() => {
-        document.getElementById("app").innerHTML = "<h1>404</h1><p>Không tìm thấy trang.</p>";
+        document.getElementById("app").innerHTML =
+          "<h1>404</h1><p>Không tìm thấy trang.</p>";
       });
   } else {
-    document.getElementById("app").innerHTML = "<h1>404</h1><p>Không tìm thấy trang.</p>";
+    document.getElementById("app").innerHTML =
+      "<h1>404</h1><p>Không tìm thấy trang.</p>";
   }
 }
 
 // Bắt sự kiện click trên các thẻ <a data-link>
-document.addEventListener("click", e => {
+document.addEventListener("click", (e) => {
   const link = e.target.closest("a[data-link]");
   if (link) {
     e.preventDefault();
@@ -101,36 +102,58 @@ export function openDropdown() {
 export function updateActiveLinks() {
   const currentURL = window.location.hash;
   console.log(currentURL);
-  const links = document.querySelectorAll('a');
+  const links = document.querySelectorAll("a");
 
-  links.forEach(link => {
-    link.classList.remove('active');
+  links.forEach((link) => {
+    link.classList.remove("active");
 
     // So sánh tuyệt đối hoặc tương đối tùy vào cấu trúc href
-    const href = link.getAttribute('href');
+    const href = link.getAttribute("href");
     if (href === currentURL) {
-      link.classList.add('active');
+      link.classList.add("active");
     }
   });
 }
 
-
 export function openMenu() {
   const mobilemeu = document.getElementById("mobile-menu");
   const divmobilemenu = document.getElementById("div-mobile-menu");
-  mobilemeu.style.width = "100%"
-  divmobilemenu.style.display = "flex"
+  mobilemeu.style.width = "100%";
+  divmobilemenu.style.display = "flex";
 }
 
 export function closeMenu() {
   const mobilemeu = document.getElementById("mobile-menu");
   const divmobilemenu = document.getElementById("div-mobile-menu");
-  mobilemeu.style.width = "0"
-  divmobilemenu.style.display = "none"
+  mobilemeu.style.width = "0";
+  divmobilemenu.style.display = "none";
 }
 
 window.openDropdown = openDropdown;
 window.updateActiveLinks = updateActiveLinks;
 window.openMenu = openMenu;
 window.closeMenu = closeMenu;
-       
+
+// --- Bắt đầu: Logic ẩn/hiện header khi cuộn trang ---
+
+const header = document.querySelector("header");
+let lastScrollTop = 0;
+
+window.addEventListener("scroll", function () {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (scrollTop > lastScrollTop && scrollTop > 80) {
+    // Thêm điều kiện > 80 để không ẩn ngay lập tức
+    // Cuộn xuống
+    header.classList.add("header-hidden");
+  } else {
+    // Cuộn lên
+    header.classList.remove("header-hidden");
+  }
+
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
+
+// --- Kết thúc: Logic ẩn/hiện header ---
+
+// ... (phần còn lại của code trong app.js của bạn, ví dụ code router)

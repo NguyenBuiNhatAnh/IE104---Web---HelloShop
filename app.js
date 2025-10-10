@@ -7,20 +7,48 @@ let cartItems = [];
 let currentSize = undefined;
 let productId = undefined;
 let cartItemAmoun = 0;
+let formSubmit = {};
+
+export function bankingMethod() {
+  document.getElementById("banking-btn").classList.add("display-none");
+  document.getElementById("cod-btn").classList.add("display-none");
+  document.getElementById("completed-btn").classList.remove("display-none");
+  document.getElementById("img-banking").classList.remove("display-none");
+  document.getElementById("h2-com").classList.add("display-none");
+}
+
+window.bankingMethod = bankingMethod;
+
+export function submitForm(event) {
+  event.preventDefault();
+  formSubmit.firstName = document.getElementById("firstName-input").value;
+  formSubmit.lastName = document.getElementById("lastName-input").value;
+  formSubmit.email = document.getElementById("email-input").value;
+  formSubmit.street = document.getElementById("street-input").value;
+  formSubmit.city = document.getElementById("city-input").value;
+  formSubmit.state = document.getElementById("state-input").value;
+  formSubmit.zipcode = document.getElementById("zipcode-input").value;
+  formSubmit.country = document.getElementById("country-input").value;
+  formSubmit.phone = document.getElementById("phone-input").value;
+  formSubmit.method = event.target.textContent;
+  window.location.href = window.location.origin + '/' + '#/order';
+}
+
+window.submitForm = submitForm;
 
 function hideAndActiveCartPage() {
-    if (cartItemAmoun === 0) {
-      document.getElementById("cart-page-container").classList.remove("active");
-      document.getElementById("empty-cart").classList.add("active");
-    } else {
-      document.getElementById("cart-page-container").classList.add("active");
-      document.getElementById("empty-cart").classList.remove("active");
-    }
+  if (cartItemAmoun === 0) {
+    document.getElementById("cart-page-container").classList.remove("active");
+    document.getElementById("empty-cart").classList.add("active");
+  } else {
+    document.getElementById("cart-page-container").classList.add("active");
+    document.getElementById("empty-cart").classList.remove("active");
+  }
 }
 
 function cartTotal() {
   let sum = 0;
-  if(cartItems[0]){
+  if (cartItems[0]) {
     cartItems.forEach(item => {
       sum += item.quantity * item.price;
     })
@@ -30,7 +58,7 @@ function cartTotal() {
 }
 
 function cartItemAmount() {
-  if(cartItems[0]) {
+  if (cartItems[0]) {
     let sum = 0;
     cartItems.forEach(item => {
       sum += item.quantity;
@@ -44,7 +72,7 @@ function cartItemAmount() {
 export function changeQuantity(event) {
   const idInput = event.target.id;
   cartItems.forEach(item => {
-    if((item._id + item.size + "input") === idInput) {
+    if ((item._id + item.size + "input") === idInput) {
       item.quantity = parseInt(event.target.value);
     }
   })
@@ -156,6 +184,7 @@ function renderContent() {
   const hash = window.location.hash.replace("#/", "");
   let filePath = routes[hash];
   let idProduct;
+  currentSize = undefined;
 
   if (hash.slice(0, 7) == "product") {
     filePath = routes["product"];
@@ -179,13 +208,16 @@ function renderContent() {
         }
         else if (filePath === "pages/product.html") {
           navigateProduct(idProduct);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         else if (filePath === "pages/cart.html") {
           renderCart();
           hideAndActiveCartPage();
           cartTotal();
         }
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        else if (filePath === "pages/placeorder.html") {
+          cartTotal();
+        }
       })
       .catch(() => {
         console.log("hello");

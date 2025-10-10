@@ -1,0 +1,53 @@
+<div id="place-order-container">
+    <form onsubmit="submitForm(event)" id="delivery-form" class="delivery-info-place">
+        <h2>Delivery Infomation</h2>
+        <div class="flex-gap-12px">
+            <input id="firstName-input" required name="firstName" class="input-placeorder" type="text"
+                placeholder='First name'>
+            <input id="lastName-input" required name="lastName" class="input-placeorder" type="text"
+                placeholder='Last name'>
+        </div>
+        <input id="email-input" required name="email" class="input-placeorder" type="email" placeholder='Email address'>
+        <input id="street-input" required name="street" class="input-placeorder" type="text" placeholder='Street'>
+        <div class="flex-gap-12px">
+            <input id="city-input" required name="city" class="input-placeorder" type="text" placeholder='City'>
+            <input id="state-input" required name="state" class="input-placeorder" type="text" placeholder='State'>
+        </div>
+        <div class="flex-gap-12px">
+            <input id="zipcode-input" required name="zipcode" class="input-placeorder" type="number"
+                placeholder='Zipcode'>
+            <input id="country-input" required name="country" class="input-placeorder" type="text"
+                placeholder='Country'>
+        </div>
+        <input id="phone-input" required name="phone" class="input-placeorder" type="number" placeholder='Phone'>
+    </form>
+    <div class="place-total">
+        <div id="cart-total-place-order">
+            <h2 class="total-title">Cart Total</h2>
+            <div class="total">
+                <p>Subtotal</p>
+                <p id="sub-total-price">$0.00</p>
+            </div>
+            <div class="total">
+                <p>Shipping Fee</p>
+                <p>$10.00</p>
+            </div>
+            <div class="total">
+                <p>Total</p>
+                <p id="total-price">$0.00</p>
+            </div>
+        </div>
+        <div>
+            <h2 id="h2-com" style="margin-bottom: 0px;">Pament Method</h2>
+            <div style="display: flex;">
+                <button onclick="bankingMethod()" id="banking-btn" class="btn">Banking</button>
+                <button id="cod-btn" type="submit" form="delivery-form" class="btn">Cash On
+                    Delivery</button>
+                <div id="img-banking" style="margin: 16px;" class="display-none">
+                    <img width="300px" src="../assets/banking.jpg" alt="">
+                </div>
+                <button id="completed-btn" type="submit" form="delivery-form" class="btn display-none">Completed</button>
+            </div>
+        </div>
+    </div>
+</div>

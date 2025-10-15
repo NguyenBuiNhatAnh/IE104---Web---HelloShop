@@ -136,3 +136,128 @@ h2 {
     flex-direction: column;
   }
 }
+/* --- Phần Thành Tựu --- */
+/* --- Phần Thành Tựu (Phiên bản có hiệu ứng ảnh) --- */
+.achievements-section {
+  padding-top: 40px;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 20px;
+}
+
+/* Container chính cho danh sách thành tựu */
+.achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Khoảng cách giữa các thành tựu */
+}
+
+/* Item chứa cả thẻ chữ và ảnh */
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+/* Để tạo sự đa dạng, item chẵn sẽ đảo ngược vị trí ảnh và chữ */
+.achievement-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* Thẻ chứa chữ, chiếm 50% chiều rộng */
+.achievement-card {
+  flex: 3; /* Thay đổi từ flex: 1 thành flex: 3 */
+  min-width: 0;
+  background-color: #fff;
+  padding: 30px 20px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.achievement-metric {
+  font-size: 2.8em;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+.achievement-label {
+  font-size: 1.1em;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* Khung chứa ảnh, cũng chiếm 70% chiều rộng */
+.achievement-image {
+  flex: 7; /* Thay đổi từ flex: 1 thành flex: 7 */
+  min-width: 0;
+
+  /* --- PHẦN QUAN TRỌNG NHẤT CỦA HIỆU ỨNG --- */
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+/* Đối với item chẵn (đảo ngược), ảnh sẽ dịch chuyển từ trái qua */
+.achievement-item:nth-child(even) .achievement-image {
+  transform: translateX(-20px);
+}
+
+/* KHI DI CHUỘT vào cả .achievement-item... */
+.achievement-item:hover .achievement-image {
+  opacity: 1; /* 4. ...ảnh sẽ hiện ra rõ nét */
+  transform: translateX(0); /* 5. ...và di chuyển về vị trí ban đầu */
+}
+
+.achievement-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Responsive cho điện thoại --- */
+@media (max-width: 768px) {
+  .achievement-item,
+  .achievement-item:nth-child(even) {
+    /* Chuyển thành bố cục dọc */
+    flex-direction: column;
+  }
+
+  .achievement-image {
+    /* Trên di động, ảnh sẽ luôn hiện ra để người dùng không bỏ lỡ */
+    opacity: 1;
+    transform: none;
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+/* Nút thêm công việc ở đây */
+.more-jobs-container {
+  text-align: center; /* Căn giữa nút */
+  margin-top: 40px; /* Khoảng cách từ danh sách việc làm */
+}
+
+.btn.btn-secondary {
+  background-color: transparent; /* Nút trong suốt */
+  color: var(--color-primary); /* Màu chữ chính */
+  border: 2px solid var(--color-primary); /* Viền màu chính */
+  padding: 12px 25px; /* Kích thước nút lớn hơn một chút */
+  font-weight: 600; /* Chữ đậm hơn */
+  transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+}
+
+.btn.btn-secondary:hover {
+  background-color: var(--color-primary); /* Nền màu chính khi di chuột */
+  color: white; /* Chữ trắng khi di chuột */
+  transform: translateY(-3px); /* Nâng nhẹ nút lên */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Thêm đổ bóng */
+}

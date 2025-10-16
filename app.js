@@ -142,7 +142,9 @@ const routes = {
   "contact": "pages/contact.html",
   "product": "pages/product.html",
   "cart": "pages/cart.html",
-  "placeorder": "pages/placeorder.html"
+  "placeorder": "pages/placeorder.html",
+  "order": "pages/order.html",
+  "login": "pages/login.html"
 };
 
 function renderHome() {
@@ -217,6 +219,9 @@ function renderContent() {
         }
         else if (filePath === "pages/placeorder.html") {
           cartTotal();
+        }
+        else if (filePath === "pages/order.html") {
+
         }
       })
       .catch(() => {

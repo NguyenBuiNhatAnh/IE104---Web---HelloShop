@@ -2,12 +2,42 @@
 import { ProductItem } from "./components/productItem.js";
 import { products } from "./assets/assets.js";
 import { CartItem } from "./components/cartItem.js";
+import { OrderItem } from "./components/orderItem.js";
 
 let cartItems = [];
 let currentSize = undefined;
 let productId = undefined;
 let cartItemAmoun = 0;
 let formSubmit = {};
+let orderItems = [];
+let method = undefined;
+
+export function setMethodCOD() {
+  method = "COD";
+}
+
+window.setMethodCOD = setMethodCOD;
+
+function renderOrder() {
+  const orderPage = document.getElementById("order-container");
+  orderItems.forEach(item => {
+  let i = {};
+  i.image = item.image;
+  i.name = item.name;
+  i.price = "$" + item.price;
+  i.quantity = "Quantity: " + item.quantity;
+  i.size = "Size: " + item.size;
+  i.date = (new Date()).toDateString();
+  i.method = item.method;
+  orderPage.appendChild(OrderItem(i));
+  })
+}
+
+export function navigateOrderPage() {
+  window.location.href = window.location.origin + '/' + '#/order';
+}
+
+window.navigateOrderPage = navigateOrderPage;
 
 export function bankingMethod() {
   document.getElementById("banking-btn").classList.add("display-none");
@@ -15,6 +45,7 @@ export function bankingMethod() {
   document.getElementById("completed-btn").classList.remove("display-none");
   document.getElementById("img-banking").classList.remove("display-none");
   document.getElementById("h2-com").classList.add("display-none");
+  method = "Banking";
 }
 
 window.bankingMethod = bankingMethod;
@@ -30,7 +61,12 @@ export function submitForm(event) {
   formSubmit.zipcode = document.getElementById("zipcode-input").value;
   formSubmit.country = document.getElementById("country-input").value;
   formSubmit.phone = document.getElementById("phone-input").value;
-  formSubmit.method = event.target.textContent;
+  console.log(event.target);
+  cartItems.forEach(item => {
+    item.method = method;
+  })
+  orderItems.push(...cartItems);
+  cartItems = [];
   window.location.href = window.location.origin + '/' + '#/order';
 }
 
@@ -142,7 +178,9 @@ const routes = {
   "contact": "pages/contact.html",
   "product": "pages/product.html",
   "cart": "pages/cart.html",
-  "placeorder": "pages/placeorder.html"
+  "placeorder": "pages/placeorder.html",
+  "order": "pages/order.html",
+  "login": "pages/order.html"
 };
 
 function renderHome() {
@@ -200,6 +238,7 @@ function renderContent() {
       })
       .then(html => {
         document.getElementById("app").innerHTML = html;
+        cartItemAmount();
         if (filePath == "pages/home.html") {
           renderHome();
         }
@@ -217,6 +256,9 @@ function renderContent() {
         }
         else if (filePath === "pages/placeorder.html") {
           cartTotal();
+        }
+        else if (filePath === "pages/order.html") {
+          renderOrder();
         }
       })
       .catch(() => {

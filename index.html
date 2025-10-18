@@ -89,7 +89,7 @@
 
       <main id="app"></main>
 
-      <!-- Thêm Font Awesome vào <head> -->
+      <!-- Font Awesome để dùng icon -->
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -97,56 +97,72 @@
 
       <footer class="footer">
         <div class="footer-container">
-          <!-- Cột 1: Logo và giới thiệu -->
-          <div class="footer-column">
-            <h4>
-              <strong>Shop</strong>
-            </h4>
-            <ul>
-              <li>Kits</li>
-              <li>Shipping</li>
-              <li>Returns</li>
-              <li>Stockists</li>
-              <li>private workshops</li>
-              <li>wholesale</li>
-            </ul>
-          </div>
-          <div></div>
+          <!-- Các cột nội dung -->
+          <div class="footer-columns">
+            <!-- SHOP -->
+            <div class="footer-column">
+              <h4>SHOP</h4>
+              <ul>
+                <li><a href="#">Kits</a></li>
+                <li><a href="#">Shipping</a></li>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">Stockists</a></li>
+                <li><a href="#">Workshops</a></li>
+                <li><a href="#">Wholesale</a></li>
+              </ul>
+            </div>
 
-          <!-- Cột 2: Liên kết nhanh -->
-          <div class="footer-column">
-            <h4><strong>Liên kết nhanh</strong></h4>
-            <ul>
-              <li><a href="#">Trang chủ</a></li>
-              <li><a href="#">Sản phẩm</a></li>
-              <li><a href="#">Giỏ hàng</a></li>
-              <li><a href="#">Liên hệ</a></li>
-            </ul>
-          </div>
+            <!-- ABOUT -->
+            <div class="footer-column">
+              <h4>ABOUT</h4>
+              <ul>
+                <li><a href="#">Our Story</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Accessibility</a></li>
+              </ul>
+            </div>
 
-          <!-- Cột 3: Liên hệ và mạng xã hội -->
-          <div class="footer-column">
-            <h4><strong>Liên hệ</strong></h4>
-            <p>
-              <strong>Email:</strong>
-              <a href="mailto:@helloshop.vn">@helloshop.vn</a>
-            </p>
-            <p>
-              <strong>Hotline:</strong>
-              <a href="tel:+84987654321">0987 654 321</a>
-            </p>
-            <div class="social-icons">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-tiktok"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
+            <!-- HELP -->
+            <div class="footer-column">
+              <h4>HELP</h4>
+              <ul>
+                <li><a href="#">Tutorials</a></li>
+                <li><a href="#">Office Hours</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+
+            <!-- STAY IN THE LOOP -->
+            <div class="footer-column subscribe">
+              <h4>STAY IN THE LOOP</h4>
+              <form>
+                <input type="email" placeholder="Nhập email của bạn" required />
+                <button type="submit">SUBSCRIBE</button>
+              </form>
+              <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Dòng bản quyền -->
-        <div class="footer-bottom">
-          <p>&copy; 2025 HelloShop. All rights reserved.</p>
+          <!-- Dòng bản quyền và thanh toán -->
+          <div class="footer-bottom">
+            <div class="payment-icons">
+              <i class="fab fa-cc-visa"></i>
+              <i class="fab fa-cc-mastercard"></i>
+              <i class="fab fa-cc-paypal"></i>
+              <i class="fab fa-google-pay"></i>
+              <i class="fab fa-cc-apple-pay"></i>
+            </div>
+            <p>&copy; 2025 HelloShop. All rights reserved</p>
+          </div>
         </div>
       </footer>
     </div>

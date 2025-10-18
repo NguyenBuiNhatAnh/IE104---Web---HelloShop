@@ -182,13 +182,19 @@ nav {
 }
 
 .footer {
-  background-color: white;
+  background-color: #f6f6f6;
   color: black;
-  padding: 40px 20px 20px;
+  padding: 40px 20px;
+  width: 100%;
   font-family: "Segoe UI", sans-serif;
 }
 
 .footer-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-columns {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -200,7 +206,6 @@ nav {
   min-width: 200px;
 }
 
-.footer-column h3,
 .footer-column h4 {
   margin-bottom: 15px;
   color: black;
@@ -222,7 +227,32 @@ nav {
 }
 
 .footer-column ul li a:hover {
+  color: brown;
+}
+
+.subscribe form {
+  display: flex;
+  flex-direction: column;
+}
+
+.subscribe input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+.subscribe button {
+  padding: 10px;
+  background-color: #ff6f61;
   color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.subscribe button:hover {
+  background-color: #e85c50;
 }
 
 .social-icons a {
@@ -239,7 +269,17 @@ nav {
 .footer-bottom {
   text-align: center;
   margin-top: 30px;
-  border-top: 1px solid #7f8c8d;
-  padding-top: 15px;
+  border-top: 1px solid #444;
+  padding-top: 20px;
   font-size: 14px;
+}
+
+.payment-icons {
+  margin-bottom: 10px;
+}
+
+.payment-icons i {
+  margin: 0 8px;
+  font-size: 24px;
+  color: black;
 }

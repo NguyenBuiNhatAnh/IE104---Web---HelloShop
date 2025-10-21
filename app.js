@@ -1,4 +1,3 @@
-
 import { ProductItem } from "./components/productItem.js";
 import { products } from "./assets/assets.js";
 import { CartItem } from "./components/cartItem.js";
@@ -189,12 +188,12 @@ function renderHome() {
   const latestProducts = document.getElementById("latest-products");
   const bestseller = document.getElementById("best-seller");
 
-  productList.forEach(product => {
+  productList.forEach((product) => {
     const itemElement = ProductItem(product);
     latestProducts.appendChild(itemElement);
   });
 
-  proBestseller.forEach(product => {
+  proBestseller.forEach((product) => {
     const itemElement = ProductItem(product);
     bestseller.appendChild(itemElement);
   });
@@ -204,9 +203,9 @@ function renderCollection() {
   const allproduct = products;
   const allcollection = document.getElementById("all-collection");
 
-  allproduct.forEach(product => {
+  allproduct.forEach((product) => {
     allcollection.appendChild(ProductItem(product));
-  })
+  });
 }
 
 function renderCart() {
@@ -232,7 +231,7 @@ function renderContent() {
 
   if (filePath) {
     fetch(filePath)
-      .then(response => {
+      .then((response) => {
         if (!response.ok) throw new Error("File not found");
         return response.text();
       })
@@ -260,6 +259,9 @@ function renderContent() {
         else if (filePath === "pages/order.html") {
           renderOrder();
         }
+        if (filePath === "pages/about.html") {
+          initAchievementObserver(); // Gọi hàm hiệu ứng
+        }
       })
       .catch(() => {
         console.log("hello");
@@ -272,7 +274,7 @@ function renderContent() {
 }
 
 // Bắt sự kiện click trên các thẻ <a data-link>
-document.addEventListener("click", e => {
+document.addEventListener("click", (e) => {
   const link = e.target.closest("a[data-link]");
   if (link) {
     e.preventDefault();
@@ -306,30 +308,55 @@ export function updateActiveLinks() {
   const currentURL = window.location.hash;
   const links = document.querySelectorAll('a');
 
-  links.forEach(link => {
-    link.classList.remove('active');
+  links.forEach((link) => {
+    link.classList.remove("active");
 
     // So sánh tuyệt đối hoặc tương đối tùy vào cấu trúc href
-    const href = link.getAttribute('href');
+    const href = link.getAttribute("href");
     if (href === currentURL) {
-      link.classList.add('active');
+      link.classList.add("active");
     }
   });
 }
 
-
 export function openMenu() {
   const mobilemeu = document.getElementById("mobile-menu");
   const divmobilemenu = document.getElementById("div-mobile-menu");
-  mobilemeu.style.width = "100%"
-  divmobilemenu.style.display = "flex"
+  mobilemeu.style.width = "100%";
+  divmobilemenu.style.display = "flex";
 }
 
 export function closeMenu() {
   const mobilemeu = document.getElementById("mobile-menu");
   const divmobilemenu = document.getElementById("div-mobile-menu");
-  mobilemeu.style.width = "0"
-  divmobilemenu.style.display = "none"
+  mobilemeu.style.width = "0";
+  divmobilemenu.style.display = "none";
+}
+// Hàm khởi tạo hiệu ứng scroll cho trang About
+function initAchievementObserver() {
+  // Tìm tất cả các mục thành tựu có trên trang
+  const achievementItems = document.querySelectorAll(".achievement-item");
+  // Chỉ thực thi nếu tìm thấy các mục này
+  if (achievementItems.length > 0) {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.2, // Kích hoạt khi 20% của phần tử lọt vào màn hình
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    achievementItems.forEach((item) => {
+      observer.observe(item);
+    });
+  }
 }
 
 //function khi nhấn vào product chuyển qua trang product tương ứng
@@ -460,7 +487,6 @@ window.addEventListener("scroll", () => {
 
   lastScrollTop = currentScroll;
 });
-
 
 
 

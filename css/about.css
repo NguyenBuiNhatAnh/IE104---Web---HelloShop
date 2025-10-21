@@ -9,7 +9,7 @@
 }
 
 .container.about-page {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
 }
@@ -38,19 +38,13 @@ h2 {
   font-size: 1.1em;
 }
 
-.image-placeholder {
+.image-placeholder img {
   flex: 1;
   min-width: 300px;
   height: 250px;
-  background-color: var(--color-secondary);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-  color: var(--color-light-text);
-  border-radius: 5px;
+  bottom: 30px;
+  position: relative;
 }
-
 .mission-vision {
   display: flex;
   gap: 30px;
@@ -137,7 +131,6 @@ h2 {
   }
 }
 /* --- Phần Thành Tựu --- */
-/* --- Phần Thành Tựu (Phiên bản có hiệu ứng ảnh) --- */
 .achievements-section {
   padding-top: 40px;
   border-top: 1px solid #f0f0f0;
@@ -163,7 +156,7 @@ h2 {
   flex-direction: row-reverse;
 }
 
-/* Thẻ chứa chữ, chiếm 50% chiều rộng */
+/* Thẻ chứa chữ, chiếm 70% chiều rộng */
 .achievement-card {
   flex: 3; /* Thay đổi từ flex: 1 thành flex: 3 */
   min-width: 0;
@@ -171,8 +164,8 @@ h2 {
   padding: 30px 20px;
   border-radius: 8px;
   text-align: center;
-  border: 1px solid #e0e0e0;
-  transition: transform 0.3s, box-shadow 0.3s;
+  /* border: 1px solid #e0e0e0;
+  transition: transform 0.3s, box-shadow 0.3s; */
   cursor: pointer;
 }
 
@@ -182,48 +175,119 @@ h2 {
 }
 
 .achievement-metric {
-  font-size: 2.8em;
+  font-size: 3.6em;
   font-weight: 700;
   color: var(--color-primary);
   margin-bottom: 10px;
 }
 
 .achievement-label {
-  font-size: 1.1em;
+  font-size: 1.6em;
+  font-family: "PT Serif", serif;
   color: var(--color-text);
   font-weight: 500;
 }
 
 /* Khung chứa ảnh, cũng chiếm 70% chiều rộng */
 .achievement-image {
-  flex: 7; /* Thay đổi từ flex: 1 thành flex: 7 */
+  flex: 5;
   min-width: 0;
-
-  /* --- PHẦN QUAN TRỌNG NHẤT CỦA HIỆU ỨNG --- */
+  /* --- HIỆU ỨNG SCROLL --- */
   opacity: 0;
-  transform: translateX(20px);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Hiệu ứng mượt hơn */
 }
 
-/* Đối với item chẵn (đảo ngược), ảnh sẽ dịch chuyển từ trái qua */
-.achievement-item:nth-child(even) .achievement-image {
-  transform: translateX(-20px);
-}
-
-/* KHI DI CHUỘT vào cả .achievement-item... */
-.achievement-item:hover .achievement-image {
-  opacity: 1; /* 4. ...ảnh sẽ hiện ra rõ nét */
-  transform: translateX(0); /* 5. ...và di chuyển về vị trí ban đầu */
+/* KHI JavaScript thêm class 'is-visible'... */
+.achievement-item.is-visible .achievement-image {
+  opacity: 1; /* ...ảnh sẽ hiện ra rõ nét */
+  transform: translateY(0); /* ...và di chuyển về vị trí ban đầu */
 }
 
 .achievement-image img {
   width: 100%;
-  height: auto;
   display: block;
   border-radius: 5px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
+/* --- Phần Testimonial/Quote --- */
+.testimonial-section {
+  background-color: #2f4f4f; /* Màu nền xám đậm */
+  padding: 80px 0px; /* Khoảng đệm trên dưới và hai bên */
+  margin-top: 60px; /* Khoảng cách với phần trước */
+  display: flex;
+  justify-content: center; /* Căn giữa nội dung */
+  align-items: center;
+}
 
+.testimonial-content {
+  max-width: 900px; /* Chiều rộng tối đa của nội dung quote */
+  color: white; /* Màu chữ trắng */
+  text-align: left; /* Căn lề trái */
+  position: relative; /* Dùng cho icon quote */
+  padding-left: 80px; /* Khoảng cách cho icon quote */
+}
+
+.quote-icon {
+  font-family: serif; /* Font chữ cổ điển cho dấu quote */
+  font-size: 120px; /* Kích thước lớn */
+  color: #ccc; /* Màu xám nhạt */
+  position: absolute;
+  top: -30px; /* Dịch lên trên một chút */
+  left: 0;
+  line-height: 1; /* Căn chỉnh chiều cao dòng */
+  z-index: 1; /* Đảm bảo nằm dưới chữ */
+}
+
+.quote-text {
+  font-size: 1.8em; /* Kích thước chữ lớn hơn */
+  line-height: 1.6; /* Chiều cao dòng */
+  font-weight: 500;
+  margin-bottom: 25px; /* Khoảng cách với tác giả */
+  position: relative; /* Đảm bảo nằm trên icon */
+  z-index: 2;
+}
+
+.quote-author {
+  font-size: 1.1em;
+  font-style: italic;
+  font-weight: 400;
+  color: #ccc; /* Màu xám nhạt */
+  margin-top: 15px;
+  position: relative; /* Đảm bảo nằm trên icon */
+  z-index: 2;
+  border-top: 1px solid #777; /* Đường kẻ ngang phía trên tác giả */
+  padding-top: 10px;
+  display: inline-block; /* Để đường kẻ chỉ dài bằng chữ */
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 768px) {
+  .testimonial-section {
+    padding: 60px 15px; /* Giảm padding trên di động */
+  }
+
+  .testimonial-content {
+    padding-left: 40px; /* Giảm khoảng cách cho icon */
+    text-align: center; /* Căn giữa chữ trên di động */
+  }
+
+  .quote-icon {
+    font-size: 80px; /* Giảm kích thước icon */
+    top: 0;
+    left: 50%; /* Căn giữa icon */
+    transform: translateX(-50%); /* Dịch chuyển để căn giữa chuẩn */
+  }
+
+  .quote-text {
+    font-size: 1.3em; /* Giảm kích thước chữ */
+    margin-top: 40px; /* Tăng khoảng cách để tránh icon */
+  }
+
+  .quote-author {
+    margin: 0 auto; /* Căn giữa tác giả */
+  }
+}
 /* --- Responsive cho điện thoại --- */
 @media (max-width: 768px) {
   .achievement-item,

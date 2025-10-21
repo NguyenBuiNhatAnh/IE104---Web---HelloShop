@@ -246,11 +246,11 @@ header.header-hidden {
   padding: 40px 20px;
   width: 100%;
   font-family: "Segoe UI", sans-serif;
+  display: none
 }
 
 .footer-container {
-  max-width: 1200px;
-  margin: auto;
+  max-width: 100%
 }
 
 .footer-columns {

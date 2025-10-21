@@ -2,6 +2,9 @@ import { ProductItem } from "./components/productItem.js";
 import { products } from "./assets/assets.js";
 import { CartItem } from "./components/cartItem.js";
 import { OrderItem } from "./components/orderItem.js";
+import { renderHome } from "./javascript/home.js";
+import {renderCollection} from "./javascript/collection.js";
+import { renderCart } from "./javascript/cart.js";
 
 let cartItems = [];
 let currentSize = undefined;
@@ -182,39 +185,7 @@ const routes = {
   "login": "pages/login.html"
 };
 
-function renderHome() {
-  const productList = products.slice(0, 10);
-  const proBestseller = products.slice(0, 5);
-  const latestProducts = document.getElementById("latest-products");
-  const bestseller = document.getElementById("best-seller");
 
-  productList.forEach((product) => {
-    const itemElement = ProductItem(product);
-    latestProducts.appendChild(itemElement);
-  });
-
-  proBestseller.forEach((product) => {
-    const itemElement = ProductItem(product);
-    bestseller.appendChild(itemElement);
-  });
-}
-
-function renderCollection() {
-  const allproduct = products;
-  const allcollection = document.getElementById("all-collection");
-
-  allproduct.forEach((product) => {
-    allcollection.appendChild(ProductItem(product));
-  });
-}
-
-function renderCart() {
-  const cartPage = document.getElementById("cart-page");
-
-  cartItems.forEach(item => {
-    cartPage.appendChild(CartItem(item));
-  })
-}
 
 // Hàm render nội dung dựa trên hash hiện tại
 function renderContent() {
@@ -239,17 +210,17 @@ function renderContent() {
         document.getElementById("app").innerHTML = html;
         cartItemAmount();
         if (filePath == "pages/home.html") {
-          renderHome();
+          renderHome(products, ProductItem);
         }
         else if (filePath === "pages/collection.html") {
-          renderCollection();
+          renderCollection(products, ProductItem);
         }
         else if (filePath === "pages/product.html") {
           navigateProduct(idProduct);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         else if (filePath === "pages/cart.html") {
-          renderCart();
+          renderCart(cartItems, CartItem);
           hideAndActiveCartPage();
           cartTotal();
         }
@@ -265,13 +236,14 @@ function renderContent() {
       })
       .catch(() => {
         console.log("hello");
-        document.getElementById("app").innerHTML = "<h1>404</h1><p>Không tìm thấy trang.</p>";
+        document.getElementById("app").innerHTML = "<h1>405</h1><p>Không tìm thấy trang.</p>";
       });
   } else {
     console.log("hi");
     document.getElementById("app").innerHTML = "<h1>404</h1><p>Không tìm thấy trang.</p>";
   }
 }
+
 
 // Bắt sự kiện click trên các thẻ <a data-link>
 document.addEventListener("click", (e) => {
@@ -359,7 +331,23 @@ function initAchievementObserver() {
   }
 }
 
-//function khi nhấn vào product chuyển qua trang product tương ứng
+
+
+let close = true;
+export function openAndCloseFilter() {
+  if (close) {
+    document.getElementById("drd-icon").classList.remove("xoay90");
+    document.getElementById("ft1").style.display = "none";
+    document.getElementById("ft2").style.display = "none";
+  }
+  else {
+    document.getElementById("drd-icon").classList.add("xoay90");
+    document.getElementById("ft1").style.display = "block";
+    document.getElementById("ft2").style.display = "block";
+  }
+  close = !close;
+}
+
 export function navigateProduct(idProduct) {
   let imageProduct;
   let productItem;
@@ -371,7 +359,7 @@ export function navigateProduct(idProduct) {
     }
   });
 
-  fetch("pages/product.html")
+  fetch("../pages/product.html")
     .then(response => response.text()) // cần chuyển response thành text
     .then(html => {
       const app = document.getElementById("app");
@@ -435,24 +423,9 @@ export function navigateProduct(idProduct) {
     });
 }
 
-let close = true;
-export function openAndCloseFilter() {
-  if (close) {
-    document.getElementById("drd-icon").classList.remove("xoay90");
-    document.getElementById("ft1").style.display = "none";
-    document.getElementById("ft2").style.display = "none";
-  }
-  else {
-    document.getElementById("drd-icon").classList.add("xoay90");
-    document.getElementById("ft1").style.display = "block";
-    document.getElementById("ft2").style.display = "block";
-  }
-  close = !close;
-}
 
 function effectSizeChosen(event) {
   const buttons = document.getElementsByClassName('button-item');
-  let buttonChange;
   [...buttons].forEach(button => {
     button.classList.remove('active');
     if (button === event.target) {

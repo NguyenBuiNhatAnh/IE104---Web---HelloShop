@@ -1,4 +1,6 @@
-export function navigateProduct(idProduct, products) {
+import { currentSize } from "../sharedata/sharedata.js";
+
+export function navigateProduct(idProduct, products, ProductItem) {
   let imageProduct;
   let productItem;
 
@@ -79,7 +81,8 @@ function effectSizeChosen(event) {
     button.classList.remove('active');
     if (button === event.target) {
       button.classList.add('active');
-      currentSize = button.textContent;
+      console.log(button.textContent)
+      currentSize.size = button.textContent;
     }
   });
 }

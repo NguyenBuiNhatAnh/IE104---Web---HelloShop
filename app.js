@@ -1,3 +1,4 @@
+import { currentSize } from "./sharedata/sharedata.js";
 import { ProductItem } from "./components/productItem.js";
 import { products } from "./assets/assets.js";
 import { CartItem } from "./components/cartItem.js";
@@ -5,9 +6,9 @@ import { OrderItem } from "./components/orderItem.js";
 import { renderHome } from "./javascript/home.js";
 import {renderCollection} from "./javascript/collection.js";
 import { renderCart } from "./javascript/cart.js";
+import { navigateProduct } from "./javascript/product.js";
 
 let cartItems = [];
-let currentSize = undefined;
 let productId = undefined;
 let cartItemAmoun = 0;
 let formSubmit = {};
@@ -134,16 +135,16 @@ export function removeCartItem(event) {
   cartItemAmount();
   hideAndActiveCartPage();
   cartTotal();
-  renderCart();
+  renderCart(cartItems, CartItem);
 }
 window.removeCartItem = removeCartItem;
 
 export function addCartItem() {
-  if (currentSize) {
+  if (currentSize.size) {
     let currentProduct = undefined;
     let lived = false;
     cartItems.forEach(item => {
-      if (item._id === productId && item.size === currentSize) {
+      if (item._id === productId && item.size === currentSize.size) {
         item.quantity++;
         lived = true;
         cartItemAmount();
@@ -160,7 +161,7 @@ export function addCartItem() {
       cartItem._id = currentProduct._id;
       cartItem.image = currentProduct.image;
       cartItem.name = currentProduct.name;
-      cartItem.size = currentSize;
+      cartItem.size = currentSize.size;
       cartItem.price = currentProduct.price;
       cartItem.quantity = 1;
 
@@ -186,13 +187,12 @@ const routes = {
 };
 
 
-
 // Hàm render nội dung dựa trên hash hiện tại
 function renderContent() {
   const hash = window.location.hash.replace("#/", "");
   let filePath = routes[hash];
   let idProduct;
-  currentSize = undefined;
+  currentSize.size = undefined;
 
   if (hash.slice(0, 7) == "product") {
     filePath = routes["product"];
@@ -216,7 +216,7 @@ function renderContent() {
           renderCollection(products, ProductItem);
         }
         else if (filePath === "pages/product.html") {
-          navigateProduct(idProduct);
+          navigateProduct(idProduct, products, ProductItem);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         else if (filePath === "pages/cart.html") {
@@ -244,17 +244,6 @@ function renderContent() {
   }
 }
 
-
-// Bắt sự kiện click trên các thẻ <a data-link>
-document.addEventListener("click", (e) => {
-  const link = e.target.closest("a[data-link]");
-  if (link) {
-    e.preventDefault();
-    const href = link.getAttribute("href");
-    window.location.hash = href;
-  }
-});
-
 // Bắt sự kiện thay đổi hash (khi người dùng điều hướng hoặc reload)
 window.addEventListener("hashchange", renderContent);
 window.addEventListener("hashchange", updateActiveLinks);
@@ -274,6 +263,7 @@ export function openDropdown() {
     dropdown.style.display = "none";
   }
 }
+window.openDropdown = openDropdown;
 
 // Bắt sự kiện khi click vào thẻ a thì style cho thẻ đó
 export function updateActiveLinks() {
@@ -297,6 +287,7 @@ export function openMenu() {
   mobilemeu.style.width = "100%";
   divmobilemenu.style.display = "flex";
 }
+window.openMenu = openMenu;
 
 export function closeMenu() {
   const mobilemeu = document.getElementById("mobile-menu");
@@ -304,6 +295,7 @@ export function closeMenu() {
   mobilemeu.style.width = "0";
   divmobilemenu.style.display = "none";
 }
+window.closeMenu = closeMenu;
 // Hàm khởi tạo hiệu ứng scroll cho trang About
 function initAchievementObserver() {
   // Tìm tất cả các mục thành tựu có trên trang
@@ -332,119 +324,6 @@ function initAchievementObserver() {
 }
 
 
-
-let close = true;
-export function openAndCloseFilter() {
-  if (close) {
-    document.getElementById("drd-icon").classList.remove("xoay90");
-    document.getElementById("ft1").style.display = "none";
-    document.getElementById("ft2").style.display = "none";
-  }
-  else {
-    document.getElementById("drd-icon").classList.add("xoay90");
-    document.getElementById("ft1").style.display = "block";
-    document.getElementById("ft2").style.display = "block";
-  }
-  close = !close;
-}
-
-export function navigateProduct(idProduct) {
-  let imageProduct;
-  let productItem;
-
-  products.forEach(product => {
-    if (idProduct === product._id) {
-      imageProduct = product.image;
-      productItem = product;
-    }
-  });
-
-  fetch("../pages/product.html")
-    .then(response => response.text()) // cần chuyển response thành text
-    .then(html => {
-      const app = document.getElementById("app");
-      app.innerHTML = html;
-
-      const img1 = document.createElement("img");
-      const img2 = document.createElement("img");
-      const img3 = document.createElement("img");
-      const img4 = document.createElement("img");
-      if (imageProduct[0]) {
-        img1.src = imageProduct[0];
-        img1.classList = "sub-image-item";
-        img1.onclick = (event) => changeImage(event);
-        document.getElementById("sub-image").appendChild(img1);
-      }
-      if (imageProduct[1]) {
-        img2.src = imageProduct[1];
-        img2.classList = "sub-image-item";
-        img2.onclick = (event) => changeImage(event);
-        document.getElementById("sub-image").appendChild(img2);
-      }
-      if (imageProduct[2]) {
-        img3.src = imageProduct[2];
-        img3.classList = "sub-image-item";
-        img3.onclick = (event) => changeImage(event);
-        document.getElementById("sub-image").appendChild(img3);
-      }
-      if (imageProduct[3]) {
-        img4.src = imageProduct[3];
-        img4.classList = "sub-image-item";
-        img4.onclick = (event) => changeImage(event);
-        document.getElementById("sub-image").appendChild(img4);
-      }
-
-      const mainImg = document.createElement("img");
-      mainImg.src = imageProduct[0];
-      mainImg.id = 'main-image-item';
-      document.getElementById("main-image").appendChild(mainImg);
-
-      document.getElementById("name").innerText = productItem.name;
-      document.getElementById("price").innerText = "$" + productItem.price;
-      document.getElementById("desc").innerText = productItem.description;
-
-      productItem.sizes.forEach(sizePro => {
-        let button = document.createElement("button");
-        button.textContent = sizePro;
-        button.className = "button-item";
-        button.onclick = (event) => effectSizeChosen(event);
-        document.getElementById("button-size-wrapper").appendChild(button);
-      })
-
-      const relatedProducts = [];
-      products.forEach(product => {
-        if (product.category == productItem.category && product.subCategory == productItem.subCategory) {
-          relatedProducts.push(product);
-        }
-      })
-      relatedProducts.forEach(product => {
-        document.getElementById("related-products").appendChild(ProductItem(product));
-      })
-    });
-}
-
-
-function effectSizeChosen(event) {
-  const buttons = document.getElementsByClassName('button-item');
-  [...buttons].forEach(button => {
-    button.classList.remove('active');
-    if (button === event.target) {
-      button.classList.add('active');
-      currentSize = button.textContent;
-    }
-  });
-}
-
-function changeImage(event) {
-  const images = document.getElementsByClassName('sub-image-item');
-  const mainImage = document.getElementById('main-image-item');
-  [...images].forEach(image => {
-    if (image === event.target) {
-      mainImage.src = image.src;
-    }
-  });
-}
-
 let lastScrollTop = 0;
 window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
@@ -463,11 +342,8 @@ window.addEventListener("scroll", () => {
 
 
 
-window.openDropdown = openDropdown;
+
 window.updateActiveLinks = updateActiveLinks;
-window.openMenu = openMenu;
-window.closeMenu = closeMenu;
-window.navigateProduct = navigateProduct;
-window.openAndCloseFilter = openAndCloseFilter;
+
 
 

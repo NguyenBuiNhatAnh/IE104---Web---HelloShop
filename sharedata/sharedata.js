@@ -1,0 +1,1 @@
+export const currentSize = {size: undefined};

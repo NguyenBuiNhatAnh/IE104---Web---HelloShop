@@ -15,7 +15,7 @@ export function submitForm(event) {
   formSubmit.value.country = document.getElementById("country-input").value;
   formSubmit.value.phone = document.getElementById("phone-input").value;
   cartItems.value.forEach(item => {
-    item.method = method;
+    item.method = method.value;
   })
   orderItems.value.push(...cartItems.value);
   cartItems.value = [];
@@ -29,7 +29,7 @@ export function bankingMethod() {
   document.getElementById("completed-btn").classList.remove("display-none");
   document.getElementById("img-banking").classList.remove("display-none");
   document.getElementById("h2-com").classList.add("display-none");
-  method = "Banking";
+  method.value = "Banking";
 }
 window.bankingMethod = bankingMethod;
 

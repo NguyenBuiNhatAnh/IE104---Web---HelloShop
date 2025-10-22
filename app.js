@@ -2,7 +2,6 @@ import { currentSize } from "./sharedata/sharedata.js";
 import { ProductItem } from "./components/productItem.js";
 import { products } from "./assets/assets.js";
 import { CartItem } from "./components/cartItem.js";
-import { OrderItem } from "./components/orderItem.js";
 import { renderHome } from "./javascript/home.js";
 import {renderCollection} from "./javascript/collection.js";
 import { renderCart } from "./javascript/cart.js";
@@ -80,14 +79,12 @@ function renderContent() {
         document.getElementById("app").innerHTML = "<h1>405</h1><p>Không tìm thấy trang.</p>";
       });
   } else {
-    console.log("hi");
     document.getElementById("app").innerHTML = "<h1>404</h1><p>Không tìm thấy trang.</p>";
   }
 }
 
 // Bắt sự kiện thay đổi hash (khi người dùng điều hướng hoặc reload)
 window.addEventListener("hashchange", renderContent);
-window.addEventListener("hashchange", updateActiveLinks);
 
 // Render lần đầu khi trang được tải
 renderContent();
@@ -121,6 +118,7 @@ export function updateActiveLinks() {
     }
   });
 }
+window.addEventListener("hashchange", updateActiveLinks);
 
 export function openMenu() {
   const mobilemeu = document.getElementById("mobile-menu");
@@ -137,8 +135,6 @@ export function closeMenu() {
   divmobilemenu.style.display = "none";
 }
 window.closeMenu = closeMenu;
-
-
 
 let lastScrollTop = 0;
 window.addEventListener("scroll", () => {

@@ -19,8 +19,6 @@ export function renderCart(CartItem) {
 }
 
 export function addCartItem() {
-  console.log(cartItems.value)
-  console.log("ddax aans nut")
   if (currentSize.size) {
     let currentProduct = undefined;
     let lived = false;
@@ -95,7 +93,6 @@ export function removeCartItem(event) {
 
 
 export function cartTotal() {
-  console.log("carttotal");
   let sum = 0;
   if (cartItems.value[0]) {
     cartItems.value.forEach(item => {

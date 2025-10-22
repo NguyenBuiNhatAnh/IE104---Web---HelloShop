@@ -81,7 +81,6 @@ function effectSizeChosen(event) {
     button.classList.remove('active');
     if (button === event.target) {
       button.classList.add('active');
-      console.log(button.textContent)
       currentSize.size = button.textContent;
     }
   });

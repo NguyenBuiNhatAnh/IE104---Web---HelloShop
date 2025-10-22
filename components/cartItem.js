@@ -1,4 +1,5 @@
-import { changeQuantity, removeCartItem } from "../app.js";
+import { changeQuantity } from "../javascript/cart.js";
+import { removeCartItem } from "../javascript/cart.js";
 
 function CartItem ({_id, image, name, size, price, quantity}) {
     const cartItem = document.createElement('div');

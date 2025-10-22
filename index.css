@@ -243,10 +243,8 @@ header.header-hidden {
 .footer {
   background-color: #f6f6f6;
   color: black;
-  padding: 40px 20px;
   width: 100%;
   font-family: "Segoe UI", sans-serif;
-  display: none
 }
 
 .footer-container {

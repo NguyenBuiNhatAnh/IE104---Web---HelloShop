@@ -7,171 +7,13 @@ import { renderHome } from "./javascript/home.js";
 import {renderCollection} from "./javascript/collection.js";
 import { renderCart } from "./javascript/cart.js";
 import { navigateProduct } from "./javascript/product.js";
+import { initAchievementObserver } from "./javascript/about.js";
+import { productIdd } from "./sharedata/sharedata.js";
+import { hideAndActiveCartPage } from "./javascript/cart.js";
+import { cartTotal } from "./javascript/cart.js";
+import { renderOrder } from "./javascript/order.js";
+import { cartItemAmoun } from "./javascript/cart.js";
 
-let cartItems = [];
-let productId = undefined;
-let cartItemAmoun = 0;
-let formSubmit = {};
-let orderItems = [];
-let method = undefined;
-
-export function setMethodCOD() {
-  method = "COD";
-}
-
-window.setMethodCOD = setMethodCOD;
-
-function renderOrder() {
-  const orderPage = document.getElementById("order-container");
-  orderItems.forEach(item => {
-  let i = {};
-  i.image = item.image;
-  i.name = item.name;
-  i.price = "$" + item.price;
-  i.quantity = "Quantity: " + item.quantity;
-  i.size = "Size: " + item.size;
-  i.date = (new Date()).toDateString();
-  i.method = item.method;
-  orderPage.appendChild(OrderItem(i));
-  })
-}
-
-export function navigateOrderPage() {
-  window.location.href = window.location.origin + '/' + '#/order';
-}
-
-window.navigateOrderPage = navigateOrderPage;
-
-export function bankingMethod() {
-  document.getElementById("banking-btn").classList.add("display-none");
-  document.getElementById("cod-btn").classList.add("display-none");
-  document.getElementById("completed-btn").classList.remove("display-none");
-  document.getElementById("img-banking").classList.remove("display-none");
-  document.getElementById("h2-com").classList.add("display-none");
-  method = "Banking";
-}
-
-window.bankingMethod = bankingMethod;
-
-export function submitForm(event) {
-  event.preventDefault();
-  formSubmit.firstName = document.getElementById("firstName-input").value;
-  formSubmit.lastName = document.getElementById("lastName-input").value;
-  formSubmit.email = document.getElementById("email-input").value;
-  formSubmit.street = document.getElementById("street-input").value;
-  formSubmit.city = document.getElementById("city-input").value;
-  formSubmit.state = document.getElementById("state-input").value;
-  formSubmit.zipcode = document.getElementById("zipcode-input").value;
-  formSubmit.country = document.getElementById("country-input").value;
-  formSubmit.phone = document.getElementById("phone-input").value;
-  console.log(event.target);
-  cartItems.forEach(item => {
-    item.method = method;
-  })
-  orderItems.push(...cartItems);
-  cartItems = [];
-  window.location.href = window.location.origin + '/' + '#/order';
-}
-
-window.submitForm = submitForm;
-
-function hideAndActiveCartPage() {
-  if (cartItemAmoun === 0) {
-    document.getElementById("cart-page-container").classList.remove("active");
-    document.getElementById("empty-cart").classList.add("active");
-  } else {
-    document.getElementById("cart-page-container").classList.add("active");
-    document.getElementById("empty-cart").classList.remove("active");
-  }
-}
-
-function cartTotal() {
-  let sum = 0;
-  if (cartItems[0]) {
-    cartItems.forEach(item => {
-      sum += item.quantity * item.price;
-    })
-  }
-  document.getElementById("sub-total-price").textContent = "$" + sum + ".00";
-  document.getElementById("total-price").textContent = "$" + (sum + 10) + ".00";
-}
-
-function cartItemAmount() {
-  if (cartItems[0]) {
-    let sum = 0;
-    cartItems.forEach(item => {
-      sum += item.quantity;
-    })
-    cartItemAmoun = sum;
-  }
-  else cartItemAmoun = 0;
-  document.getElementById("cart-amount").textContent = cartItemAmoun;
-}
-
-export function changeQuantity(event) {
-  const idInput = event.target.id;
-  cartItems.forEach(item => {
-    if ((item._id + item.size + "input") === idInput) {
-      item.quantity = parseInt(event.target.value);
-    }
-  })
-  cartItemAmount();
-  cartTotal();
-}
-window.changeQuantity = changeQuantity;
-
-export function removeCartItem(event) {
-  let i = 0;
-  let j = 0;
-  const idCartItem = event.target.id;
-  cartItems.forEach(item => {
-    if ((item._id + item.size) === idCartItem) {
-      j = i
-    }
-    i++;
-  })
-  cartItems.splice(j, 1);
-  document.getElementById("cart-page").textContent = "";
-  cartItemAmount();
-  hideAndActiveCartPage();
-  cartTotal();
-  renderCart(cartItems, CartItem);
-}
-window.removeCartItem = removeCartItem;
-
-export function addCartItem() {
-  if (currentSize.size) {
-    let currentProduct = undefined;
-    let lived = false;
-    cartItems.forEach(item => {
-      if (item._id === productId && item.size === currentSize.size) {
-        item.quantity++;
-        lived = true;
-        cartItemAmount();
-      }
-    })
-    if (!lived) {
-      products.forEach((product) => {
-        if (product._id === productId) {
-          currentProduct = product;
-        }
-      })
-
-      let cartItem = {};
-      cartItem._id = currentProduct._id;
-      cartItem.image = currentProduct.image;
-      cartItem.name = currentProduct.name;
-      cartItem.size = currentSize.size;
-      cartItem.price = currentProduct.price;
-      cartItem.quantity = 1;
-
-      cartItems.push(cartItem);
-      cartItemAmount();
-    }
-  }
-}
-
-window.addCartItem = addCartItem;
 
 // Định nghĩa các route và nội dung tương ứng
 const routes = {
@@ -197,7 +39,7 @@ function renderContent() {
   if (hash.slice(0, 7) == "product") {
     filePath = routes["product"];
     idProduct = hash.split("/")[1];
-    productId = idProduct;
+    productIdd.value = idProduct;
   }
 
   if (filePath) {
@@ -208,7 +50,7 @@ function renderContent() {
       })
       .then(html => {
         document.getElementById("app").innerHTML = html;
-        cartItemAmount();
+        cartItemAmoun();
         if (filePath == "pages/home.html") {
           renderHome(products, ProductItem);
         }
@@ -220,7 +62,7 @@ function renderContent() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         else if (filePath === "pages/cart.html") {
-          renderCart(cartItems, CartItem);
+          renderCart(CartItem);
           hideAndActiveCartPage();
           cartTotal();
         }
@@ -231,11 +73,10 @@ function renderContent() {
           renderOrder();
         }
         if (filePath === "pages/about.html") {
-          initAchievementObserver(); // Gọi hàm hiệu ứng
+          initAchievementObserver();
         }
       })
       .catch(() => {
-        console.log("hello");
         document.getElementById("app").innerHTML = "<h1>405</h1><p>Không tìm thấy trang.</p>";
       });
   } else {
@@ -296,32 +137,7 @@ export function closeMenu() {
   divmobilemenu.style.display = "none";
 }
 window.closeMenu = closeMenu;
-// Hàm khởi tạo hiệu ứng scroll cho trang About
-function initAchievementObserver() {
-  // Tìm tất cả các mục thành tựu có trên trang
-  const achievementItems = document.querySelectorAll(".achievement-item");
-  // Chỉ thực thi nếu tìm thấy các mục này
-  if (achievementItems.length > 0) {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.2, // Kích hoạt khi 20% của phần tử lọt vào màn hình
-    };
 
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    achievementItems.forEach((item) => {
-      observer.observe(item);
-    });
-  }
-}
 
 
 let lastScrollTop = 0;
@@ -339,10 +155,6 @@ window.addEventListener("scroll", () => {
 
   lastScrollTop = currentScroll;
 });
-
-
-
-
 window.updateActiveLinks = updateActiveLinks;
 
 

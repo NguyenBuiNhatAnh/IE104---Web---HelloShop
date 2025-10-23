@@ -7,13 +7,13 @@
             <p>CATEGORIES</p>
             <div class="select-categories">
                 <p>
-                    <input type="checkbox"> Men
+                    <input onclick="setCategory(event)" value="Men" type="checkbox"> Men
                 </p>
                 <p>
-                    <input type="checkbox"> Women
+                    <input onclick="setCategory(event)" value="Women" type="checkbox"> Women
                 </p>
                 <p>
-                    <input type="checkbox"> Kids
+                    <input onclick="setCategory(event)" value="Kids" type="checkbox"> Kids
                 </p>
             </div>
         </div>
@@ -21,13 +21,13 @@
             <p>TYPE</p>
             <div class="select-type">
                 <p>
-                    <input type="checkbox"> Topwear
+                    <input onclick="setSubCategory(event)" value="Topwear" type="checkbox"> Topwear
                 </p>
                 <p>
-                    <input type="checkbox"> Bottomwear
+                    <input onclick="setSubCategory(event)" value="Bottomwear" type="checkbox"> Bottomwear
                 </p>
                 <p>
-                    <input type="checkbox"> Winterwear
+                    <input onclick="setSubCategory(event)" value="Winterwear" type="checkbox"> Winterwear
                 </p>
             </div>
         </div>
@@ -37,10 +37,10 @@
         <div class="title-and-sort">
             <h2>All Collection</h2>
             <!-- Products sort -->
-            <select name="" id="">
-                <option value="">Sort by: Relavent</option>
-                <option value="">Sort by: Low to Hight</option> 
-                <option value="">Sort by: High to Low</option>
+            <select onchange="sortProduct(event)">
+                <option value="Relavent">Sort by: Relavent</option>
+                <option value="High">Sort by: Low to High</option> 
+                <option value="Low">Sort by: High to Low</option>
             </select>
         </div>
         <!-- All products -->

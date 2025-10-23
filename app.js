@@ -12,6 +12,7 @@ import { hideAndActiveCartPage } from "./javascript/cart.js";
 import { cartTotal } from "./javascript/cart.js";
 import { renderOrder } from "./javascript/order.js";
 import { cartItemAmoun } from "./javascript/cart.js";
+import { collectionProducts } from "./sharedata/sharedata.js";
 
 
 // Định nghĩa các route và nội dung tương ứng
@@ -50,11 +51,12 @@ function renderContent() {
       .then(html => {
         document.getElementById("app").innerHTML = html;
         cartItemAmoun();
+        closeDropdown();
         if (filePath == "pages/home.html") {
           renderHome(products, ProductItem);
         }
         else if (filePath === "pages/collection.html") {
-          renderCollection(products, ProductItem);
+          renderCollection(collectionProducts.value, ProductItem);
         }
         else if (filePath === "pages/product.html") {
           navigateProduct(idProduct, products, ProductItem);
@@ -89,20 +91,17 @@ window.addEventListener("hashchange", renderContent);
 // Render lần đầu khi trang được tải
 renderContent();
 
-let visible = false;
-export function openDropdown() {
 
+export function openDropdown() {
   const dropdown = document.getElementById("drd");
-  if (!visible) {
-    visible = true;
-    dropdown.style.display = "block";
-  } else {
-    visible = false;
-    dropdown.style.display = "none";
-  }
+  dropdown.style.display = "block";
 }
 window.openDropdown = openDropdown;
 
+export function closeDropdown() {
+  document.getElementById("drd").style.display = "none"
+}
+window.closeDropdown = closeDropdown;
 // Bắt sự kiện khi click vào thẻ a thì style cho thẻ đó
 export function updateActiveLinks() {
   const currentURL = window.location.hash;

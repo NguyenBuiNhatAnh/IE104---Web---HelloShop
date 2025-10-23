@@ -1,3 +1,5 @@
+import { products } from "../assets/assets.js";
+
 export const currentSize = {size: undefined};
 
 export const cartItems = {value: []}
@@ -11,3 +13,13 @@ export const orderItems = {value: []}
 export const formSubmit = {value: {}}
 
 export const method = {value: undefined}
+
+export const collectionProducts = {value: [...products]}
+
+export const filterProducts = {value: []}
+
+export const categories = {value: []};
+
+export const subCategories = {value: []};
+
+export const sort = {value: "Relavent"};

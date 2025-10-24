@@ -4,6 +4,7 @@ import { collectionProducts } from "../sharedata/sharedata.js";
 import { filterProducts } from "../sharedata/sharedata.js";
 import { ProductItem } from "../components/productItem.js";
 import { sort } from "../sharedata/sharedata.js";
+import { searchValue } from "../sharedata/sharedata.js";
 
 export function renderCollection(products, roductItem) {
   const allproduct = products;
@@ -32,11 +33,11 @@ export function openAndCloseFilter() {
 window.openAndCloseFilter = openAndCloseFilter;
 
 export function setCategory(event) {
-  if(categories.value.includes(event.target.value)){
+  if (categories.value.includes(event.target.value)) {
     let copy = categories.value;
     categories.value = [];
     copy.forEach(item => {
-      if(item != event.target.value){
+      if (item != event.target.value) {
         categories.value.push(item);
       }
     })
@@ -45,16 +46,16 @@ export function setCategory(event) {
     categories.value.push(event.target.value);
   }
   filterProductFn();
-  renderCollection(filterProducts.value,ProductItem);
+  renderCollection(filterProducts.value, ProductItem);
 }
 window.setCategory = setCategory;
 
 export function setSubCategory(event) {
-  if(subCategories.value.includes(event.target.value)){
+  if (subCategories.value.includes(event.target.value)) {
     let copy = subCategories.value;
     subCategories.value = [];
     copy.forEach(item => {
-      if(item != event.target.value){
+      if (item != event.target.value) {
         subCategories.value.push(item);
       }
     })
@@ -63,25 +64,34 @@ export function setSubCategory(event) {
     subCategories.value.push(event.target.value);
   }
   filterProductFn();
-  renderCollection(filterProducts.value,ProductItem);
+  renderCollection(filterProducts.value, ProductItem);
 }
 window.setSubCategory = setSubCategory;
 
 export function filterProductFn() {
   let copy = collectionProducts.value;
   let copy2 = [];
-  if(categories.value.length > 0){
+  if(searchState) {
     copy.forEach(item => {
-      if(categories.value.includes(item.category)) {
+      if(item.name.toLowerCase().includes(searchValue.value.toLowerCase())) {
         copy2.push(item);
       }
     })
     copy = copy2;
     copy2 = [];
   }
-  if(subCategories.value.length > 0){
+  if (categories.value.length > 0) {
     copy.forEach(item => {
-      if(subCategories.value.includes(item.subCategory)){
+      if (categories.value.includes(item.category)) {
+        copy2.push(item);
+      }
+    })
+    copy = copy2;
+    copy2 = [];
+  }
+  if (subCategories.value.length > 0) {
+    copy.forEach(item => {
+      if (subCategories.value.includes(item.subCategory)) {
         copy2.push(item);
       }
     })
@@ -94,46 +104,68 @@ export function filterProductFn() {
 export function sortProduct(event) {
   sort.value = event.target.value;
   let copy = filterProducts.value.slice();
-  if(copy.length===0){
+  if (copy.length === 0) {
     copy = collectionProducts.value.slice();
   }
-  if(sort.value === "High") {
-    for(let i=0; i<copy.length-1;i++){
+  if (sort.value === "High") {
+    for (let i = 0; i < copy.length - 1; i++) {
       let min = i;
-      for(let j=i+1; j<copy.length;j++){
-        if(copy[i].price > copy[j].price){
+      for (let j = i + 1; j < copy.length; j++) {
+        if (copy[i].price > copy[j].price) {
           min = j;
         }
       }
-      if(min!==i){
+      if (min !== i) {
         let tmp = copy[i];
-        copy[i]=copy[min];
-        copy[min]=tmp;
+        copy[i] = copy[min];
+        copy[min] = tmp;
       }
     }
     filterProducts.value = copy;
-    renderCollection(filterProducts.value,ProductItem);
+    renderCollection(filterProducts.value, ProductItem);
   }
-  if(sort.value === "Low") {
-    for(let i=0; i<copy.length-1;i++){
+  if (sort.value === "Low") {
+    for (let i = 0; i < copy.length - 1; i++) {
       let min = i;
-      for(let j=i+1; j<copy.length;j++){
-        if(copy[i].price < copy[j].price){
+      for (let j = i + 1; j < copy.length; j++) {
+        if (copy[i].price < copy[j].price) {
           min = j;
         }
       }
-      if(min!==i){
+      if (min !== i) {
         let tmp = copy[i];
-        copy[i]=copy[min];
-        copy[min]=tmp;
+        copy[i] = copy[min];
+        copy[min] = tmp;
       }
     }
     filterProducts.value = copy;
-    renderCollection(filterProducts.value,ProductItem);
+    renderCollection(filterProducts.value, ProductItem);
   }
-  if(sort.value === "Relavent") {
+  if (sort.value === "Relavent") {
     filterProductFn();
-    renderCollection(filterProducts.value,ProductItem);
+    renderCollection(filterProducts.value, ProductItem);
   }
 }
 window.sortProduct = sortProduct;
+
+let searchState = false;
+export function closeSearch() {
+  document.getElementById('search-container').style.display = "none";
+  searchState = false;
+  filterProductFn();
+  renderCollection(filterProducts.value, ProductItem);
+}
+window.closeSearch = closeSearch;
+
+export function openSearch() {
+  document.getElementById('search-container').style.display = "flex"
+  searchState = true;
+}
+window.openSearch = openSearch;
+
+export function setSearch(event) {
+  searchValue.value = event.target.value;
+  filterProductFn();
+  renderCollection(filterProducts.value, ProductItem);
+}
+window.setSearch = setSearch;

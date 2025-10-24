@@ -23,3 +23,5 @@ export const categories = {value: []};
 export const subCategories = {value: []};
 
 export const sort = {value: "Relavent"};
+
+export const searchValue = {value: ""};

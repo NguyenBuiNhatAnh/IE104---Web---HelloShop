@@ -4,6 +4,7 @@ import { products } from "../assets/assets.js";
 import { productIdd } from "../sharedata/sharedata.js";
 import { cartItemAmount } from "../sharedata/sharedata.js";
 import { CartItem } from "../components/cartItem.js";
+import { collectionProducts } from "../sharedata/sharedata.js";
 
 function renderCartt() {
   renderCart(CartItem);
@@ -20,6 +21,7 @@ export function renderCart(CartItem) {
 
 export function addCartItem() {
   if (currentSize.size) {
+    console.log(productIdd);
     let currentProduct = undefined;
     let lived = false;
     cartItems.value.forEach(item => {
@@ -30,11 +32,12 @@ export function addCartItem() {
       }
     })
     if (!lived) {
-      products.forEach((product) => {
+      collectionProducts.value.forEach((product) => {
         if (product._id === productIdd.value) {
           currentProduct = product;
         }
       })
+      console.log(currentProduct);
 
       let cartItem = {};
       cartItem._id = currentProduct._id;

@@ -1,32 +1,103 @@
 <div style="display: flex;" class="admin-container" style="height: 1000px;">
     <div style="display: flex; flex-direction: column; width: 18%; border-right: 2px solid #d3d3d3;">
         <div style="display: flex; flex-direction: column; gap: 8px; padding-left: 30px; padding-top: 20px;">
-            <button class="admin-change">
+            <button onclick="renderAddPage(this)" class="admin-change">
                 <img src="../assets/add_icon.png" alt="">
                 <p>Add items</p>
             </button>
-            <button class="admin-change">
+            <button onclick="renderListPage(this)" class="admin-change">
                 <img src="../assets/order_icon.png" alt="">
                 <p>List items</p>
             </button>
-            <button class="admin-change">
+            <button onclick="renderOrdersPage(this)" class="admin-change">
                 <img src="../assets/order_icon.png" alt="">
                 <p>Orders</p>
             </button>
         </div>
     </div>
     <div style="width: 70%;">
-        <div style="margin-top: 40px; margin-left: 60px; width: 100%;">
+        <form onsubmit="adminAddProduct(event)" id="admin-display" style="margin-top: 40px; margin-left: 60px; width: 100%;">
             <p>Upload Image</p>
-            <label for="iamge1">
-                <img width="100px" src="../assets/upload_area.png" alt="">
-                <input id="iamge1" style="display: none;" type="file">
-            </label>
+            <div style="display: flex; gap: 8px;">
+                <label for="image1">
+                    <img id="img-1-admin" width="100px" src="../assets/upload_area.png" alt="">
+                    <input onchange="previewImage(this,1)" id="image1" style="display: none;" type="file">
+                </label>
+                <label for="image2">
+                    <img id="img-2-admin" width="100px" src="../assets/upload_area.png" alt="">
+                    <input onchange="previewImage(this,2)" id="image2" style="display: none;" type="file">
+                </label>
+                <label for="image3">
+                    <img id="img-3-admin" width="100px" src="../assets/upload_area.png" alt="">
+                    <input onchange="previewImage(this,3)" id="image3" style="display: none;" type="file">
+                </label>
+                <label for="image4">
+                    <img id="img-4-admin" width="100px" src="../assets/upload_area.png" alt="">
+                    <input onchange="previewImage(this,4)" id="image4" style="display: none;" type="file">
+                </label>
+            </div>
             <p>Product name</p>
-            <input placeholder="Type here" style="max-width: 500px; width: 100%; padding: 8px 12px; border: 1.5px solid #d3d3d3; border-radius: 4px;" type="text">
+            <input id="add-name" placeholder="Type here"
+                style="max-width: 500px; width: 100%; padding: 8px 12px; border: 1.5px solid #d3d3d3; border-radius: 4px;"
+                type="text" required>
             <p>Product decscription</p>
-            <textarea placeholder="Write content here" style="height: 60px; max-width: 500px; width: 100%; padding: 8px 12px; border: 1.5px solid #d3d3d3; border-radius: 4px;" type="text"></textarea>
-            
-        </div>
+            <textarea id="add-desc" placeholder="Write content here"
+                style="height: 60px; max-width: 500px; width: 100%; padding: 8px 12px; border: 1.5px solid #d3d3d3; border-radius: 4px;"
+                type="text" required></textarea>
+            <div style="display: flex; gap: 30px;">
+                <div>
+                    <p>Product category</p>
+                    <select id="add-category" class="input-admin" style="width: 100%;" name="">
+                        <option value="Men">Men</option>
+                        <option value="Women">Women</option>
+                        <option value="Kids">Kids</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Sub category</p>
+                    <select id="add-subcategory" class="input-admin" style="width: 100%;" name="">
+                        <option value="Topwear">Topwear</option>
+                        <option value="Bottomwear">Bottomwear</option>
+                        <option value="Winterwear">Winterwear</option>
+                    </select>
+                </div>
+                <div>
+                    <p>Product Price</p>
+                    <input id="add-price" value="100" class="input-admin" type="number">
+                </div>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <p>Product Sizes</p>
+                <div style="display: flex; gap: 8px;">
+                    <div style="display: flex; gap: 8px;">
+                        <p onclick="adminChooseSizes(this)"
+                            style="padding: 8px 14px; cursor: pointer; background-color: oklch(0.929 0.013 255.508); margin: 0;">
+                            S
+                        </p>
+                        <p onclick="adminChooseSizes(this)"
+                            style="padding: 8px 14px; cursor: pointer; background-color: oklch(0.929 0.013 255.508); margin: 0;">
+                            M
+                        </p>
+                        <p onclick="adminChooseSizes(this)"
+                            style="padding: 8px 14px; cursor: pointer; background-color: oklch(0.929 0.013 255.508); margin: 0;">
+                            L
+                        </p>
+                        <p onclick="adminChooseSizes(this)"
+                            style="padding: 8px 14px; cursor: pointer; background-color: oklch(0.929 0.013 255.508); margin: 0;">
+                            XL
+                        </p>
+                        <p onclick="adminChooseSizes(this)"
+                            style="padding: 8px 14px; cursor: pointer; background-color: oklch(0.929 0.013 255.508); margin: 0;">
+                            XXL
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <input id="add-bestseller" value="yes" type="checkbox">
+                Add to bestseller
+            </div>
+            <button class="btn">ADD</button>
+        </form>
     </div>
 </div>

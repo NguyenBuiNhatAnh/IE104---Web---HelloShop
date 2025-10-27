@@ -27,3 +27,10 @@ export const sort = {value: "Relavent"};
 export const searchValue = {value: ""};
 
 export const token = {value: ""};
+
+export const imageAddProduct1 = {value: ""};
+export const imageAddProduct2 = {value: ""};
+export const imageAddProduct3 = {value: ""};
+export const imageAddProduct4 = {value: ""};
+
+export const sizesAddProduct = {value: []};

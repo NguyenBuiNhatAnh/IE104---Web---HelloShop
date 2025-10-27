@@ -111,7 +111,7 @@ export function sortProduct(event) {
     for (let i = 0; i < copy.length - 1; i++) {
       let min = i;
       for (let j = i + 1; j < copy.length; j++) {
-        if (copy[i].price > copy[j].price) {
+        if (copy[min].price > copy[j].price) {
           min = j;
         }
       }
@@ -124,11 +124,12 @@ export function sortProduct(event) {
     filterProducts.value = copy;
     renderCollection(filterProducts.value, ProductItem);
   }
+  else
   if (sort.value === "Low") {
     for (let i = 0; i < copy.length - 1; i++) {
       let min = i;
       for (let j = i + 1; j < copy.length; j++) {
-        if (copy[i].price < copy[j].price) {
+        if (copy[min].price < copy[j].price) {
           min = j;
         }
       }
@@ -140,11 +141,12 @@ export function sortProduct(event) {
     }
     filterProducts.value = copy;
     renderCollection(filterProducts.value, ProductItem);
-  }
+  }else
   if (sort.value === "Relavent") {
     filterProductFn();
     renderCollection(filterProducts.value, ProductItem);
   }
+  console.log(filterProducts.value);
 }
 window.sortProduct = sortProduct;
 
@@ -158,7 +160,9 @@ export function closeSearch() {
 window.closeSearch = closeSearch;
 
 export function openSearch() {
-  document.getElementById('search-container').style.display = "flex"
+  const searchelement = document.getElementById('search-container');
+  if(searchelement)
+  searchelement.style.display = "flex"
   searchState = true;
 }
 window.openSearch = openSearch;

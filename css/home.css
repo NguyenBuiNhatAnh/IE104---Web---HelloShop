@@ -1,3 +1,25 @@
+@media (min-width: 640px) {
+  .home {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .home {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home {
+    padding-left: 7.5vw;
+    padding-right: 7.5vw;
+  }
+}
+
+
 .hero {
   display: flex;
   flex-direction: row;

@@ -1,3 +1,24 @@
+@media (min-width: 640px) {
+  .cart-ontainer {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .cart-container {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cart-container {
+    padding-left: 7.5vw;
+    padding-right: 7.5vw;
+  }
+}
+
 #cart-page-container {
     display: none;
 }

@@ -33,30 +33,9 @@ header {
   top: -100px; /* cho header chạy lên trên, ẩn đi */
 }
 
-#hello {
+main {
   padding-left: 1rem;
   padding-right: 1rem;
-}
-
-@media (min-width: 640px) {
-  #hello {
-    padding-left: 4vw;
-    padding-right: 4vw;
-  }
-}
-
-@media (min-width: 768px) {
-  #hello {
-    padding-left: 6vw;
-    padding-right: 6vw;
-  }
-}
-
-@media (min-width: 1024px) {
-  #hello {
-    padding-left: 7.5vw;
-    padding-right: 7.5vw;
-  }
 }
 
 .subnav img {

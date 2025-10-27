@@ -13,6 +13,7 @@ import { cartTotal } from "./javascript/cart.js";
 import { renderOrder } from "./javascript/order.js";
 import { cartItemAmoun } from "./javascript/cart.js";
 import { collectionProducts } from "./sharedata/sharedata.js";
+import { token } from "./sharedata/sharedata.js";
 
 
 // Định nghĩa các route và nội dung tương ứng
@@ -25,7 +26,8 @@ const routes = {
   "cart": "pages/cart.html",
   "placeorder": "pages/placeorder.html",
   "order": "pages/order.html",
-  "login": "pages/login.html"
+  "login": "pages/login.html",
+  "admin": "pages/admin.html"
 };
 
 
@@ -52,6 +54,21 @@ function renderContent() {
         document.getElementById("app").innerHTML = html;
         cartItemAmoun();
         closeDropdown();
+        console.log(null === null);
+        if(localStorage.getItem("token") === null || localStorage.getItem("token") === "" || localStorage.getItem("token") === "user") {
+          document.getElementById("cart-icon-nav").style.display = "none";
+          document.getElementById("hd").style.display = "flex";
+          document.getElementById("ft").style.display = "block";
+          document.getElementById("admin-hd").style.display = "none";
+        }
+        if(localStorage.getItem("token") === "user") {
+          document.getElementById("cart-icon-nav").style.display = "inline-block";
+        }
+        else if (localStorage.getItem("token") === "admin") {
+          document.getElementById("hd").style.display = "none";
+          document.getElementById("ft").style.display = "none";
+          document.getElementById("admin-hd").style.display = "flex";
+        }
         if (filePath == "pages/home.html") {
           renderHome(products, ProductItem);
         }
@@ -59,6 +76,10 @@ function renderContent() {
           renderCollection(collectionProducts.value, ProductItem);
         }
         else if (filePath === "pages/product.html") {
+          if(localStorage.getItem("token") === null || localStorage.getItem("token") === "") {
+            window.location.href = window.location.origin + '/' + '#/login';
+            return;
+          }
           navigateProduct(idProduct, products, ProductItem);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -73,8 +94,10 @@ function renderContent() {
         else if (filePath === "pages/order.html") {
           renderOrder();
         }
-        if (filePath === "pages/about.html") {
+        else if (filePath === "pages/about.html") {
           initAchievementObserver();
+        }
+        else if (filePath === "pages/admin.html") {
         }
       })
       .catch(() => {
@@ -93,6 +116,10 @@ renderContent();
 
 
 export function openDropdown() {
+  if(localStorage.getItem("token") === null) {
+    window.location.href = window.location.origin + '/' + '#/login';
+    return;
+  }
   const dropdown = document.getElementById("drd");
   dropdown.style.display = "block";
 }
@@ -151,6 +178,12 @@ window.addEventListener("scroll", () => {
   lastScrollTop = currentScroll;
 });
 window.updateActiveLinks = updateActiveLinks;
+
+export function logout() {
+    localStorage.setItem("token", "");
+    window.location.href = window.location.origin + "/#/login";
+}
+window.logout = logout;
 
 
 

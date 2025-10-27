@@ -1,57 +1,61 @@
-<div id="search-container" style="display: none; align-items: center; justify-content: center;">
-    <div style="display: flex; align-items: center; margin-inline: 12px; margin-block: 20px; width: 50%; border: 1px solid #d3d3d3; padding: 8px 20px; border-radius: 30px;">
-        <input oninput="setSearch(event)" id="search-bar" placeholder="Search" style="width: 100%; border: none;" type="text">
-        <img width="16px" src="./assets/search_icon.png" alt="">
+<div class="collection">
+    <div id="search-container" style="display: none; align-items: center; justify-content: center;">
+        <div
+            style="display: flex; align-items: center; margin-inline: 12px; margin-block: 20px; width: 50%; border: 1px solid #d3d3d3; padding: 8px 20px; border-radius: 30px;">
+            <input oninput="setSearch(event)" id="search-bar" placeholder="Search" style="width: 100%; border: none;"
+                type="text">
+            <img width="16px" src="./assets/search_icon.png" alt="">
+        </div>
+        <img style="cursor: pointer;" onclick="closeSearch()" width="12px" src="../assets/cross_icon.png" alt="">
     </div>
-    <img style="cursor: pointer;" onclick="closeSearch()" width="12px" src="../assets/cross_icon.png" alt="">
-</div>
-<div class="collection-container">
-    <!-- Left side -->
-    <div class="collection-filter">
-        <p onclick="openAndCloseFilter()">FILTERS</p>
-        <img onclick="openAndCloseFilter()" id="drd-icon" src="../assets/dropdown_icon.png" alt="">
-        <div id="ft1" class="categories">
-            <p>CATEGORIES</p>
-            <div class="select-categories">
-                <p>
-                    <input onclick="setCategory(event)" value="Men" type="checkbox"> Men
-                </p>
-                <p>
-                    <input onclick="setCategory(event)" value="Women" type="checkbox"> Women
-                </p>
-                <p>
-                    <input onclick="setCategory(event)" value="Kids" type="checkbox"> Kids
-                </p>
+    <div class="collection-container">
+        <!-- Left side -->
+        <div class="collection-filter">
+            <p onclick="openAndCloseFilter()">FILTERS</p>
+            <img onclick="openAndCloseFilter()" id="drd-icon" src="../assets/dropdown_icon.png" alt="">
+            <div id="ft1" class="categories">
+                <p>CATEGORIES</p>
+                <div class="select-categories">
+                    <p>
+                        <input onclick="setCategory(event)" value="Men" type="checkbox"> Men
+                    </p>
+                    <p>
+                        <input onclick="setCategory(event)" value="Women" type="checkbox"> Women
+                    </p>
+                    <p>
+                        <input onclick="setCategory(event)" value="Kids" type="checkbox"> Kids
+                    </p>
+                </div>
+            </div>
+            <div id="ft2" class="type">
+                <p>TYPE</p>
+                <div class="select-type">
+                    <p>
+                        <input onclick="setSubCategory(event)" value="Topwear" type="checkbox"> Topwear
+                    </p>
+                    <p>
+                        <input onclick="setSubCategory(event)" value="Bottomwear" type="checkbox"> Bottomwear
+                    </p>
+                    <p>
+                        <input onclick="setSubCategory(event)" value="Winterwear" type="checkbox"> Winterwear
+                    </p>
+                </div>
             </div>
         </div>
-        <div id="ft2" class="type">
-            <p>TYPE</p>
-            <div class="select-type">
-                <p>
-                    <input onclick="setSubCategory(event)" value="Topwear" type="checkbox"> Topwear
-                </p>
-                <p>
-                    <input onclick="setSubCategory(event)" value="Bottomwear" type="checkbox"> Bottomwear
-                </p>
-                <p>
-                    <input onclick="setSubCategory(event)" value="Winterwear" type="checkbox"> Winterwear
-                </p>
+        <!-- Right side -->
+        <div class="collection-container-products">
+            <div class="title-and-sort">
+                <h2>All Collection</h2>
+                <!-- Products sort -->
+                <select onchange="sortProduct(event)">
+                    <option value="Relavent">Sort by: Relavent</option>
+                    <option value="High">Sort by: Low to High</option>
+                    <option value="Low">Sort by: High to Low</option>
+                </select>
+            </div>
+            <!-- All products -->
+            <div id="all-collection">
             </div>
         </div>
-    </div>
-    <!-- Right side -->
-    <div class="collection-container-products">
-        <div class="title-and-sort">
-            <h2>All Collection</h2>
-            <!-- Products sort -->
-            <select onchange="sortProduct(event)">
-                <option value="Relavent">Sort by: Relavent</option>
-                <option value="High">Sort by: Low to High</option> 
-                <option value="Low">Sort by: High to Low</option>
-            </select>
-        </div>
-        <!-- All products -->
-         <div id="all-collection">
-         </div>
     </div>
 </div>

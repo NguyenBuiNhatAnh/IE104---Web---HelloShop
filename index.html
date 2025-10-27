@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
   <title>HelloShop</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prata&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prata&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="./css/home.css">
   <link rel="stylesheet" href="./css/collection.css">
@@ -18,145 +21,148 @@
   <link rel="stylesheet" href="./css/placeorder.css">
   <link rel="stylesheet" href="./css/login.css">
   <link rel="stylesheet" href="./css/order.css">
+  <link rel="stylesheet" href="./css/admin.css">
 </head>
 
 <body>
-
-    <header>
-      <div class="logo">
-        <a href="#/"><img src="assets/hello.png" width="144px"></a>
-      </div>
-      <nav>
-        <a href="#/" data-link class="nav-item active">
-          <p>HOME</p>
-          <hr class="underline">
-        </a>
-        <a href="#/collection" data-link class="nav-item">
-          <p>COLLECTION</p>
-          <hr class="underline">
-        </a>
-        <a href="#/about" data-link class="nav-item">
-          <p>ABOUT</p>
-          <hr class="underline">
-        </a>
-        <a href="#/contact" data-link class="nav-item">
-          <p>CONTACT</p>
-          <hr class="underline">
-        </a>
-      </nav>
-      <div class="subnav" style="position: relative; right: 50px">
-        <img onclick="openSearch()" style="cursor: pointer;" src="assets/search_icon.png" width="20px" alt="">
-
-        <div class="profile-wrapper">
-          <img src="assets/profile_icon.png" id="profile-icon" class="profile-icon" onclick="openDropdown()"
-            alt="Profile">
-          <div class="dropdown" id="drd">
-            <p>My Profile</p>
-            <p onclick="navigateOrderPage()">Orders</p>
-            <p>Logout</p>
-          </div>
-        </div>
-        <a href="#/cart" style="position: relative;">
-          <img src="assets/cart_icon.png" width="20px" alt="">
-          <p id="cart-amount">0</p>
-        </a>
-        <img onclick="openMenu()" class="menu-icon" src="assets/menu_icon.png" width="20px" alt="">
-      </div>
-    </header>
-    <div id="mobile-menu" class="mobile-nav">
-      <div id="div-mobile-menu">
-        <div onclick="closeMenu()">
-          <img src="assets/dropdown_icon.png" height="16px" alt="">
-          <p>Back</p>
-        </div>
-        <a onclick="closeMenu()" class="link-menu active" href="#/">HOME</a>
-        <a onclick="closeMenu()" class="link-menu" href="#/collection">COLLECTION</a>
-        <a onclick="closeMenu()" class="link-menu" href="#/about">ABOUT</a>
-        <a onclick="closeMenu()" class="link-menu" href="#/contact">CONTACT</a>
-      </div>
-    </div> 
-  <div onclick="closeDropdown()" id="hello">
-    <main id="app">
-
-    </main>
+  <div id="admin-hd">
+    <img width="144px" src="./assets/hello.png" alt="">
+    <button onclick="logout()" class="btn">Logout</button>
   </div>
-    <footer class="footer">
-        <div class="footer-container">
-          <!-- Các cột nội dung -->
-          <div class="footer-columns">
-            <!-- SHOP -->
-            <div class="footer-column">
-              <h4>SHOP</h4>
-              <ul>
-                <li><a href="#">Kits</a></li>
-                <li><a href="#">Shipping</a></li>
-                <li><a href="#">Returns</a></li>
-                <li><a href="#">Stockists</a></li>
-                <li><a href="#">Workshops</a></li>
-                <li><a href="#">Wholesale</a></li>
-              </ul>
-            </div>
 
-            <!-- ABOUT -->
-            <div class="footer-column">
-              <h4>ABOUT</h4>
-              <ul>
-                <li><a href="#">Our Story</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Jobs</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-                <li><a href="#">Accessibility</a></li>
-              </ul>
-            </div>
+  <header id="hd">
+    <div class="logo">
+      <a href="#/"><img src="assets/hello.png" width="144px"></a>
+    </div>
+    <nav>
+      <a href="#/" data-link class="nav-item active">
+        <p>HOME</p>
+        <hr class="underline">
+      </a>
+      <a href="#/collection" data-link class="nav-item">
+        <p>COLLECTION</p>
+        <hr class="underline">
+      </a>
+      <a href="#/about" data-link class="nav-item">
+        <p>ABOUT</p>
+        <hr class="underline">
+      </a>
+      <a href="#/contact" data-link class="nav-item">
+        <p>CONTACT</p>
+        <hr class="underline">
+      </a>
+    </nav>
+    <div class="subnav" style="position: relative; right: 50px">
+      <img onclick="openSearch()" style="cursor: pointer;" src="assets/search_icon.png" width="20px" alt="">
 
-            <!-- HELP -->
-            <div class="footer-column">
-              <h4>HELP</h4>
-              <ul>
-                <li><a href="#">Tutorials</a></li>
-                <li><a href="#">Office Hours</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Contact Us</a></li>
-              </ul>
-            </div>
+      <div class="profile-wrapper">
+        <img src="assets/profile_icon.png" id="profile-icon" class="profile-icon" onclick="openDropdown()"
+          alt="Profile">
+        <div class="dropdown" id="drd">
+          <p>My Profile</p>
+          <p onclick="navigateOrderPage()">Orders</p>
+          <p onclick="logout()">Logout</p>
+        </div>
+      </div>
+      <a id="cart-icon-nav" href="#/cart" style="position: relative;">
+        <img src="assets/cart_icon.png" width="20px" alt="">
+        <p id="cart-amount">0</p>
+      </a>
+      <img onclick="openMenu()" class="menu-icon" src="assets/menu_icon.png" width="20px" alt="">
+    </div>
+  </header>
+  <div id="mobile-menu" class="mobile-nav">
+    <div id="div-mobile-menu">
+      <div onclick="closeMenu()">
+        <img src="assets/dropdown_icon.png" height="16px" alt="">
+        <p>Back</p>
+      </div>
+      <a onclick="closeMenu()" class="link-menu active" href="#/">HOME</a>
+      <a onclick="closeMenu()" class="link-menu" href="#/collection">COLLECTION</a>
+      <a onclick="closeMenu()" class="link-menu" href="#/about">ABOUT</a>
+      <a onclick="closeMenu()" class="link-menu" href="#/contact">CONTACT</a>
+    </div>
+  </div>
+  <main onclick="closeDropdown()" id="app">
 
-            <!-- STAY IN THE LOOP -->
-            <div class="footer-column subscribe">
-              <h4>STAY IN THE LOOP</h4>
-              <form>
-                <input type="email" placeholder="Nhập email của bạn" required width="20px"/>
-                <button type="submit">SUBSCRIBE</button>
-              </form>
-              <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a>
-              </div>
-            </div>
-          </div>
+  </main>
+  <footer id="ft" class="footer">
+    <div class="footer-container">
+      <!-- Các cột nội dung -->
+      <div class="footer-columns">
+        <!-- SHOP -->
+        <div class="footer-column">
+          <h4>SHOP</h4>
+          <ul>
+            <li><a href="#">Kits</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Stockists</a></li>
+            <li><a href="#">Workshops</a></li>
+            <li><a href="#">Wholesale</a></li>
+          </ul>
+        </div>
 
-          <!-- Dòng bản quyền và thanh toán -->
-          <div class="footer-bottom">
-            <div class="payment-icons">
-              <i class="fab fa-cc-visa"></i>
-              <i class="fab fa-cc-mastercard"></i>
-              <i class="fab fa-cc-paypal"></i>
-              <i class="fab fa-google-pay"></i>
-              <i class="fab fa-cc-apple-pay"></i>
-            </div>
-            <p>&copy; 2025 HelloShop. All rights reserved</p>
+        <!-- ABOUT -->
+        <div class="footer-column">
+          <h4>ABOUT</h4>
+          <ul>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <!-- HELP -->
+        <div class="footer-column">
+          <h4>HELP</h4>
+          <ul>
+            <li><a href="#">Tutorials</a></li>
+            <li><a href="#">Office Hours</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- STAY IN THE LOOP -->
+        <div class="footer-column subscribe">
+          <h4>STAY IN THE LOOP</h4>
+          <form>
+            <input type="email" placeholder="Nhập email của bạn" required width="20px" />
+            <button type="submit">SUBSCRIBE</button>
+          </form>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
           </div>
         </div>
-      </footer>
+      </div>
+
+      <!-- Dòng bản quyền và thanh toán -->
+      <div class="footer-bottom">
+        <div class="payment-icons">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-google-pay"></i>
+          <i class="fab fa-cc-apple-pay"></i>
+        </div>
+        <p>&copy; 2025 HelloShop. All rights reserved</p>
+      </div>
+    </div>
+  </footer>
 
   <script type="module" src="app.js"></script>
   <script type="module" src="./javascript/placeorder.js"></script>
   <script type="module" src="./javascript/order.js"></script>
   <script type="module" src="./javascript/collection.js"></script>
-
-
+  <script type="module" src="./javascript/login.js"></script>
+  <script type="module" src="./javascript/admin.js"></script>
 </body>
 
 </html>

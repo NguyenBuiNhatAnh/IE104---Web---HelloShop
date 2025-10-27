@@ -1,3 +1,24 @@
+@media (min-width: 640px) {
+  .collection {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .collection {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .collection {
+    padding-left: 7.5vw;
+    padding-right: 7.5vw;
+  }
+}
+
 .collection-container {
     display: flex;
     flex-direction: column;

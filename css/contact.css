@@ -1,22 +1,8 @@
-/* SECTION ONE */
-@media (min-width: 640px) {
+
+@media (max-width: 640px) {
   .contact-section {
     padding-left: 4vw;
     padding-right: 4vw;
-  }
-}
-
-@media (min-width: 768px) {
-  .contact-section {
-    padding-left: 6vw;
-    padding-right: 6vw;
-  }
-}
-
-@media (min-width: 1024px) {
-  .contact-section {
-    padding-left: 7.5vw;
-    padding-right: 7.5vw;
   }
 }
 
@@ -24,13 +10,16 @@
     display: flex;
     background-image: linear-gradient(90deg, #F1F1F1, #f2f0f0);
     justify-content: space-between;
-    padding: 80px 10%;
-    margin-bottom: 50px;    
+    margin-bottom: 50px;
+    background: radial-gradient(#fff,#ffd6d6);
+    border-radius: 30px;
+    padding-bottom: 30px;
+    padding-right: 50px;
+    padding-top: 30px;
 }
 
 /* === ẢNH BÊN TRÁI === */
 .contact-image {
-  background-image: url(../images/gallery-4.jpg);
   background-size: cover;
   background-position: right;
   width: 50%;
@@ -118,79 +107,58 @@
 
 /* SECTION TWO */
 .section-two {
-    background-color: #fff;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
+  background-color: #f9f9f9;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .contact-info {
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    flex-wrap: wrap; /* thêm để responsive */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
+.contact-info .info-1,
+.contact-info .info-2 {
+  flex: 1 1 45%;
+  min-width: 280px;
 }
 
 .contact-info h3 {
-    font-size: 30px;
-    font-weight: 700;
-    color: #000;
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 15px;
 }
 
 .contact-info p {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.8;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
-.contact-info .info-1 {
-    width: 60%;
-} 
-
-.contact-info .info-2 {
-    width: 35%;
-} 
-
-.contact-info .info-2::before {
-    content: "";
-    position: absolute;
-    width: 1px;
-    height: 250px;
-    top: 10%;
-    right: 42%;
-    background: #777;
-}
 .contact-info a {
-    color: #ff7a7a;
-    text-decoration: none;
+  color: #007bff;
+  text-decoration: none;
 }
 
 .contact-info a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-/* RESPONSIVE */
-@media (max-width: 992px) {
-    .section-one {
-        justify-content: center;
-        padding: 40px 5%;
-    }
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+  .contact-info {
+    flex-direction: column;
+    gap: 30px;
+  }
 
-    .contact-wrap {
-        width: 100%;
-        padding: 30px;
-    }
-
-    .submit {
-        width: 50%;
-        align-self: center;
-    }
-
-    .contact-info {
-        flex-direction: column;
-    }
-
-    .contact-info .info-1, .contact-info .info-2 {
-        width: 100%;
-    }
+  .contact-info .info-1,
+  .contact-info .info-2 {
+    flex: 1 1 100%;
+  }
 }
+

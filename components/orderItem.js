@@ -1,4 +1,6 @@
-function OrderItem ({image, name, price, quantity, size, method, date}) {
+function OrderItem ({image, name, price, quantity, size, method, date, state}) {
+    console.log(state);
+    console.log(image)
     const orderItem = document.createElement('div');
     orderItem.className = "order-item";
 
@@ -28,7 +30,7 @@ function OrderItem ({image, name, price, quantity, size, method, date}) {
     circle.className = "circle";
 
     const textOrderPlace = document.createElement('p');
-    textOrderPlace.textContent = "Order Placed";
+    textOrderPlace.textContent = state;
 
     orderSubContainer.appendChild(circle);
     orderSubContainer.appendChild(textOrderPlace);
@@ -59,7 +61,7 @@ function OrderItem ({image, name, price, quantity, size, method, date}) {
     orderItemInfo.appendChild(orderMethod);
 
     const priceOrder = document.createElement('p');
-    priceOrder.textContent = price;
+    priceOrder.textContent = "$" + price;
 
     const quantityOrder = document.createElement('p');
     quantityOrder.textContent = quantity;

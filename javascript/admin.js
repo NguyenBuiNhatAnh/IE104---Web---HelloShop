@@ -2,6 +2,8 @@ import { collectionProducts } from "../sharedata/sharedata.js";
 import { ListItem } from "../components/listItem.js";
 import { imageAddProduct1, imageAddProduct2, imageAddProduct3, imageAddProduct4 } from "../sharedata/sharedata.js";
 import { sizesAddProduct } from "../sharedata/sharedata.js";
+import { formSubmit } from "../sharedata/sharedata.js";
+import { OrderAdmin } from "../components/orderAdmin.js";
 
 export function buttonChoosen(button) {
     const buttons = document.getElementsByClassName("admin-change");
@@ -50,6 +52,7 @@ export async function renderOrdersPage(button) {
     const targetRender = document.getElementById("admin-display");
     targetRender.textContent = "";
     targetRender.innerHTML = html;
+    renderOrderAdmin();
 }
 window.renderOrdersPage = renderOrdersPage;
 
@@ -143,3 +146,10 @@ export function adminAddProduct(event) {
     console.log(collectionProducts.value[1]);
 }
 window.adminAddProduct = adminAddProduct;
+
+function renderOrderAdmin() {
+    formSubmit.value.forEach(item => {
+        const target = document.getElementById("admin-display");
+        target.appendChild(OrderAdmin(item));
+    })
+}

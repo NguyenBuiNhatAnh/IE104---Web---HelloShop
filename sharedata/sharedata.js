@@ -10,7 +10,7 @@ export const productIdd = {value: undefined}
 
 export const orderItems = {value: []}
 
-export const formSubmit = {value: {}}
+export const formSubmit = {value: []}
 
 export const method = {value: undefined}
 
@@ -34,3 +34,5 @@ export const imageAddProduct3 = {value: ""};
 export const imageAddProduct4 = {value: ""};
 
 export const sizesAddProduct = {value: []};
+
+export const idOrder = {value: 0}

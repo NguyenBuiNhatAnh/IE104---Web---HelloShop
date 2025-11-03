@@ -2,23 +2,34 @@ import { cartItems } from "../sharedata/sharedata.js";
 import { orderItems } from "../sharedata/sharedata.js";
 import { formSubmit } from "../sharedata/sharedata.js";
 import { method } from "../sharedata/sharedata.js";
+import { idOrder } from "../sharedata/sharedata.js";
 
 export function submitForm(event) {
   event.preventDefault();
-  formSubmit.value.firstName = document.getElementById("firstName-input").value;
-  formSubmit.value.lastName = document.getElementById("lastName-input").value;
-  formSubmit.value.email = document.getElementById("email-input").value;
-  formSubmit.value.street = document.getElementById("street-input").value;
-  formSubmit.value.city = document.getElementById("city-input").value;
-  formSubmit.value.state = document.getElementById("state-input").value;
-  formSubmit.value.zipcode = document.getElementById("zipcode-input").value;
-  formSubmit.value.country = document.getElementById("country-input").value;
-  formSubmit.value.phone = document.getElementById("phone-input").value;
+  const form = {};
+  form.firstName = document.getElementById("firstName-input").value;
+  form.lastName = document.getElementById("lastName-input").value;
+  form.email = document.getElementById("email-input").value;
+  form.street = document.getElementById("street-input").value;
+  form.city = document.getElementById("city-input").value;
+  form.state = document.getElementById("state-input").value;
+  form.zipcode = document.getElementById("zipcode-input").value;
+  form.country = document.getElementById("country-input").value;
+  form.phone = document.getElementById("phone-input").value;
+  form.id = idOrder.value;
+  form.method = method.value;
+  form.date = (new Date()).toDateString();
   cartItems.value.forEach(item => {
     item.method = method.value;
   })
-  orderItems.value.push(...cartItems.value);
+  cartItems.value.forEach(item => {
+    let a = item;
+    a.id = idOrder.value;
+    orderItems.value.push(a);
+  })
   cartItems.value = [];
+  idOrder.value++;
+  formSubmit.value.push(form);
   window.location.href = window.location.origin + '/' + '#/order';
 }
 window.submitForm = submitForm;

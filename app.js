@@ -53,7 +53,6 @@ function renderContent() {
         document.getElementById("app").innerHTML = html;
         cartItemAmoun();
         closeDropdown();
-        console.log(null === null);
         if(localStorage.getItem("token") === null || localStorage.getItem("token") === "" || localStorage.getItem("token") === "user") {
           document.getElementById("cart-icon-nav").style.display = "none";
           document.getElementById("hd").style.display = "flex";

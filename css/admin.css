@@ -63,3 +63,29 @@
     padding-left: 25px;
     cursor: pointer;
 }
+
+.order-admin {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr 1fr 1fr 1fr;
+    gap: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.order-admin > select {
+    height: 30px;
+    margin-top: 10px;
+}
+
+.order-admin > img {
+    width: 50px;
+}
+
+.order-admin p {
+    font-size: 15px;
+}
+
+.name-order-admin {
+    font-weight: 500;
+}

@@ -1,6 +1,4 @@
 function OrderItem ({image, name, price, quantity, size, method, date, state}) {
-    console.log(state);
-    console.log(image)
     const orderItem = document.createElement('div');
     orderItem.className = "order-item";
 

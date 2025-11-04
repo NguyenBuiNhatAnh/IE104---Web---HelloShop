@@ -4,6 +4,7 @@ import { imageAddProduct1, imageAddProduct2, imageAddProduct3, imageAddProduct4 
 import { sizesAddProduct } from "../sharedata/sharedata.js";
 import { formSubmit } from "../sharedata/sharedata.js";
 import { OrderAdmin } from "../components/orderAdmin.js";
+import { orderItems } from "../sharedata/sharedata.js";
 
 export function buttonChoosen(button) {
     const buttons = document.getElementsByClassName("admin-change");
@@ -153,3 +154,21 @@ function renderOrderAdmin() {
         target.appendChild(OrderAdmin(item));
     })
 }
+
+export function updateState(event) {
+    const value = event.target.value;
+    const id = event.target.id;
+    orderItems.value.forEach(item => {
+        if(("form-submit-" + item.id) === id) {
+            item.state = value;
+        }
+    })
+
+    formSubmit.value.forEach(item => {
+        if(("form-submit-") + item.id === id) {
+            item.state = value;
+        }
+    })
+
+}
+window.updateState = updateState;

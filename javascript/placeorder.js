@@ -19,6 +19,7 @@ export function submitForm(event) {
   form.id = idOrder.value;
   form.method = method.value;
   form.date = (new Date()).toDateString();
+  form.state = "Order Placed";
   cartItems.value.forEach(item => {
     item.method = method.value;
   })

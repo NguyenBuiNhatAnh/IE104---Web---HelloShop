@@ -13,7 +13,10 @@ export function renderOrder() {
     i.size = "Size: " + item.size;
     i.date = (new Date()).toDateString();
     i.method = item.method;
-    i.state = "Order Placed"
+    i.state = item.state;
+    if(i.state === undefined) {
+      i.state = "Order Placed";
+    }
     orderPage.appendChild(OrderItem(i));
   })
 }

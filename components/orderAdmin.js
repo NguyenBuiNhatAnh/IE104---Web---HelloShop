@@ -14,6 +14,10 @@ export function OrderAdmin(formSubmit) {
     const pPrice = document.createElement('p');
 
     const select = document.createElement('select');
+    select.id = "form-submit-" + formSubmit.id;
+    select.onchange = function hello(event) {
+        updateState(event);
+    }
 
     divOrderAdmin.appendChild(image);
     divOrderAdmin.appendChild(divInfoForm);
@@ -65,12 +69,11 @@ export function OrderAdmin(formSubmit) {
     const options = ['Order Placed', 'Packing', 'Shipped', 'Out for delivery', 'Delivered'];
     options.forEach(text => {
         const option = document.createElement('option');
-        option.value = text.toLowerCase();
         option.textContent = text;
         select.appendChild(option);
     });
 
-    
+    select.value = formSubmit.state;
 
     return divOrderAdmin;
 }

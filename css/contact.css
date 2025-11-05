@@ -8,7 +8,6 @@
 
 .section-one {
     display: flex;
-    background-image: linear-gradient(90deg, #F1F1F1, #f2f0f0);
     justify-content: space-between;
     margin-bottom: 50px;
     background: radial-gradient(#fff,#ffd6d6);
@@ -159,6 +158,14 @@
   .contact-info .info-1,
   .contact-info .info-2 {
     flex: 1 1 100%;
+  }
+
+  #contact-100 {
+    display: none !important;
+  }
+
+  .section-one {
+    background-color: white !important;
   }
 }
 

@@ -176,3 +176,7 @@
     font-size: 0.875rem;     /* text-sm = 14px */
     font-weight: 500;
 }
+
+#home-latest, #home-best {
+  text-align: center;
+}

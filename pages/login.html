@@ -1,12 +1,12 @@
 <section class="login-section">
   <div class="login-container">
     <div class="login-box">
-      <h2>Welcome Back!</h2>
-      <p>Login to your account</p>
+      <h2 id="login-1">Welcome Back!</h2>
+      <p id="login-2">Login to your account</p>
 
       <form onsubmit="login(event)">
         <div class="input-group">
-          <label for="email">Email</label>
+          <label id="login-3" for="email">Email</label>
           <input
             type="email"
             id="email"
@@ -16,7 +16,7 @@
         </div>
 
         <div class="input-group">
-          <label for="password">Password</label>
+          <label id="login-4" for="password">Password</label>
           <input
             type="password"
             id="password"
@@ -26,14 +26,14 @@
         </div>
 
         <div class="options">
-          <label><input type="checkbox" /> Remember me</label>
-          <a href="#/login">Forgot Password?</a>
+          <label><input type="checkbox" /> <span id="login-5">Remember me</span></label>
+          <a id="login-9" href="#/login">Forgot Password?</a>
         </div>
 
-        <button type="submit" class="btn-login">Login</button>
+        <button id="login-6" type="submit" class="btn-login">Login</button>
 
         <p class="register-text">
-          Don’t have an account? <a href="#/login">Sign Up</a>
+          <span id="login-7">Don’t have an account?</span> <a id="login-8" href="#/login">Sign Up</a>
         </p>
       </form>
     </div>

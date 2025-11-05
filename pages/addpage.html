@@ -1,5 +1,5 @@
 <form onsubmit="adminAddProduct(event)">
-    <p>Upload Image</p>
+    <p id="admin-4">Upload Image</p>
     <div style="display: flex; gap: 8px;">
         <label for="image1">
             <img id="img-1-admin" width="100px" src="../assets/upload_area.png" alt="">
@@ -18,38 +18,38 @@
             <input onchange="previewImage(this,4)" id="image4" style="display: none;" type="file">
         </label>
     </div>
-    <p>Product name</p>
+    <p id="admin-5">Product name</p>
     <input id="add-name" placeholder="Type here"
         style="max-width: 500px; width: 100%; padding: 8px 12px; border: 1.5px solid #d3d3d3; border-radius: 4px;"
         type="text" required>
-    <p>Product decscription</p>
+    <p id="admin-6">Product decscription</p>
     <textarea id="add-desc" placeholder="Write content here"
         style="height: 60px; max-width: 500px; width: 100%; padding: 8px 12px; border: 1.5px solid #d3d3d3; border-radius: 4px;"
         type="text" required></textarea>
     <div style="display: flex; gap: 30px;">
         <div>
-            <p>Product category</p>
+            <p id="admin-7">Product category</p>
             <select id="add-category" class="input-admin" style="width: 100%;" name="">
-                <option value="Men">Men</option>
-                <option value="Women">Women</option>
-                <option value="Kids">Kids</option>
+                <option id="admin-8" value="Men">Men</option>
+                <option id="admin-9" value="Women">Women</option>
+                <option id="admin-10" value="Kids">Kids</option>
             </select>
         </div>
         <div>
-            <p>Sub category</p>
+            <p id="admin-">Sub category</p>
             <select id="add-subcategory" class="input-admin" style="width: 100%;" name="">
-                <option value="Topwear">Topwear</option>
-                <option value="Bottomwear">Bottomwear</option>
-                <option value="Winterwear">Winterwear</option>
+                <option id="admin-11" value="Topwear">Topwear</option>
+                <option id="admin-12" value="Bottomwear">Bottomwear</option>
+                <option id="admin-13" value="Winterwear">Winterwear</option>
             </select>
         </div>
         <div>
-            <p>Product Price</p>
+            <p id="admin-14">Product Price</p>
             <input id="add-price" value="100" class="input-admin" type="number">
         </div>
     </div>
     <div style="margin-bottom: 20px;">
-        <p>Product Sizes</p>
+        <p id="admin-15">Product Sizes</p>
         <div style="display: flex; gap: 8px;">
             <div style="display: flex; gap: 8px;">
                 <p onclick="adminChooseSizes(this)"
@@ -77,7 +77,7 @@
     </div>
     <div>
         <input id="add-bestseller" value="yes" type="checkbox">
-        Add to bestseller
+        <span id="admin-16">Add to bestseller</span>
     </div>
-    <button class="btn">ADD</button>
+    <button id="admin-17" class="btn">ADD</button>
 </form>

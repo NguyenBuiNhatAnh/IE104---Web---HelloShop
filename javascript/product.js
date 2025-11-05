@@ -1,4 +1,6 @@
 import { currentSize } from "../sharedata/sharedata.js";
+import { renderLanguage } from "../app.js";
+
 
 export function navigateProduct(idProduct, products, ProductItem) {
   let imageProduct;
@@ -16,6 +18,7 @@ export function navigateProduct(idProduct, products, ProductItem) {
     .then(html => {
       const app = document.getElementById("app");
       app.innerHTML = html;
+      renderLanguage();
 
       const img1 = document.createElement("img");
       const img2 = document.createElement("img");

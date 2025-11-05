@@ -11,33 +11,33 @@
     <div class="collection-container">
         <!-- Left side -->
         <div class="collection-filter">
-            <p onclick="openAndCloseFilter()">FILTERS</p>
+            <p id="col-filters" onclick="openAndCloseFilter()">FILTERS</p>
             <img onclick="openAndCloseFilter()" id="drd-icon" src="../assets/dropdown_icon.png" alt="">
             <div id="ft1" class="categories">
-                <p>CATEGORIES</p>
+                <p id="col-category">CATEGORIES</p>
                 <div class="select-categories">
                     <p>
-                        <input onclick="setCategory(event)" value="Men" type="checkbox"> Men
+                        <input onclick="setCategory(event)" value="Men" type="checkbox"> <span id="col-men">Men</span>
                     </p>
                     <p>
-                        <input onclick="setCategory(event)" value="Women" type="checkbox"> Women
+                        <input onclick="setCategory(event)" value="Women" type="checkbox"> <span id="col-women">Women</span>
                     </p>
                     <p>
-                        <input onclick="setCategory(event)" value="Kids" type="checkbox"> Kids
+                        <input onclick="setCategory(event)" value="Kids" type="checkbox"> <span id="col-kid">Kids</span>
                     </p>
                 </div>
             </div>
             <div id="ft2" class="type">
-                <p>TYPE</p>
+                <p id="">TYPE</p>
                 <div class="select-type">
                     <p>
-                        <input onclick="setSubCategory(event)" value="Topwear" type="checkbox"> Topwear
+                        <input onclick="setSubCategory(event)" value="Topwear" type="checkbox"> <span id="col-top">Topwear</span>
                     </p>
                     <p>
-                        <input onclick="setSubCategory(event)" value="Bottomwear" type="checkbox"> Bottomwear
+                        <input onclick="setSubCategory(event)" value="Bottomwear" type="checkbox"> <span id="col-bot">Bottomwear</span>
                     </p>
                     <p>
-                        <input onclick="setSubCategory(event)" value="Winterwear" type="checkbox"> Winterwear
+                        <input onclick="setSubCategory(event)" value="Winterwear" type="checkbox"> <span id="col-win">Winterwear</span>
                     </p>
                 </div>
             </div>
@@ -45,12 +45,12 @@
         <!-- Right side -->
         <div class="collection-container-products">
             <div class="title-and-sort">
-                <h2>All Collection</h2>
+                <h2 id="col-all">All Collection</h2>
                 <!-- Products sort -->
                 <select onchange="sortProduct(event)">
-                    <option value="Relavent">Sort by: Relavent</option>
-                    <option value="High">Sort by: Low to High</option>
-                    <option value="Low">Sort by: High to Low</option>
+                    <option id="col-rel" value="Relavent">Sort by: Relavent</option>
+                    <option id="col-low" value="High">Sort by: Low to High</option>
+                    <option  id="col-high" value="Low">Sort by: High to Low</option>
                 </select>
             </div>
             <!-- All products -->

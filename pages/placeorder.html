@@ -1,6 +1,6 @@
 <div id="place-order-container">
     <form onsubmit="submitForm(event)" id="delivery-form" class="delivery-info-place">
-        <h2>Delivery Infomation</h2>
+        <h2 id="place-0">Delivery Information</h2>
         <div class="flex-gap-12px">
             <input id="firstName-input" required name="firstName" class="input-placeorder" type="text"
                 placeholder='First name'>
@@ -23,25 +23,25 @@
     </form>
     <div class="place-total">
         <div id="cart-total-place-order">
-            <h2 class="total-title">Cart Total</h2>
+            <h2 id="place-1" class="total-title">Cart Total</h2>
             <div class="total">
-                <p>Subtotal</p>
+                <p id="place-2">Subtotal</p>
                 <p id="sub-total-price">$0.00</p>
             </div>
             <div class="total">
-                <p>Shipping Fee</p>
+                <p id="place-3">Shipping Fee</p>
                 <p>$10.00</p>
             </div>
             <div class="total">
-                <p>Total</p>
+                <p id="place-4">Total</p>
                 <p id="total-price">$0.00</p>
             </div>
         </div>
         <div>
-            <h2 id="h2-com" style="margin-bottom: 0px;">Pament Method</h2>
+            <h2 id="h2-com" style="margin-bottom: 0px;">Payment Method</h2>
             <div style="display: flex;">
                 <button onclick="bankingMethod()" id="banking-btn" class="btn">Banking</button>
-                <button onclick="setMethodCOD()" id="cod-btn" type="submit" form="delivery-form" class="btn">Cash On
+                <button  onclick="setMethodCOD()" id="cod-btn" type="submit" form="delivery-form" class="btn">Cash On
                     Delivery</button>
                 <div style="display: flex; align-items: center;">
                     <div id="img-banking" style="margin: 16px;" class="display-none">

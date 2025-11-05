@@ -13,6 +13,8 @@ import { cartTotal } from "./javascript/cart.js";
 import { renderOrder } from "./javascript/order.js";
 import { cartItemAmoun } from "./javascript/cart.js";
 import { collectionProducts } from "./sharedata/sharedata.js";
+import { language } from "./sharedata/sharedata.js";
+import { langJSON } from "./sharedata/sharedata.js";
 
 
 // Định nghĩa các route và nội dung tương ứng
@@ -51,6 +53,7 @@ function renderContent() {
       })
       .then(html => {
         document.getElementById("app").innerHTML = html;
+        renderLanguage();
         cartItemAmoun();
         closeDropdown();
         if(localStorage.getItem("token") === null || localStorage.getItem("token") === "" || localStorage.getItem("token") === "user") {
@@ -70,9 +73,11 @@ function renderContent() {
         }
         if (filePath == "pages/home.html") {
           renderHome(collectionProducts.value, ProductItem);
+          // renderLanguage();
         }
         else if (filePath === "pages/collection.html") {
           renderCollection(collectionProducts.value, ProductItem);
+          // renderLanguage();
         }
         else if (filePath === "pages/product.html") {
           if(localStorage.getItem("token") === null || localStorage.getItem("token") === "") {
@@ -80,23 +85,35 @@ function renderContent() {
             return;
           }
           navigateProduct(idProduct, collectionProducts.value, ProductItem);
+          // renderLanguage();
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         else if (filePath === "pages/cart.html") {
           renderCart(CartItem);
           hideAndActiveCartPage();
           cartTotal();
+          // renderLanguage();
         }
         else if (filePath === "pages/placeorder.html") {
           cartTotal();
+          // renderLanguage();
         }
         else if (filePath === "pages/order.html") {
           renderOrder();
+          // renderLanguage();
         }
         else if (filePath === "pages/about.html") {
           initAchievementObserver();
+          // renderLanguage();
         }
         else if (filePath === "pages/admin.html") {
+          // renderLanguage();
+        }
+        else if (filePath === "pages/contact.html") {
+          // renderLanguage();
+        }
+        else if (filePath === "pages/login.html") {
+          // renderLanguage();
         }
       })
       .catch(() => {
@@ -105,6 +122,29 @@ function renderContent() {
   } else {
     document.getElementById("app").innerHTML = "<h1>404</h1><p>Không tìm thấy trang.</p>";
   }
+}
+
+export function renderLanguage() {
+  const selectAdmin = document.getElementById("select-admin");
+  const selectUser = document.getElementById("select-user");
+  if(selectAdmin) {
+    selectAdmin.value = language.value;
+  }
+  if(selectUser) {
+    selectUser.value = language.value;
+  }
+  langJSON.forEach(item => {
+    const element = document.getElementById(item.id);
+    if(element) {
+      if(language.value === "EN") {
+        element.textContent = item.EN;
+      }
+      else {
+        element.textContent = item.VN;
+      }
+    }
+  })
+  console.log("hello");
 }
 
 // Bắt sự kiện thay đổi hash (khi người dùng điều hướng hoặc reload)
@@ -183,6 +223,24 @@ export function logout() {
     window.location.href = window.location.origin + "/#/login";
 }
 window.logout = logout;
+
+function changeLanguage(event) {
+  const lang = event.target.value;
+  language.value = lang;
+  langJSON.forEach(item => {
+    const element = document.getElementById(item.id);
+    if(element) {
+      if(language.value === "EN") {
+        element.textContent = item.EN;
+      }
+      else {
+        element.textContent = item.VN;
+      }
+    }
+  })
+}
+window.changeLanguage = changeLanguage;
+
 
 
 

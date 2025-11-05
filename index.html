@@ -6,11 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./assets/iconweb.png" type="image/png">
   <title>HelloShop</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prata&display=swap"
-    rel="stylesheet">
     <!-- Font Awesome để dùng icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="index.css">
@@ -29,7 +24,13 @@
 <body>
   <div id="admin-hd">
     <img id="hellokity" width="144px" src="./assets/hello.png" alt="">
-    <button onclick="logout()" class="btn">Logout</button>
+    <div style="margin-right: 20px;">
+      <select id="select-admin" onchange="changeLanguage(event)" style="height: 24px; border-radius: 10px; border: none; outline: none;">
+        <option value="EN">EN</option>
+        <option value="VN">VN</option>
+      </select>
+      <button id="logout" onclick="logout()" class="btn">Logout</button>
+    </div>
   </div>
 
   <header id="hd">
@@ -38,25 +39,24 @@
     </div>
     <nav>
       <a href="#/" data-link class="nav-item">
-        <p>HOME</p>
+        <p id="nav-home">HOME</p>
         <hr class="underline">
       </a>
       <a href="#/collection" data-link class="nav-item">
-        <p>COLLECTION</p>
+        <p id="nav-collection">COLLECTION</p>
         <hr class="underline">
       </a>
       <a href="#/about" data-link class="nav-item">
-        <p>ABOUT</p>
+        <p id="nav-about">ABOUT</p>
         <hr class="underline">
       </a>
       <a href="#/contact" data-link class="nav-item">
-        <p>CONTACT</p>
+        <p id="nav-contact">CONTACT</p>
         <hr class="underline">
       </a>
     </nav>
-    <div class="subnav" style="position: relative; right: 50px">
-
-      <select style="">
+    <div class="subnav" style="display: flex; position: relative; right: 50px; height: 100%; align-items: center; justify-content: center;">
+      <select id="select-user" onchange="changeLanguage(event)" style="height: 24px; border-radius: 10px; border: none; outline: none;">
         <option value="EN">EN</option>
         <option value="VN">VN</option>
       </select>
@@ -67,9 +67,9 @@
         <img src="assets/profile_icon.png" id="profile-icon" class="profile-icon" onclick="openDropdown()"
           alt="Profile">
         <div class="dropdown" id="drd">
-          <p>My Profile</p>
-          <p onclick="navigateOrderPage()">Orders</p>
-          <p onclick="logout()">Logout</p>
+          <p id="profile-1">My Profile</p>
+          <p id="profile-2" onclick="navigateOrderPage()">Orders</p>
+          <p id="profile-3" onclick="logout()">Logout</p>
         </div>
       </div>
       <a id="cart-icon-nav" href="#/cart" style="position: relative;">
@@ -85,10 +85,10 @@
         <img src="assets/dropdown_icon.png" height="16px" alt="">
         <p>Back</p>
       </div>
-      <a onclick="closeMenu()" class="link-menu active" href="#/">HOME</a>
-      <a onclick="closeMenu()" class="link-menu" href="#/collection">COLLECTION</a>
-      <a onclick="closeMenu()" class="link-menu" href="#/about">ABOUT</a>
-      <a onclick="closeMenu()" class="link-menu" href="#/contact">CONTACT</a>
+      <a id="mbnav-home" onclick="closeMenu()" class="link-menu active" href="#/">HOME</a>
+      <a id="mbnav-collection" onclick="closeMenu()" class="link-menu" href="#/collection">COLLECTION</a>
+      <a id="mbnav-about" onclick="closeMenu()" class="link-menu" href="#/about">ABOUT</a>
+      <a id="mbnav-contact" onclick="closeMenu()" class="link-menu" href="#/contact">CONTACT</a>
     </div>
   </div>
   <main onclick="closeDropdown()" id="app">
@@ -101,47 +101,47 @@
       <div class="footer-columns">
         <!-- SHOP -->
         <div class="footer-column">
-          <h4>SHOP</h4>
+          <h4 id="ft-shop">SHOP</h4>
           <ul>
-            <li><a href="#">Kits</a></li>
-            <li><a href="#">Shipping</a></li>
-            <li><a href="#">Returns</a></li>
-            <li><a href="#">Stockists</a></li>
-            <li><a href="#">Private workshops</a></li>
-            <li><a href="#">Wholesale</a></li>
+            <li><a id="ft-Kits" href="#">Kits</a></li>
+            <li><a id="ft-Shipping" href="#">Shipping</a></li>
+            <li><a id="ft-Returns" href="#">Returns</a></li>
+            <li><a id="ft-Stockists" href="#">Stockists</a></li>
+            <li><a id="ft-Private" href="#">Private workshops</a></li>
+            <li><a id="ft-Wholesale" href="#">Wholesale</a></li>
           </ul>
         </div>
 
         <!-- ABOUT -->
         <div class="footer-column">
-          <h4>ABOUT</h4>
+          <h4 id="ft-about">ABOUT</h4>
           <ul>
-            <li><a href="#">Our Story</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Jobs</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Accessibility Statement</a></li>
+            <li><a id="ft-Our" href="#">Our Story</a></li>
+            <li><a id="ft-Blog" href="#">Blog</a></li>
+            <li><a id="ft-Jobs" href="#">Jobs</a></li>
+            <li><a id="ft-Privacy" href="#">Privacy Policy</a></li>
+            <li><a id="ft-Terms" href="#">Terms & Conditions</a></li>
+            <li><a id="ft-Access" href="#">Accessibility Statement</a></li>
           </ul>
         </div>
 
         <!-- HELP -->
         <div class="footer-column">
-          <h4>HELP</h4>
+          <h4 id="ft-help">HELP</h4>
           <ul>
-            <li><a href="#">Tutorials</a></li>
-            <li><a href="#">Office Hours</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a id="ft-Tutorials" href="#">Tutorials</a></li>
+            <li><a id="ft-Office" href="#">Office Hours</a></li>
+            <li><a id="ft-FAQ" href="#">FAQ</a></li>
+            <li><a id="ft-Contact" href="#">Contact Us</a></li>
           </ul>
         </div>
 
         <!-- STAY IN THE LOOP -->
         <div class="footer-column-subscribe">
-          <h4>STAY IN THE LOOP</h4>
+          <h4 id="ft-stay">STAY IN THE LOOP</h4>
           <form class="subscribe-form">
-            <input type="email" placeholder="Email address" required />
-            <button type="submit">SUBSCRIBE</button>
+            <input type="email" placeholder="Email" required />
+            <button id="ft-Sub" type="submit">SUBSCRIBE</button>
           </form>
           <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>

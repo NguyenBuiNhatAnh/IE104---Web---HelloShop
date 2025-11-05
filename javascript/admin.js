@@ -5,6 +5,7 @@ import { sizesAddProduct } from "../sharedata/sharedata.js";
 import { formSubmit } from "../sharedata/sharedata.js";
 import { OrderAdmin } from "../components/orderAdmin.js";
 import { orderItems } from "../sharedata/sharedata.js";
+import { renderLanguage } from "../app.js";
 
 export function buttonChoosen(button) {
     const buttons = document.getElementsByClassName("admin-change");
@@ -24,6 +25,7 @@ export async function renderAddPage(button) {
     const targetRender = document.getElementById("admin-display");
     targetRender.textContent = "";
     targetRender.innerHTML = html;
+    renderLanguage();
 }
 window.renderAddPage = renderAddPage;
 
@@ -41,6 +43,7 @@ export async function renderListPage(button) {
     collectionProducts.value.forEach(item => {
         listItemContainer.appendChild(ListItem(item));
     });
+    renderLanguage();
 }
 window.renderListPage = renderListPage;
 
@@ -54,6 +57,7 @@ export async function renderOrdersPage(button) {
     targetRender.textContent = "";
     targetRender.innerHTML = html;
     renderOrderAdmin();
+    renderLanguage();
 }
 window.renderOrdersPage = renderOrdersPage;
 

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./assets/iconweb.png" type="image/png">
   <title>HelloShop</title>
-    <!-- Font Awesome để dùng icon -->
+  <!-- Font Awesome để dùng icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="./css/home.css">
@@ -22,10 +22,13 @@
 </head>
 
 <body>
+  <div id="popup" style="display:none; position:fixed; top:100px; right:20px;">
+  </div>
   <div id="admin-hd">
     <img id="hellokity" width="144px" src="./assets/hello.png" alt="">
     <div style="margin-right: 20px;">
-      <select id="select-admin" onchange="changeLanguage(event)" style="height: 24px; border-radius: 10px; border: none; outline: none;">
+      <select id="select-admin" onchange="changeLanguage(event)"
+        style="height: 24px; border-radius: 10px; border: none; outline: none;">
         <option value="EN">EN</option>
         <option value="VN">VN</option>
       </select>
@@ -55,8 +58,10 @@
         <hr class="underline">
       </a>
     </nav>
-    <div class="subnav" style="display: flex; position: relative; right: 50px; height: 100%; align-items: center; justify-content: center;">
-      <select id="select-user" onchange="changeLanguage(event)" style="height: 24px; border-radius: 10px; border: none; outline: none;">
+    <div class="subnav"
+      style="display: flex; position: relative; right: 50px; height: 100%; align-items: center; justify-content: center;">
+      <select id="select-user" onchange="changeLanguage(event)"
+        style="height: 24px; border-radius: 10px; border: none; outline: none;">
         <option value="EN">EN</option>
         <option value="VN">VN</option>
       </select>

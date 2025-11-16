@@ -1,9 +1,8 @@
 import { currentSize } from "./sharedata/sharedata.js";
 import { ProductItem } from "./components/productItem.js";
-import { products } from "./assets/assets.js";
 import { CartItem } from "./components/cartItem.js";
 import { renderHome } from "./javascript/home.js";
-import {renderCollection} from "./javascript/collection.js";
+import { renderCollection } from "./javascript/collection.js";
 import { renderCart } from "./javascript/cart.js";
 import { navigateProduct } from "./javascript/product.js";
 import { initAchievementObserver } from "./javascript/about.js";
@@ -56,13 +55,13 @@ function renderContent() {
         renderLanguage();
         cartItemAmoun();
         closeDropdown();
-        if(localStorage.getItem("token") === null || localStorage.getItem("token") === "" || localStorage.getItem("token") === "user") {
+        if (localStorage.getItem("token") === null || localStorage.getItem("token") === "" || localStorage.getItem("token") === "user") {
           document.getElementById("cart-icon-nav").style.display = "none";
           document.getElementById("hd").style.display = "flex";
           document.getElementById("ft").style.display = "block";
           document.getElementById("admin-hd").style.display = "none";
         }
-        if(localStorage.getItem("token") === "user") {
+        if (localStorage.getItem("token") === "user") {
           document.getElementById("cart-icon-nav").style.display = "inline-block";
         }
         else if (localStorage.getItem("token") === "admin") {
@@ -80,7 +79,7 @@ function renderContent() {
           // renderLanguage();
         }
         else if (filePath === "pages/product.html") {
-          if(localStorage.getItem("token") === null || localStorage.getItem("token") === "") {
+          if (localStorage.getItem("token") === null || localStorage.getItem("token") === "") {
             window.location.href = window.location.origin + '/' + '#/login';
             return;
           }
@@ -127,16 +126,16 @@ function renderContent() {
 export function renderLanguage() {
   const selectAdmin = document.getElementById("select-admin");
   const selectUser = document.getElementById("select-user");
-  if(selectAdmin) {
+  if (selectAdmin) {
     selectAdmin.value = language.value;
   }
-  if(selectUser) {
+  if (selectUser) {
     selectUser.value = language.value;
   }
   langJSON.forEach(item => {
     const element = document.getElementById(item.id);
-    if(element) {
-      if(language.value === "EN") {
+    if (element) {
+      if (language.value === "EN") {
         element.textContent = item.EN;
       }
       else {
@@ -155,7 +154,7 @@ renderContent();
 
 
 export function openDropdown() {
-  if(localStorage.getItem("token") === null || localStorage.getItem("token") === "") {
+  if (localStorage.getItem("token") === null || localStorage.getItem("token") === "") {
     window.location.href = window.location.origin + '/' + '#/login';
     return;
   }
@@ -219,8 +218,8 @@ window.addEventListener("scroll", () => {
 window.updateActiveLinks = updateActiveLinks;
 
 export function logout() {
-    localStorage.setItem("token", "");
-    window.location.href = window.location.origin + "/#/login";
+  localStorage.setItem("token", "");
+  window.location.href = window.location.origin + "/#/login";
 }
 window.logout = logout;
 
@@ -229,8 +228,8 @@ function changeLanguage(event) {
   language.value = lang;
   langJSON.forEach(item => {
     const element = document.getElementById(item.id);
-    if(element) {
-      if(language.value === "EN") {
+    if (element) {
+      if (language.value === "EN") {
         element.textContent = item.EN;
       }
       else {
@@ -240,6 +239,30 @@ function changeLanguage(event) {
   })
 }
 window.changeLanguage = changeLanguage;
+
+export function showPopup(textEN, textVN, er) {
+  const popup = document.getElementById("popup");
+  popup.style.display = "block";
+  const span = document.createElement('p');
+  if (er) {
+  span.style.background = "rgba(255, 59, 48, 0.7)";
+}
+
+  span.className = "pop-up"
+  if(language.value === 'EN') {
+    span.textContent = textEN;
+  }
+  else {
+    span.textContent = textVN;
+  }
+  popup.appendChild(span)
+
+  // Tự động ẩn sau 3 giây
+  setTimeout(() => {
+    span.style.display = "none";
+  }, 3000);
+}
+window.showPopup = showPopup;
 
 
 

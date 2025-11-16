@@ -1,5 +1,8 @@
+import { language } from "../sharedata/sharedata.js";
+import { langJSON } from "../sharedata/sharedata.js";
+
 function ProductItem({ _id, image, name, price }) {
-  const currency = "$"; // bạn có thể thay bằng VNĐ hoặc biến context khác
+  const currency = "$";
 
   // Thẻ link bao ngoài
   const link = document.createElement("div");

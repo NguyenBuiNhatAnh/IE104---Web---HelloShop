@@ -6,6 +6,7 @@ import { formSubmit } from "../sharedata/sharedata.js";
 import { OrderAdmin } from "../components/orderAdmin.js";
 import { orderItems } from "../sharedata/sharedata.js";
 import { renderLanguage } from "../app.js";
+import { showPopup } from "../app.js";
 
 export function buttonChoosen(button) {
     const buttons = document.getElementsByClassName("admin-change");
@@ -147,8 +148,7 @@ export function adminAddProduct(event) {
         product.bestseller = false;
     }
     collectionProducts.value.unshift(product);
-    console.log(collectionProducts.value[0]);
-    console.log(collectionProducts.value[1]);
+    showPopup("Added products successfully!", "Thêm sản phẩm thành công!")
 }
 window.adminAddProduct = adminAddProduct;
 

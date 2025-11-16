@@ -4,6 +4,7 @@ import { productIdd } from "../sharedata/sharedata.js";
 import { cartItemAmount } from "../sharedata/sharedata.js";
 import { CartItem } from "../components/cartItem.js";
 import { collectionProducts } from "../sharedata/sharedata.js";
+import { showPopup } from "../app.js";
 
 function renderCartt() {
   renderCart(CartItem);
@@ -47,6 +48,10 @@ export function addCartItem() {
       cartItems.value.push(cartItem);
       cartItemAmoun();
     }
+    showPopup("Product added successfully!","Thêm sản phẩm thành công!");
+  }
+  else {
+    showPopup("You haven't selected a size!","Bạn chưa chọn size!", true)
   }
 }
 window.addCartItem = addCartItem;

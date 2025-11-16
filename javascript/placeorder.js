@@ -1,8 +1,10 @@
+import { showPopup } from "../app.js";
 import { cartItems } from "../sharedata/sharedata.js";
 import { orderItems } from "../sharedata/sharedata.js";
 import { formSubmit } from "../sharedata/sharedata.js";
 import { method } from "../sharedata/sharedata.js";
 import { idOrder } from "../sharedata/sharedata.js";
+import { language } from "../sharedata/sharedata.js";
 
 export function submitForm(event) {
   event.preventDefault();
@@ -32,6 +34,7 @@ export function submitForm(event) {
   idOrder.value++;
   formSubmit.value.push(form);
   window.location.href = window.location.origin + '/' + '#/order';
+  showPopup("Order placed successfully!","Đặt hàng thành công")
 }
 window.submitForm = submitForm;
 

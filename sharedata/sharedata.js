@@ -281,5 +281,5 @@ export const langJSON = [
     { "id": "profile-1", "EN": "My Profile", "VN": "Hồ sơ của tôi" },
     { "id": "profile-2", "EN": "Orders", "VN": "Đơn hàng" },
     { "id": "profile-3", "EN": "Logout", "VN": "Đăng xuất" },
-
+    {id: "type", EN: "TYPE", VN: "LOẠI"}
 ]

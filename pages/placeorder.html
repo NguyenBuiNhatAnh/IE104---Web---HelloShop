@@ -1,4 +1,6 @@
 <div id="place-order-container">
+
+    <!-- Form submit -->
     <form onsubmit="submitForm(event)" id="delivery-form" class="delivery-info-place">
         <h2 id="place-0">Delivery Information</h2>
         <div class="flex-gap-12px">
@@ -21,7 +23,10 @@
         </div>
         <input id="phone-input" required name="phone" class="input-placeorder" type="number" placeholder='Phone'>
     </form>
+
+    <!-- Total -->
     <div class="place-total">
+        <!-- Cart total -->
         <div id="cart-total-place-order">
             <h2 id="place-1" class="total-title">Cart Total</h2>
             <div class="total">
@@ -37,6 +42,8 @@
                 <p id="total-price">$0.00</p>
             </div>
         </div>
+
+        <!-- Method -->
         <div>
             <h2 id="h2-com" style="margin-bottom: 0px;">Payment Method</h2>
             <div style="display: flex;">

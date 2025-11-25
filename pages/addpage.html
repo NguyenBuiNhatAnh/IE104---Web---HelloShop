@@ -1,5 +1,6 @@
 <form onsubmit="adminAddProduct(event)">
     <p id="admin-4">Upload Image</p>
+    <!-- Upload image -->
     <div style="display: flex; gap: 8px;">
         <label for="image1">
             <img id="img-1-admin" width="100px" src="../assets/upload_area.png" alt="">
@@ -18,15 +19,22 @@
             <input onchange="previewImage(this,4)" id="image4" style="display: none;" type="file">
         </label>
     </div>
+
+    <!-- Product Name -->
     <p id="admin-5">Product name</p>
     <input id="add-name" placeholder="Type here"
         style="max-width: 500px; width: 100%; padding: 8px 12px; border: 1.5px solid #d3d3d3; border-radius: 4px;"
         type="text" required>
+
+    <!-- Product desc -->
     <p id="admin-6">Product decscription</p>
     <textarea id="add-desc" placeholder="Write content here"
         style="height: 60px; max-width: 500px; width: 100%; padding: 8px 12px; border: 1.5px solid #d3d3d3; border-radius: 4px;"
         type="text" required></textarea>
+    
     <div id="admin-100" style="display: flex; gap: 30px;">
+
+        <!-- Product Category -->
         <div>
             <p id="admin-7">Product category</p>
             <select id="add-category" class="input-admin" style="width: 100%;" name="">
@@ -35,6 +43,7 @@
                 <option id="admin-10" value="Kids">Kids</option>
             </select>
         </div>
+        <!-- Product subCategory -->
         <div>
             <p id="admin-">Sub category</p>
             <select id="add-subcategory" class="input-admin" style="width: 100%;" name="">
@@ -43,11 +52,13 @@
                 <option id="admin-13" value="Winterwear">Winterwear</option>
             </select>
         </div>
+        <!-- Product size -->
         <div>
             <p id="admin-14">Product Price</p>
             <input id="add-price" value="100" class="input-admin" type="number">
         </div>
     </div>
+    <!-- Product size -->
     <div style="margin-bottom: 20px;">
         <p id="admin-15">Product Sizes</p>
         <div style="display: flex; gap: 8px;">
@@ -75,9 +86,11 @@
             </div>
         </div>
     </div>
+    <!-- Best seller -->
     <div>
         <input id="add-bestseller" value="yes" type="checkbox">
         <span id="admin-16">Add to bestseller</span>
     </div>
+    <!-- Button add -->
     <button id="admin-17" class="btn">ADD</button>
 </form>

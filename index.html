@@ -22,8 +22,11 @@
 </head>
 
 <body>
+  <!-- Thông báo hiển thị -->
   <div id="popup" style="display:none; position:fixed; top:100px; right:20px;">
   </div>
+
+  <!-- Header ở trang admin -->
   <div id="admin-hd">
     <img id="hellokity" width="144px" src="./assets/hello.png" alt="">
     <div style="margin-right: 20px;">
@@ -36,10 +39,15 @@
     </div>
   </div>
 
+  <!-- Header ở trang người dùng -->
   <header id="hd">
+
+    <!-- Logo -->
     <div class="logo">
       <a href="#/"><img src="assets/hello.png" width="144px"></a>
     </div>
+
+    <!-- Navigation -->
     <nav>
       <a href="#/" data-link class="nav-item">
         <p id="nav-home">HOME</p>
@@ -58,25 +66,35 @@
         <hr class="underline">
       </a>
     </nav>
+
+    <!-- Phần tùy chọn bên phải của header -->
     <div class="subnav"
       style="display: flex; position: relative; right: 50px; height: 100%; align-items: center; justify-content: center;">
+
+      <!-- Đổi ngôn ngữ -->
       <select id="select-user" onchange="changeLanguage(event)"
         style="height: 24px; border-radius: 10px; border: none; outline: none;">
         <option value="EN">EN</option>
         <option value="VN">VN</option>
       </select>
 
+      <!-- Biểu tượng search -->
       <img onclick="openSearch()" style="cursor: pointer;" src="assets/search_icon.png" width="20px" alt="">
 
+      <!-- Biểu tượng profile -->
       <div class="profile-wrapper">
         <img src="assets/profile_icon.png" id="profile-icon" class="profile-icon" onclick="openDropdown()"
           alt="Profile">
+        
+        <!-- Drop down khi ấn vào profile -->
         <div class="dropdown" id="drd">
           <p id="profile-1">My Profile</p>
           <p id="profile-2" onclick="navigateOrderPage()">Orders</p>
           <p id="profile-3" onclick="logout()">Logout</p>
         </div>
       </div>
+
+      <!-- Biểu tượng giỏ hàng -->
       <a id="cart-icon-nav" href="#/cart" style="position: relative;">
         <img src="assets/cart_icon.png" width="20px" alt="">
         <p id="cart-amount">0</p>
@@ -84,6 +102,8 @@
       <img onclick="openMenu()" class="menu-icon" src="assets/menu_icon.png" width="20px" alt="">
     </div>
   </header>
+
+  <!-- Thanh navigation ở mobile -->
   <div id="mobile-menu" class="mobile-nav">
     <div id="div-mobile-menu">
       <div onclick="closeMenu()">
@@ -96,10 +116,13 @@
       <a id="mbnav-contact" onclick="closeMenu()" class="link-menu" href="#/contact">CONTACT</a>
     </div>
   </div>
+
+  <!-- Phần main content -->
   <main onclick="closeDropdown()" id="app">
 
   </main>
 
+  <!-- Footer của trang -->
   <footer id="ft" class="footer">
     <div class="footer-container">
       <!-- Các cột nội dung -->

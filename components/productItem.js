@@ -1,6 +1,5 @@
-import { language } from "../sharedata/sharedata.js";
-import { langJSON } from "../sharedata/sharedata.js";
 
+// Compoment để render các sản phẩm ở trang home và collection
 function ProductItem({ _id, image, name, price }) {
   const currency = "$";
 

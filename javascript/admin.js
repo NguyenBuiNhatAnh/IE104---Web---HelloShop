@@ -8,6 +8,7 @@ import { orderItems } from "../sharedata/sharedata.js";
 import { renderLanguage } from "../app.js";
 import { showPopup } from "../app.js";
 
+// Hàm để thêm hoặc xóa class khi ấn vào một trong 3 chức năng ở trang admin
 export function buttonChoosen(button) {
     const buttons = document.getElementsByClassName("admin-change");
     [...buttons].forEach(item => {
@@ -17,6 +18,7 @@ export function buttonChoosen(button) {
 }
 window.buttonChoosen = buttonChoosen;
 
+// Hàm để render trang thêm sản phẩm vào trang admin
 export async function renderAddPage(button) {
     buttonChoosen(button);
 
@@ -30,6 +32,7 @@ export async function renderAddPage(button) {
 }
 window.renderAddPage = renderAddPage;
 
+// Hàm để render trang danh sách sản phẩm vào trang admin
 export async function renderListPage(button) {
     buttonChoosen(button);
 
@@ -48,6 +51,7 @@ export async function renderListPage(button) {
 }
 window.renderListPage = renderListPage;
 
+// Hàm để render trang order ở admin
 export async function renderOrdersPage(button) {
     buttonChoosen(button);
 
@@ -62,6 +66,7 @@ export async function renderOrdersPage(button) {
 }
 window.renderOrdersPage = renderOrdersPage;
 
+// Hàm để xóa các sản phẩm ở trang danh sách sản phẩm admin
 export function removeProduct(button) {
     const id = button.target.id;
     collectionProducts.value = collectionProducts.value.filter(item => {
@@ -76,6 +81,7 @@ export function removeProduct(button) {
 }
 window.removeProduct = removeProduct;
 
+//Hàm để hiển thị ảnh thay cho biểu tượng upload khi chọn ảnh
 export function previewImage(input, a) {
 
     console.log("Hello");
@@ -106,6 +112,7 @@ export function previewImage(input, a) {
 }
 window.previewImage = previewImage;
 
+// Hàm thêm class khi admin chọn các size ở trang thêm sản phẩm
 export function adminChooseSizes(size) {
     const s = size.textContent.trim();
     if(sizesAddProduct.value.includes(s)){
@@ -121,11 +128,12 @@ export function adminChooseSizes(size) {
 }
 window.adminChooseSizes = adminChooseSizes;
 
+// Hàm tạo id random
 function randomId() {
   return Math.random().toString(36).substr(2, 8);
 }
 
-
+// Hàm thêm một đối tượng sản phẩm vào allProductCollection khi admin ấn ADD
 export function adminAddProduct(event) {
     event.preventDefault();
     const product = {};
@@ -152,6 +160,7 @@ export function adminAddProduct(event) {
 }
 window.adminAddProduct = adminAddProduct;
 
+// Hàm render các sản phẩm mà khách hàng đã order ở trang admin
 function renderOrderAdmin() {
     formSubmit.value.forEach(item => {
         const target = document.getElementById("admin-display");
@@ -159,6 +168,7 @@ function renderOrderAdmin() {
     })
 }
 
+// Hàm cập nhật tính trạng đơn hàng cho khách hàng
 export function updateState(event) {
     const value = event.target.value;
     const id = event.target.id;

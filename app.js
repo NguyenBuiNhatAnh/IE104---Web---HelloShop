@@ -123,6 +123,7 @@ function renderContent() {
   }
 }
 
+// Hàm đồng bộ ngôn ngữ giữa user và admin
 export function renderLanguage() {
   const selectAdmin = document.getElementById("select-admin");
   const selectUser = document.getElementById("select-user");
@@ -143,7 +144,6 @@ export function renderLanguage() {
       }
     }
   })
-  console.log("hello");
 }
 
 // Bắt sự kiện thay đổi hash (khi người dùng điều hướng hoặc reload)
@@ -152,7 +152,7 @@ window.addEventListener("hashchange", renderContent);
 // Render lần đầu khi trang được tải
 renderContent();
 
-
+// Hàm mở drop down khi ấn vào Profile icon
 export function openDropdown() {
   if (localStorage.getItem("token") === null || localStorage.getItem("token") === "") {
     window.location.href = window.location.origin + '/' + '#/login';
@@ -163,10 +163,12 @@ export function openDropdown() {
 }
 window.openDropdown = openDropdown;
 
+// Hàm đóng dropdown
 export function closeDropdown() {
   document.getElementById("drd").style.display = "none"
 }
 window.closeDropdown = closeDropdown;
+
 // Bắt sự kiện khi click vào thẻ a thì style cho thẻ đó
 export function updateActiveLinks() {
   const currentURL = window.location.hash;
@@ -184,6 +186,7 @@ export function updateActiveLinks() {
 }
 window.addEventListener("hashchange", updateActiveLinks);
 
+// Hàm mở menu trên mobile
 export function openMenu() {
   const mobilemeu = document.getElementById("mobile-menu");
   const divmobilemenu = document.getElementById("div-mobile-menu");
@@ -192,6 +195,7 @@ export function openMenu() {
 }
 window.openMenu = openMenu;
 
+// Hàm đóng menu trên mobile
 export function closeMenu() {
   const mobilemeu = document.getElementById("mobile-menu");
   const divmobilemenu = document.getElementById("div-mobile-menu");
@@ -200,6 +204,7 @@ export function closeMenu() {
 }
 window.closeMenu = closeMenu;
 
+// Gắn sự kiện scroll để ẩn hiện header
 let lastScrollTop = 0;
 window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
@@ -217,12 +222,14 @@ window.addEventListener("scroll", () => {
 });
 window.updateActiveLinks = updateActiveLinks;
 
+// Hàm logout
 export function logout() {
   localStorage.setItem("token", "");
   window.location.href = window.location.origin + "/#/login";
 }
 window.logout = logout;
 
+// Hàm đổi ngôn ngữ
 function changeLanguage(event) {
   const lang = event.target.value;
   language.value = lang;
@@ -240,6 +247,7 @@ function changeLanguage(event) {
 }
 window.changeLanguage = changeLanguage;
 
+// Hàm thông báo
 export function showPopup(textEN, textVN, er) {
   const popup = document.getElementById("popup");
   popup.style.display = "block";

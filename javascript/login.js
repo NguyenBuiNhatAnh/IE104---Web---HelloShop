@@ -1,6 +1,7 @@
 import { showPopup } from "../app.js";
 import { token } from "../sharedata/sharedata.js";
 
+// Hàm login
 export function login(event) {
     let logined = false;
     event.preventDefault();

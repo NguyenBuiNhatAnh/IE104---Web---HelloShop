@@ -1,6 +1,7 @@
 import { changeQuantity } from "../javascript/cart.js";
 import { removeCartItem } from "../javascript/cart.js";
 
+// Component để render các sản phẩm trong giỏ hàng
 function CartItem ({_id, image, name, size, price, quantity}) {
 
     const cartItem = document.createElement('div');

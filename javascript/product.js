@@ -1,7 +1,7 @@
 import { currentSize } from "../sharedata/sharedata.js";
 import { renderLanguage } from "../app.js";
 
-
+// Hàm xử lý khi người dùng ấn vào bất kì component nào ở được tạo từ ProductItem ở productItem.js
 export function navigateProduct(idProduct, products, ProductItem) {
   let imageProduct;
   let productItem;
@@ -78,6 +78,7 @@ export function navigateProduct(idProduct, products, ProductItem) {
     });
 }
 
+// Hàm xử lý khi người dùng chọn size ở trang Product
 function effectSizeChosen(event) {
   const buttons = document.getElementsByClassName('button-item');
   [...buttons].forEach(button => {
@@ -89,6 +90,7 @@ function effectSizeChosen(event) {
   });
 }
 
+// Hàm xử lý khi người dùng ấn vào ảnh ở trang Product
 function changeImage(event) {
   const images = document.getElementsByClassName('sub-image-item');
   const mainImage = document.getElementById('main-image-item');

@@ -85,10 +85,12 @@
       <div class="profile-wrapper">
         <img src="assets/profile_icon.png" id="profile-icon" class="profile-icon" onclick="openDropdown()"
           alt="Profile">
-        
+
         <!-- Drop down khi ấn vào profile -->
         <div class="dropdown" id="drd">
-          <p id="profile-1">My Profile</p>
+          <a style="text-decoration: none;" href="#/profile">
+            <p id="profile-1">My Profile</p>
+          </a>
           <p id="profile-2" onclick="navigateOrderPage()">Orders</p>
           <p id="profile-3" onclick="logout()">Logout</p>
         </div>

@@ -28,7 +28,8 @@ const routes = {
   "order": "pages/order.html",
   "login": "pages/login.html",
   "admin": "pages/admin.html",
-  "register": "pages/register.html"
+  "register": "pages/register.html",
+  "profile": "pages/profile.html"
 };
 
 

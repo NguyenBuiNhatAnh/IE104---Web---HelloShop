@@ -27,7 +27,8 @@ const routes = {
   "placeorder": "pages/placeorder.html",
   "order": "pages/order.html",
   "login": "pages/login.html",
-  "admin": "pages/admin.html"
+  "admin": "pages/admin.html",
+  "register": "pages/register.html"
 };
 
 

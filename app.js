@@ -1,9 +1,8 @@
 import { currentSize } from "./sharedata/sharedata.js";
 import { ProductItem } from "./components/productItem.js";
-import { products } from "./assets/assets.js";
 import { CartItem } from "./components/cartItem.js";
 import { renderHome } from "./javascript/home.js";
-import {renderCollection} from "./javascript/collection.js";
+import { renderCollection } from "./javascript/collection.js";
 import { renderCart } from "./javascript/cart.js";
 import { navigateProduct } from "./javascript/product.js";
 import { initAchievementObserver } from "./javascript/about.js";
@@ -28,7 +27,9 @@ const routes = {
   "placeorder": "pages/placeorder.html",
   "order": "pages/order.html",
   "login": "pages/login.html",
-  "admin": "pages/admin.html"
+  "admin": "pages/admin.html",
+  "register": "pages/register.html",
+  "profile": "pages/profile.html"
 };
 
 
@@ -56,13 +57,13 @@ function renderContent() {
         renderLanguage();
         cartItemAmoun();
         closeDropdown();
-        if(localStorage.getItem("token") === null || localStorage.getItem("token") === "" || localStorage.getItem("token") === "user") {
+        if (localStorage.getItem("token") === null || localStorage.getItem("token") === "" || localStorage.getItem("token") === "user") {
           document.getElementById("cart-icon-nav").style.display = "none";
           document.getElementById("hd").style.display = "flex";
           document.getElementById("ft").style.display = "block";
           document.getElementById("admin-hd").style.display = "none";
         }
-        if(localStorage.getItem("token") === "user") {
+        if (localStorage.getItem("token") === "user") {
           document.getElementById("cart-icon-nav").style.display = "inline-block";
         }
         else if (localStorage.getItem("token") === "admin") {
@@ -80,7 +81,7 @@ function renderContent() {
           // renderLanguage();
         }
         else if (filePath === "pages/product.html") {
-          if(localStorage.getItem("token") === null || localStorage.getItem("token") === "") {
+          if (localStorage.getItem("token") === null || localStorage.getItem("token") === "") {
             window.location.href = window.location.origin + '/' + '#/login';
             return;
           }
@@ -124,19 +125,20 @@ function renderContent() {
   }
 }
 
+// Hàm đồng bộ ngôn ngữ giữa user và admin
 export function renderLanguage() {
   const selectAdmin = document.getElementById("select-admin");
   const selectUser = document.getElementById("select-user");
-  if(selectAdmin) {
+  if (selectAdmin) {
     selectAdmin.value = language.value;
   }
-  if(selectUser) {
+  if (selectUser) {
     selectUser.value = language.value;
   }
   langJSON.forEach(item => {
     const element = document.getElementById(item.id);
-    if(element) {
-      if(language.value === "EN") {
+    if (element) {
+      if (language.value === "EN") {
         element.textContent = item.EN;
       }
       else {
@@ -144,7 +146,6 @@ export function renderLanguage() {
       }
     }
   })
-  console.log("hello");
 }
 
 // Bắt sự kiện thay đổi hash (khi người dùng điều hướng hoặc reload)
@@ -153,9 +154,9 @@ window.addEventListener("hashchange", renderContent);
 // Render lần đầu khi trang được tải
 renderContent();
 
-
+// Hàm mở drop down khi ấn vào Profile icon
 export function openDropdown() {
-  if(localStorage.getItem("token") === null || localStorage.getItem("token") === "") {
+  if (localStorage.getItem("token") === null || localStorage.getItem("token") === "") {
     window.location.href = window.location.origin + '/' + '#/login';
     return;
   }
@@ -164,10 +165,12 @@ export function openDropdown() {
 }
 window.openDropdown = openDropdown;
 
+// Hàm đóng dropdown
 export function closeDropdown() {
   document.getElementById("drd").style.display = "none"
 }
 window.closeDropdown = closeDropdown;
+
 // Bắt sự kiện khi click vào thẻ a thì style cho thẻ đó
 export function updateActiveLinks() {
   const currentURL = window.location.hash;
@@ -185,6 +188,7 @@ export function updateActiveLinks() {
 }
 window.addEventListener("hashchange", updateActiveLinks);
 
+// Hàm mở menu trên mobile
 export function openMenu() {
   const mobilemeu = document.getElementById("mobile-menu");
   const divmobilemenu = document.getElementById("div-mobile-menu");
@@ -193,6 +197,7 @@ export function openMenu() {
 }
 window.openMenu = openMenu;
 
+// Hàm đóng menu trên mobile
 export function closeMenu() {
   const mobilemeu = document.getElementById("mobile-menu");
   const divmobilemenu = document.getElementById("div-mobile-menu");
@@ -201,6 +206,7 @@ export function closeMenu() {
 }
 window.closeMenu = closeMenu;
 
+// Gắn sự kiện scroll để ẩn hiện header
 let lastScrollTop = 0;
 window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
@@ -218,19 +224,21 @@ window.addEventListener("scroll", () => {
 });
 window.updateActiveLinks = updateActiveLinks;
 
+// Hàm logout
 export function logout() {
-    localStorage.setItem("token", "");
-    window.location.href = window.location.origin + "/#/login";
+  localStorage.setItem("token", "");
+  window.location.href = window.location.origin + "/#/login";
 }
 window.logout = logout;
 
+// Hàm đổi ngôn ngữ
 function changeLanguage(event) {
   const lang = event.target.value;
   language.value = lang;
   langJSON.forEach(item => {
     const element = document.getElementById(item.id);
-    if(element) {
-      if(language.value === "EN") {
+    if (element) {
+      if (language.value === "EN") {
         element.textContent = item.EN;
       }
       else {
@@ -240,6 +248,31 @@ function changeLanguage(event) {
   })
 }
 window.changeLanguage = changeLanguage;
+
+// Hàm thông báo
+export function showPopup(textEN, textVN, er) {
+  const popup = document.getElementById("popup");
+  popup.style.display = "block";
+  const span = document.createElement('p');
+  if (er) {
+  span.style.background = "rgba(255, 59, 48, 0.7)";
+}
+
+  span.className = "pop-up"
+  if(language.value === 'EN') {
+    span.textContent = textEN;
+  }
+  else {
+    span.textContent = textVN;
+  }
+  popup.appendChild(span)
+
+  // Tự động ẩn sau 3 giây
+  setTimeout(() => {
+    span.style.display = "none";
+  }, 3000);
+}
+window.showPopup = showPopup;
 
 
 

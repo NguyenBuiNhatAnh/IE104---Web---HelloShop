@@ -6,6 +6,7 @@ import { ProductItem } from "../components/productItem.js";
 import { sort } from "../sharedata/sharedata.js";
 import { searchValue } from "../sharedata/sharedata.js";
 
+// Hàm render các sản phẩm trong collection
 export function renderCollection(products, roductItem) {
   const allproduct = products;
   const allcollection = document.getElementById("all-collection");
@@ -16,6 +17,7 @@ export function renderCollection(products, roductItem) {
   });
 }
 
+// Hàm mở đóng bộ lọc ở mobile
 let close = true;
 export function openAndCloseFilter() {
   if (close) {
@@ -32,6 +34,7 @@ export function openAndCloseFilter() {
 }
 window.openAndCloseFilter = openAndCloseFilter;
 
+// Hàm đưa các categỏy đang được chọn vào mảng trong đối tượng categoies ở sharedata.js
 export function setCategory(event) {
   if (categories.value.includes(event.target.value)) {
     let copy = categories.value;
@@ -50,6 +53,7 @@ export function setCategory(event) {
 }
 window.setCategory = setCategory;
 
+// Hàm đưa các categỏy đang được chọn vào mảng trong đối tượng subCategoies ở sharedata.js
 export function setSubCategory(event) {
   if (subCategories.value.includes(event.target.value)) {
     let copy = subCategories.value;
@@ -68,6 +72,7 @@ export function setSubCategory(event) {
 }
 window.setSubCategory = setSubCategory;
 
+// Hàm gán các sản phẩm sau khi lọc vào filterProduct ở sharedata.js
 export function filterProductFn() {
   let copy = collectionProducts.value;
   let copy2 = [];
@@ -101,6 +106,7 @@ export function filterProductFn() {
   filterProducts.value = copy;
 }
 
+// Hàm sắp xếp sản phẩm theo giá
 export function sortProduct(event) {
   sort.value = event.target.value;
   let copy = filterProducts.value.slice();
@@ -146,10 +152,10 @@ export function sortProduct(event) {
     filterProductFn();
     renderCollection(filterProducts.value, ProductItem);
   }
-  console.log(filterProducts.value);
 }
 window.sortProduct = sortProduct;
 
+// Hàm đóng thanh search trong collection
 let searchState = false;
 export function closeSearch() {
   document.getElementById('search-container').style.display = "none";
@@ -159,6 +165,7 @@ export function closeSearch() {
 }
 window.closeSearch = closeSearch;
 
+// Hàm mở thanh search trong collection
 export function openSearch() {
   const searchelement = document.getElementById('search-container');
   if(searchelement)
@@ -167,6 +174,7 @@ export function openSearch() {
 }
 window.openSearch = openSearch;
 
+// Hàm set giá trị ở thanh search vào đối tượng searchValue ở sharedata.js
 export function setSearch(event) {
   searchValue.value = event.target.value;
   filterProductFn();

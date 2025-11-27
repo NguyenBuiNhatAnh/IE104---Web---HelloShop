@@ -1,7 +1,7 @@
 import { orderItems } from "../sharedata/sharedata.js";
 import { OrderItem } from "../components/orderItem.js";
 
-
+// Hàm render các sản phẩm mà khách hàng đã đặt vào trang order
 export function renderOrder() {
   const orderPage = document.getElementById("order-container");
   orderItems.value.forEach(item => {
@@ -21,7 +21,7 @@ export function renderOrder() {
   })
 }
 
-
+// Hàm chuyển đến trang order của khách hàng
 export function navigateOrderPage() {
   window.location.href = window.location.origin + '/' + '#/order';
 }

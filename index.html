@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./assets/iconweb.png" type="image/png">
   <title>HelloShop</title>
-    <!-- Font Awesome để dùng icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Font Awesome để dùng icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="./css/home.css">
   <link rel="stylesheet" href="./css/collection.css">
@@ -22,10 +22,16 @@
 </head>
 
 <body>
+  <!-- Thông báo hiển thị -->
+  <div id="popup" style="display:none; position:fixed; top:100px; right:20px;">
+  </div>
+
+  <!-- Header ở trang admin -->
   <div id="admin-hd">
-    <img id="hellokity" width="144px" src="./assets/hello.png" alt="">
+    <img id="hellokity" width="144" src="./assets/hello.png" alt="">
     <div style="margin-right: 20px;">
-      <select id="select-admin" onchange="changeLanguage(event)" style="height: 24px; border-radius: 10px; border: none; outline: none;">
+      <select id="select-admin" onchange="changeLanguage(event)"
+        style="height: 24px; border-radius: 10px; border: none; outline: none;">
         <option value="EN">EN</option>
         <option value="VN">VN</option>
       </select>
@@ -33,10 +39,15 @@
     </div>
   </div>
 
+  <!-- Header ở trang người dùng -->
   <header id="hd">
+
+    <!-- Logo -->
     <div class="logo">
-      <a href="#/"><img src="assets/hello.png" width="144px"></a>
+      <a href="#/"><img src="assets/hello.png" width="144" alt="Logo"></a>
     </div>
+
+    <!-- Navigation -->
     <nav>
       <a href="#/" data-link class="nav-item">
         <p id="nav-home">HOME</p>
@@ -55,34 +66,50 @@
         <hr class="underline">
       </a>
     </nav>
-    <div class="subnav" style="display: flex; position: relative; right: 50px; height: 100%; align-items: center; justify-content: center;">
-      <select id="select-user" onchange="changeLanguage(event)" style="height: 24px; border-radius: 10px; border: none; outline: none;">
+
+    <!-- Phần tùy chọn bên phải của header -->
+    <div class="subnav"
+      style="display: flex; position: relative; right: 50px; height: 100%; align-items: center; justify-content: center;">
+
+      <!-- Đổi ngôn ngữ -->
+      <select id="select-user" onchange="changeLanguage(event)"
+        style="height: 24px; border-radius: 10px; border: none; outline: none;">
         <option value="EN">EN</option>
         <option value="VN">VN</option>
       </select>
 
-      <img onclick="openSearch()" style="cursor: pointer;" src="assets/search_icon.png" width="20px" alt="">
+      <!-- Biểu tượng search -->
+      <img onclick="openSearch()" style="cursor: pointer;" src="assets/search_icon.png" width="20" alt="">
 
+      <!-- Biểu tượng profile -->
       <div class="profile-wrapper">
         <img src="assets/profile_icon.png" id="profile-icon" class="profile-icon" onclick="openDropdown()"
           alt="Profile">
+
+        <!-- Drop down khi ấn vào profile -->
         <div class="dropdown" id="drd">
-          <p id="profile-1">My Profile</p>
+          <a style="text-decoration: none;" href="#/profile">
+            <p id="profile-1">My Profile</p>
+          </a>
           <p id="profile-2" onclick="navigateOrderPage()">Orders</p>
           <p id="profile-3" onclick="logout()">Logout</p>
         </div>
       </div>
+
+      <!-- Biểu tượng giỏ hàng -->
       <a id="cart-icon-nav" href="#/cart" style="position: relative;">
-        <img src="assets/cart_icon.png" width="20px" alt="">
+        <img src="assets/cart_icon.png" width="20" alt="">
         <p id="cart-amount">0</p>
       </a>
-      <img onclick="openMenu()" class="menu-icon" src="assets/menu_icon.png" width="20px" alt="">
+      <img onclick="openMenu()" class="menu-icon" src="assets/menu_icon.png" width="20" alt="">
     </div>
   </header>
+
+  <!-- Thanh navigation ở mobile -->
   <div id="mobile-menu" class="mobile-nav">
     <div id="div-mobile-menu">
       <div onclick="closeMenu()">
-        <img src="assets/dropdown_icon.png" height="16px" alt="">
+        <img src="assets/dropdown_icon.png" height="16" alt="">
         <p>Back</p>
       </div>
       <a id="mbnav-home" onclick="closeMenu()" class="link-menu active" href="#/">HOME</a>
@@ -91,10 +118,13 @@
       <a id="mbnav-contact" onclick="closeMenu()" class="link-menu" href="#/contact">CONTACT</a>
     </div>
   </div>
+
+  <!-- Phần main content -->
   <main onclick="closeDropdown()" id="app">
 
   </main>
 
+  <!-- Footer của trang -->
   <footer id="ft" class="footer">
     <div class="footer-container">
       <!-- Các cột nội dung -->
@@ -140,7 +170,7 @@
         <div class="footer-column-subscribe">
           <h4 id="ft-stay">STAY IN THE LOOP</h4>
           <form class="subscribe-form">
-            <input type="email" placeholder="Email" required />
+            <input type="email" placeholder="Email" required>
             <button id="ft-Sub" type="submit">SUBSCRIBE</button>
           </form>
           <div class="social-icons">

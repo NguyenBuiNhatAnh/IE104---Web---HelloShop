@@ -89,3 +89,34 @@
 .name-order-admin {
     font-weight: 500;
 }
+
+@media (max-width: 640px) {
+    #img-1-admin, #img-2-admin, #img-3-admin, #img-4-admin {
+        width: 60px;
+    }
+
+    #admin-1, #admin-2, #admin-3 {
+        display: none;
+    }
+
+    #admin-100 {
+        display: block !important;
+    }
+
+    #admin-display input, #admin-display textarea {
+        max-width: 200px !important;
+    }
+    #admin-display {
+        margin-inline: 30px !important;
+    }
+    #list-100 {
+        display: none !important;
+    }
+    .list-item {
+        grid-template-columns: 1fr 3fr 1fr !important;
+    }
+    .order-admin {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+}

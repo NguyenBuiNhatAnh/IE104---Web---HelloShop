@@ -1,5 +1,6 @@
 import { orderItems } from "../sharedata/sharedata.js";
 
+// Component để render các sản phẩm khác hàng đã order ở trang admin
 export function OrderAdmin(formSubmit) {
     const divOrderAdmin = document.createElement('div');
     divOrderAdmin.className = "order-admin";

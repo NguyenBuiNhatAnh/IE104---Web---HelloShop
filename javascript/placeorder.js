@@ -1,9 +1,11 @@
+import { showPopup } from "../app.js";
 import { cartItems } from "../sharedata/sharedata.js";
 import { orderItems } from "../sharedata/sharedata.js";
 import { formSubmit } from "../sharedata/sharedata.js";
 import { method } from "../sharedata/sharedata.js";
 import { idOrder } from "../sharedata/sharedata.js";
 
+// Hàm xử lý khi người dùng submit form thông tin đặt hàng
 export function submitForm(event) {
   event.preventDefault();
   const form = {};
@@ -32,9 +34,11 @@ export function submitForm(event) {
   idOrder.value++;
   formSubmit.value.push(form);
   window.location.href = window.location.origin + '/' + '#/order';
+  showPopup("Order placed successfully!","Đặt hàng thành công")
 }
 window.submitForm = submitForm;
 
+// Hàm xử lý khi người dùng chọn banking method
 export function bankingMethod() {
   document.getElementById("banking-btn").classList.add("display-none");
   document.getElementById("cod-btn").classList.add("display-none");
@@ -45,6 +49,7 @@ export function bankingMethod() {
 }
 window.bankingMethod = bankingMethod;
 
+// Hàm xử lý khi người dùng chọn COD
 export function setMethodCOD() {
   method.value = "COD";
 }

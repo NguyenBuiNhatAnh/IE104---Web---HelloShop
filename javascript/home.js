@@ -1,3 +1,5 @@
+
+// Hàm render các sản phẩm ở trang home
 export function renderHome(products, ProductItem) {
   const productList = products.slice(0, 10);
   const proBestseller = products.slice(0, 5);

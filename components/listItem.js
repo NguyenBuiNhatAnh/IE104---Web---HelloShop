@@ -1,4 +1,5 @@
 
+// Component để render các sản phẩm ở trang listitem
 export function ListItem({ _id, name, category, price, image }) {
 
     const listItemDiv = document.createElement('div');

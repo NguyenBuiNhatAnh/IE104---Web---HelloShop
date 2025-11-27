@@ -1,5 +1,7 @@
+
+// Compoment để render các sản phẩm ở trang home và collection
 function ProductItem({ _id, image, name, price }) {
-  const currency = "$"; // bạn có thể thay bằng VNĐ hoặc biến context khác
+  const currency = "$";
 
   // Thẻ link bao ngoài
   const link = document.createElement("div");

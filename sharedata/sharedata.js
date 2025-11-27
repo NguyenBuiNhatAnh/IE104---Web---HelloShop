@@ -1,44 +1,63 @@
 import { products } from "../assets/assets.js";
 
+//Lưu size mà khách hàng chọn ở trang Product
 export const currentSize = { size: undefined };
 
+//Lưu các đối tượng sản phẩm trong giỏ hàng
 export const cartItems = { value: [] }
 
+//Lưu số lượng các phần tử trong giỏ hàng
 export const cartItemAmount = { count: 0 }
 
+//Lưu id của sản phẩm hiện tại lấy từ đường dẫn
 export const productIdd = { value: undefined }
 
+//Lưu các đối tượng sản phẩm mà khách hàng đá order
 export const orderItems = { value: [] }
 
+//Lưu thông tin khi khách hàng submit form
 export const formSubmit = { value: [] }
 
+//Lưu phương thức thanh toán
 export const method = { value: undefined }
 
+//Lưu tất cả các sản phẩm ban đầu
 export const collectionProducts = { value: [...products] }
 
+//Lưu các sản phẩm sau khi lọc ở trang collection
 export const filterProducts = { value: [] }
 
+//Lưu các category đã chọn để lọc
 export const categories = { value: [] };
 
+//Lưu các subcategory đã chọn để lọc
 export const subCategories = { value: [] };
 
+//Lưu loại sặp xếp
 export const sort = { value: "Relavent" };
 
+//Lưu giá trị hiện tại trong ô search ở trang collection
 export const searchValue = { value: "" };
 
+//Lưu "" hoặc "user" hoặc "admin" => chưa login - user - admin
 export const token = { value: "" };
 
+//Lưu giá trị base64 của ảnh khi admin them sản phẩm
 export const imageAddProduct1 = { value: "" };
 export const imageAddProduct2 = { value: "" };
 export const imageAddProduct3 = { value: "" };
 export const imageAddProduct4 = { value: "" };
 
+//Lưu các size mà admin chọn khi thêm sản phẩm
 export const sizesAddProduct = { value: [] };
 
+//Để nối form submit với cắc sản phẩm mà khách hàng order tương ứng
 export const idOrder = { value: 0 }
 
+//Quyết định ngôn ngữ hiện tại là Anh hay Việt
 export const language = { value: "EN" }
 
+//Đối tượng chuyển đổi ngôn ngữ theo id
 export const langJSON = [
     {
         id: "nav-home",
@@ -262,5 +281,5 @@ export const langJSON = [
     { "id": "profile-1", "EN": "My Profile", "VN": "Hồ sơ của tôi" },
     { "id": "profile-2", "EN": "Orders", "VN": "Đơn hàng" },
     { "id": "profile-3", "EN": "Logout", "VN": "Đăng xuất" },
-
+    {id: "type", EN: "TYPE", VN: "LOẠI"}
 ]

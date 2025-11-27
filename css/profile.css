@@ -69,12 +69,21 @@ label {
 }
 
 input,
-select,
-textarea {
+select {
   width: 300px;
   padding: 5px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 14px;
   background: #f9fafb;
+}
+
+.change_password {
+  margin-top: 16px;
+  padding: 10px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }

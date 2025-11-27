@@ -1,19 +1,50 @@
-<div>
-  <div class="profile-card">
-    <div class="card-header">
-      <button class="icon-btn">🛒</button>
-      <button class="icon-btn">📞</button>
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hồ sơ khách hàng</title>
+    <link rel="stylesheet" href="/css/profile.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Hồ sơ khách hàng</h1>
+      <section class="card">
+        <!-- Thông tin cá nhân -->
+        <h2>Thông tin cá nhân</h2>
+        <div class="avatar">
+          <img
+            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Doan"
+            alt="Avatar"
+          />
+          <button>Đổi ảnh</button>
+        </div>
+        <div class="grid">
+          <div>
+            <label>Họ và tên</label
+            ><input type="text" value="Nguyễn Văn A" readonly />
+          </div>
+          <div>
+            <label>Giới tính</label><input type="text" value="Nam" readonly />
+          </div>
+          <div>
+            <label>Ngày sinh</label
+            ><input type="text" value="01/10/2000" readonly />
+          </div>
+          <div>
+            <label>Số điện thoại</label
+            ><input type="tel" value="0987654321" readonly />
+          </div>
+          <div>
+            <label>Email</label
+            ><input type="email" value="muasam@gmail.com" readonly />
+          </div>
+          <div>
+            <label>Địa chỉ</label
+            ><input type="text" value="Tân Phú - Quận 9 - TP.HCM" readonly />
+          </div>
+        </div>
+      </section>
     </div>
-    <div class="avatar"></div>
-    <h2 class="name">Quốc Đoàn</h2>
-    <p class="location">Tp. Hồ Chí Minh, Việt Nam</p>
-    <p class="occupation">Khách hàng thân thiết</p>
-    <p class="education">Tham gia từ: 2022</p>
-    <div class="stats">
-      <div><strong>12</strong><span>Đơn hàng</span></div>
-      <div><strong>5</strong><span>Địa chỉ giao hàng</span></div>
-      <div><strong>3</strong><span>Phương thức thanh toán</span></div>
-    </div>
-    <button class="show-more">Xem lịch sử mua hàng</button>
-  </div>
-</div>
+  </body>
+</html>

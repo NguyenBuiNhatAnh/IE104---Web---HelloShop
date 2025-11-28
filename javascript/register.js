@@ -23,12 +23,11 @@ export function register(event) {
   if (isExist) {
     showPopup("Email already exists!", "Email này đã được đăng ký!", true);
     return;
-  }
+  } 
 
   const newUser = {
     email: email,
-    password: password,
-    role: "user",
+    password: password
   };
 
   users.push(newUser);

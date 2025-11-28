@@ -22,19 +22,23 @@ export function submitForm(event) {
   form.method = method.value;
   form.date = (new Date()).toDateString();
   form.state = "Order Placed";
+  form.token = localStorage.getItem("token");
   cartItems.value.forEach(item => {
-    item.method = method.value;
+    if (item.token === localStorage.getItem("token"))
+      item.method = method.value;
   })
   cartItems.value.forEach(item => {
-    let a = item;
-    a.id = idOrder.value;
-    orderItems.value.push(a);
+    if (item.token === localStorage.getItem("token")) {
+      let a = item;
+      a.id = idOrder.value;
+      orderItems.value.push(a);
+      cartItems.value = cartItems.value.filter(item => item !== a);
+    }
   })
-  cartItems.value = [];
   idOrder.value++;
   formSubmit.value.push(form);
   window.location.href = window.location.origin + '/' + '#/order';
-  showPopup("Order placed successfully!","Đặt hàng thành công")
+  showPopup("Order placed successfully!", "Đặt hàng thành công")
 }
 window.submitForm = submitForm;
 

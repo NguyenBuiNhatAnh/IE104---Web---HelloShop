@@ -14,6 +14,8 @@ import { cartItemAmoun } from "./javascript/cart.js";
 import { collectionProducts } from "./sharedata/sharedata.js";
 import { language } from "./sharedata/sharedata.js";
 import { langJSON } from "./sharedata/sharedata.js";
+import { token } from "./sharedata/sharedata.js";
+import { renderProfile } from "./javascript/profile.js";
 
 
 // Định nghĩa các route và nội dung tương ứng
@@ -32,6 +34,8 @@ const routes = {
   "profile": "pages/profile.html"
 };
 
+let tokenLocal = localStorage.getItem("token");
+if(tokenLocal === null) token.value = "";
 
 // Hàm render nội dung dựa trên hash hiện tại
 function renderContent() {
@@ -57,13 +61,13 @@ function renderContent() {
         renderLanguage();
         cartItemAmoun();
         closeDropdown();
-        if (localStorage.getItem("token") === null || localStorage.getItem("token") === "" || localStorage.getItem("token") === "user") {
+        if (localStorage.getItem("token") !== null || localStorage.getItem("token") === "" || localStorage.getItem("token") === "user" ) {
           document.getElementById("cart-icon-nav").style.display = "none";
           document.getElementById("hd").style.display = "flex";
           document.getElementById("ft").style.display = "block";
           document.getElementById("admin-hd").style.display = "none";
         }
-        if (localStorage.getItem("token") === "user") {
+        if (localStorage.getItem("token") === "user" || (localStorage.getItem("token") !== null && localStorage.getItem("token") !== "" && localStorage.getItem("token") !== "admin")) {
           document.getElementById("cart-icon-nav").style.display = "inline-block";
         }
         else if (localStorage.getItem("token") === "admin") {
@@ -107,14 +111,8 @@ function renderContent() {
           initAchievementObserver();
           // renderLanguage();
         }
-        else if (filePath === "pages/admin.html") {
-          // renderLanguage();
-        }
-        else if (filePath === "pages/contact.html") {
-          // renderLanguage();
-        }
-        else if (filePath === "pages/login.html") {
-          // renderLanguage();
+        else if (filePath === "pages/profile.html") {
+          renderProfile();
         }
       })
       .catch(() => {

@@ -57,6 +57,8 @@ export const idOrder = { value: 0 }
 //Quyết định ngôn ngữ hiện tại là Anh hay Việt
 export const language = { value: "EN" }
 
+export const user = {};
+
 //Đối tượng chuyển đổi ngôn ngữ theo id
 export const langJSON = [
     {
@@ -278,8 +280,32 @@ export const langJSON = [
     { "id": "list-6", "EN": "Action", "VN": "Thao tác" },
     { "id": "order-admin-page-hello", "EN": "Order Page", "VN": "Trang đơn hàng" },
     { "id": "logout", "EN": "Logout", "VN": "Đăng xuất" },
-    { "id": "profile-1", "EN": "My Profile", "VN": "Hồ sơ của tôi" },
-    { "id": "profile-2", "EN": "Orders", "VN": "Đơn hàng" },
-    { "id": "profile-3", "EN": "Logout", "VN": "Đăng xuất" },
-    {id: "type", EN: "TYPE", VN: "LOẠI"}
+    { "id": "profil-1", "EN": "My Profile", "VN": "Hồ sơ của tôi" },
+    { "id": "profil-2", "EN": "Orders", "VN": "Đơn hàng" },
+    { "id": "profil-3", "EN": "Logout", "VN": "Đăng xuất" },
+    { id: "type", EN: "TYPE", VN: "LOẠI" },
+    { "id": "profile-0", "EN": "Customer Profile", "VN": "Hồ sơ khách hàng" },
+    { "id": "profile-1", "EN": "Personal Information", "VN": "Thông tin cá nhân" },
+    { "id": "profile-2", "EN": "Change Photo", "VN": "Đổi ảnh" },
+    { "id": "profile-3", "EN": "Full Name", "VN": "Họ và tên" },
+    { "id": "profile-4", "EN": "Gender", "VN": "Giới tính" },
+    { "id": "profile-5", "EN": "Date of Birth", "VN": "Ngày sinh" },
+    { "id": "profile-6", "EN": "Phone Number", "VN": "Số điện thoại" },
+    { "id": "profile-7", "EN": "Address", "VN": "Địa chỉ" },
+    { "id": "profile-8", "EN": "Login & Security", "VN": "Đăng nhập & Bảo mật" },
+    { "id": "profile-9", "EN": "Email", "VN": "Email" },
+    { "id": "profile-10", "EN": "Password", "VN": "Mật khẩu" },
+    { "id": "profile-11", "EN": "Change Password", "VN": "Đổi mật khẩu" },
+    { "id": "profile-12", "EN": "Rewards & Membership", "VN": "Ưu đãi & Thành viên" },
+    { "id": "profile-13", "EN": "Reward Points: 1200", "VN": "Điểm thưởng: 1200" },
+    { "id": "profile-14", "EN": "Tier: VIP", "VN": "Cấp độ: VIP" },
+    { "id": "profile-15", "EN": "Discount Code: SALE2025", "VN": "Mã giảm giá: SALE2025" },
+    { "id": "register-1", "EN": "Welcome !", "VN": "Chào mừng !" },
+    { "id": "register-2", "EN": "Register your account", "VN": "Đăng ký tài khoản" },
+    { "id": "register-3", "EN": "Email", "VN": "Email" },
+    { "id": "register-4", "EN": "Password", "VN": "Mật khẩu" },
+    { "id": "register-5", "EN": "Confirm your password", "VN": "Xác nhận mật khẩu" },
+    { "id": "register-6", "EN": "Register", "VN": "Đăng ký" },
+    { "id": "register-7", "EN": "Already had an account ?", "VN": "Đã có tài khoản ?" },
+    { "id": "register-8", "EN": "Sign In", "VN": "Đăng nhập" }
 ]

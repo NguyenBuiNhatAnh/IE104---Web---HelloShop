@@ -5,6 +5,7 @@ import { cartItemAmount } from "../sharedata/sharedata.js";
 import { CartItem } from "../components/cartItem.js";
 import { collectionProducts } from "../sharedata/sharedata.js";
 import { showPopup } from "../app.js";
+import { token } from "../sharedata/sharedata.js";
 
 // Hàm render các sản phẩm ở giỏ hàng
 function renderCartt() {
@@ -16,7 +17,8 @@ export function renderCart(CartItem) {
   const cartPage = document.getElementById("cart-page");
 
   cartItems.value.forEach(item => {
-    cartPage.appendChild(CartItem(item));
+    if (item.token === localStorage.getItem("token"))
+      cartPage.appendChild(CartItem(item));
   })
 }
 
@@ -26,7 +28,7 @@ export function addCartItem() {
     let currentProduct = undefined;
     let lived = false;
     cartItems.value.forEach(item => {
-      if (item._id === productIdd.value && item.size === currentSize.size) {
+      if ((item._id === productIdd.value && item.size === currentSize.size) && (item.token === localStorage.getItem("token"))) {
         item.quantity++;
         lived = true;
         cartItemAmoun();
@@ -45,15 +47,15 @@ export function addCartItem() {
       cartItem.size = currentSize.size;
       cartItem.price = currentProduct.price;
       cartItem.quantity = 1;
+      cartItem.token = localStorage.getItem("token");
 
-      console.log(cartItem);
       cartItems.value.push(cartItem);
       cartItemAmoun();
     }
-    showPopup("Product added successfully!","Thêm sản phẩm thành công!");
+    showPopup("Product added successfully!", "Thêm sản phẩm thành công!");
   }
   else {
-    showPopup("You haven't selected a size!","Bạn chưa chọn size!", true)
+    showPopup("You haven't selected a size!", "Bạn chưa chọn size!", true)
   }
 }
 window.addCartItem = addCartItem;
@@ -63,7 +65,8 @@ export function cartItemAmoun() {
   if (cartItems.value[0]) {
     let sum = 0;
     cartItems.value.forEach(item => {
-      sum += item.quantity;
+      if (item.token === localStorage.getItem("token"))
+        sum += item.quantity;
     })
     cartItemAmount.value = sum;
   }
@@ -88,7 +91,7 @@ export function removeCartItem(event) {
   let j = 0;
   const idCartItem = event.target.id;
   cartItems.value.forEach(item => {
-    if ((item._id + item.size) === idCartItem) {
+    if (((item._id + item.size) === idCartItem) && (item.token === localStorage.getItem("token"))) {
       j = i
     }
     i++;
@@ -106,7 +109,8 @@ export function cartTotal() {
   let sum = 0;
   if (cartItems.value[0]) {
     cartItems.value.forEach(item => {
-      sum += item.quantity * item.price;
+      if (item.token === localStorage.getItem("token"))
+        sum += item.quantity * item.price;
     })
   }
   document.getElementById("sub-total-price").textContent = "$" + sum + ".00";
@@ -117,7 +121,7 @@ export function cartTotal() {
 export function changeQuantity(event) {
   const idInput = event.target.id;
   cartItems.value.forEach(item => {
-    if ((item._id + item.size + "input") === idInput) {
+    if (((item._id + item.size + "input") === idInput) && (item.token === localStorage.getItem("token"))) {
       item.quantity = parseInt(event.target.value);
     }
   })

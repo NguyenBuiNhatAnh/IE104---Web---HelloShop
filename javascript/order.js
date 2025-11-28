@@ -5,20 +5,22 @@ import { OrderItem } from "../components/orderItem.js";
 export function renderOrder() {
   const orderPage = document.getElementById("order-container");
   orderItems.value.forEach(item => {
-    let i = {};
-    i.image = item.image;
-    i.name = item.name;
-    i.price = item.price;
-    i.quantity = "Quantity: " + item.quantity;
-    i.size = "Size: " + item.size;
-    i.date = (new Date()).toDateString();
-    i.method = item.method;
-    i.state = item.state;
-    if(i.state === undefined) {
-      i.state = "Order Placed";
+    if (item.token === localStorage.getItem("token")) {
+      let i = {};
+      i.image = item.image;
+      i.name = item.name;
+      i.price = item.price;
+      i.quantity = "Quantity: " + item.quantity;
+      i.size = "Size: " + item.size;
+      i.date = (new Date()).toDateString();
+      i.method = item.method;
+      i.state = item.state;
+      if (i.state === undefined) {
+        i.state = "Order Placed";
+      }
+      orderPage.appendChild(OrderItem(i));
     }
-    orderPage.appendChild(OrderItem(i));
-  })
+  }) 
 }
 
 // Hàm chuyển đến trang order của khách hàng

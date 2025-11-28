@@ -35,12 +35,12 @@ h1 {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 3px solid #f43f5e;
+  border: 3px solid #ff523b;
 }
 
 .avatar button {
   padding: 8px 12px;
-  background: #f43f5e;
+  background: #ff523b;
   color: white;
   border: none;
   border-radius: 6px;
@@ -74,7 +74,7 @@ h1 {
 .change_password {
   margin-top: 16px;
   padding: 10px 16px;
-  background: #3b82f6;
+  background: #ff523b;
   color: white;
   border: none;
   border-radius: 8px;

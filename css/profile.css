@@ -97,3 +97,9 @@ select {
   padding: 5px;
   border-bottom: 1px solid #e5e7eb;
 }
+
+input[readonly] {
+  border: none;
+  color: #111827;
+  outline: none;
+}

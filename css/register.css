@@ -1,0 +1,44 @@
+.register-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vb;
+}
+
+.register-container {
+  background: #ffffff;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+}
+
+.input-group {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.btn-register {
+  width: 95%;
+  background: #ff523b;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-register:hover {
+  background: #e04a34;
+  transform: scale(1.02);
+}
+
+.register-box p {
+  color: #777;
+  margin-bottom: 30px;
+}

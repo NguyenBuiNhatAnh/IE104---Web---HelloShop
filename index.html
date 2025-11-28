@@ -1,207 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/iconweb.png" type="image/png" />
+    <title>HelloShop</title>
+    <!-- Font Awesome để dùng icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="./css/collection.css" />
+    <link rel="stylesheet" href="./css/about.css" />
+    <link rel="stylesheet" href="./css/contact.css" />
+    <link rel="stylesheet" href="./css/product.css" />
+    <link rel="stylesheet" href="./css/cart.css" />
+    <link rel="stylesheet" href="./css/placeorder.css" />
+    <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="./css/order.css" />
+    <link rel="stylesheet" href="./css/admin.css" />
+    <link rel="stylesheet" href="./css/register.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="./assets/iconweb.png" type="image/png">
-  <title>HelloShop</title>
-  <!-- Font Awesome để dùng icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="./css/home.css">
-  <link rel="stylesheet" href="./css/collection.css">
-  <link rel="stylesheet" href="./css/about.css">
-  <link rel="stylesheet" href="./css/contact.css">
-  <link rel="stylesheet" href="./css/product.css">
-  <link rel="stylesheet" href="./css/cart.css">
-  <link rel="stylesheet" href="./css/placeorder.css">
-  <link rel="stylesheet" href="./css/login.css">
-  <link rel="stylesheet" href="./css/order.css">
-  <link rel="stylesheet" href="./css/admin.css">
-</head>
+  <body>
+    <!-- Thông báo hiển thị -->
+    <div
+      id="popup"
+      style="display: none; position: fixed; top: 100px; right: 20px"
+    ></div>
 
-<body>
-  <!-- Thông báo hiển thị -->
-  <div id="popup" style="display:none; position:fixed; top:100px; right:20px;">
-  </div>
-
-  <!-- Header ở trang admin -->
-  <div id="admin-hd">
-    <img id="hellokity" width="144" src="./assets/hello.png" alt="">
-    <div style="margin-right: 20px;">
-      <select id="select-admin" onchange="changeLanguage(event)"
-        style="height: 24px; border-radius: 10px; border: none; outline: none;">
-        <option value="EN">EN</option>
-        <option value="VN">VN</option>
-      </select>
-      <button id="logout" onclick="logout()" class="btn">Logout</button>
+    <!-- Header ở trang admin -->
+    <div id="admin-hd">
+      <img id="hellokity" width="144" src="./assets/hello.png" alt="" />
+      <div style="margin-right: 20px">
+        <select
+          id="select-admin"
+          onchange="changeLanguage(event)"
+          style="height: 24px; border-radius: 10px; border: none; outline: none"
+        >
+          <option value="EN">EN</option>
+          <option value="VN">VN</option>
+        </select>
+        <button id="logout" onclick="logout()" class="btn">Logout</button>
+      </div>
     </div>
-  </div>
 
-  <!-- Header ở trang người dùng -->
-  <header id="hd">
-
-    <!-- Logo -->
-    <div class="logo">
-      <a href="#/"><img src="assets/hello.png" width="144" alt="Logo"></a>
-    </div>
-
-    <!-- Navigation -->
-    <nav>
-      <a href="#/" data-link class="nav-item">
-        <p id="nav-home">HOME</p>
-        <hr class="underline">
-      </a>
-      <a href="#/collection" data-link class="nav-item">
-        <p id="nav-collection">COLLECTION</p>
-        <hr class="underline">
-      </a>
-      <a href="#/about" data-link class="nav-item">
-        <p id="nav-about">ABOUT</p>
-        <hr class="underline">
-      </a>
-      <a href="#/contact" data-link class="nav-item">
-        <p id="nav-contact">CONTACT</p>
-        <hr class="underline">
-      </a>
-    </nav>
-
-    <!-- Phần tùy chọn bên phải của header -->
-    <div class="subnav"
-      style="display: flex; position: relative; right: 50px; height: 100%; align-items: center; justify-content: center;">
-
-      <!-- Đổi ngôn ngữ -->
-      <select id="select-user" onchange="changeLanguage(event)"
-        style="height: 24px; border-radius: 10px; border: none; outline: none;">
-        <option value="EN">EN</option>
-        <option value="VN">VN</option>
-      </select>
-
-      <!-- Biểu tượng search -->
-      <img onclick="openSearch()" style="cursor: pointer;" src="assets/search_icon.png" width="20" alt="">
-
-      <!-- Biểu tượng profile -->
-      <div class="profile-wrapper">
-        <img src="assets/profile_icon.png" id="profile-icon" class="profile-icon" onclick="openDropdown()"
-          alt="Profile">
-
-        <!-- Drop down khi ấn vào profile -->
-        <div class="dropdown" id="drd">
-          <a style="text-decoration: none;" href="#/profile">
-            <p id="profile-1">My Profile</p>
-          </a>
-          <p id="profile-2" onclick="navigateOrderPage()">Orders</p>
-          <p id="profile-3" onclick="logout()">Logout</p>
-        </div>
+    <!-- Header ở trang người dùng -->
+    <header id="hd">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="#/"><img src="assets/hello.png" width="144" alt="Logo" /></a>
       </div>
 
-      <!-- Biểu tượng giỏ hàng -->
-      <a id="cart-icon-nav" href="#/cart" style="position: relative;">
-        <img src="assets/cart_icon.png" width="20" alt="">
-        <p id="cart-amount">0</p>
-      </a>
-      <img onclick="openMenu()" class="menu-icon" src="assets/menu_icon.png" width="20" alt="">
-    </div>
-  </header>
+      <!-- Navigation -->
+      <nav>
+        <a href="#/" data-link class="nav-item">
+          <p id="nav-home">HOME</p>
+          <hr class="underline" />
+        </a>
+        <a href="#/collection" data-link class="nav-item">
+          <p id="nav-collection">COLLECTION</p>
+          <hr class="underline" />
+        </a>
+        <a href="#/about" data-link class="nav-item">
+          <p id="nav-about">ABOUT</p>
+          <hr class="underline" />
+        </a>
+        <a href="#/contact" data-link class="nav-item">
+          <p id="nav-contact">CONTACT</p>
+          <hr class="underline" />
+        </a>
+      </nav>
 
-  <!-- Thanh navigation ở mobile -->
-  <div id="mobile-menu" class="mobile-nav">
-    <div id="div-mobile-menu">
-      <div onclick="closeMenu()">
-        <img src="assets/dropdown_icon.png" height="16" alt="">
-        <p>Back</p>
-      </div>
-      <a id="mbnav-home" onclick="closeMenu()" class="link-menu active" href="#/">HOME</a>
-      <a id="mbnav-collection" onclick="closeMenu()" class="link-menu" href="#/collection">COLLECTION</a>
-      <a id="mbnav-about" onclick="closeMenu()" class="link-menu" href="#/about">ABOUT</a>
-      <a id="mbnav-contact" onclick="closeMenu()" class="link-menu" href="#/contact">CONTACT</a>
-    </div>
-  </div>
+      <!-- Phần tùy chọn bên phải của header -->
+      <div
+        class="subnav"
+        style="
+          display: flex;
+          position: relative;
+          right: 50px;
+          height: 100%;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <!-- Đổi ngôn ngữ -->
+        <select
+          id="select-user"
+          onchange="changeLanguage(event)"
+          style="height: 24px; border-radius: 10px; border: none; outline: none"
+        >
+          <option value="EN">EN</option>
+          <option value="VN">VN</option>
+        </select>
 
-  <!-- Phần main content -->
-  <main onclick="closeDropdown()" id="app">
+        <!-- Biểu tượng search -->
+        <img
+          onclick="openSearch()"
+          style="cursor: pointer"
+          src="assets/search_icon.png"
+          width="20"
+          alt=""
+        />
 
-  </main>
+        <!-- Biểu tượng profile -->
+        <div class="profile-wrapper">
+          <img
+            src="assets/profile_icon.png"
+            id="profile-icon"
+            class="profile-icon"
+            onclick="openDropdown()"
+            alt="Profile"
+          />
 
-  <!-- Footer của trang -->
-  <footer id="ft" class="footer">
-    <div class="footer-container">
-      <!-- Các cột nội dung -->
-      <div class="footer-columns">
-        <!-- SHOP -->
-        <div class="footer-column">
-          <h4 id="ft-shop">SHOP</h4>
-          <ul>
-            <li><a id="ft-Kits" href="#">Kits</a></li>
-            <li><a id="ft-Shipping" href="#">Shipping</a></li>
-            <li><a id="ft-Returns" href="#">Returns</a></li>
-            <li><a id="ft-Stockists" href="#">Stockists</a></li>
-            <li><a id="ft-Private" href="#">Private workshops</a></li>
-            <li><a id="ft-Wholesale" href="#">Wholesale</a></li>
-          </ul>
-        </div>
-
-        <!-- ABOUT -->
-        <div class="footer-column">
-          <h4 id="ft-about">ABOUT</h4>
-          <ul>
-            <li><a id="ft-Our" href="#">Our Story</a></li>
-            <li><a id="ft-Blog" href="#">Blog</a></li>
-            <li><a id="ft-Jobs" href="#">Jobs</a></li>
-            <li><a id="ft-Privacy" href="#">Privacy Policy</a></li>
-            <li><a id="ft-Terms" href="#">Terms & Conditions</a></li>
-            <li><a id="ft-Access" href="#">Accessibility Statement</a></li>
-          </ul>
-        </div>
-
-        <!-- HELP -->
-        <div class="footer-column">
-          <h4 id="ft-help">HELP</h4>
-          <ul>
-            <li><a id="ft-Tutorials" href="#">Tutorials</a></li>
-            <li><a id="ft-Office" href="#">Office Hours</a></li>
-            <li><a id="ft-FAQ" href="#">FAQ</a></li>
-            <li><a id="ft-Contact" href="#">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <!-- STAY IN THE LOOP -->
-        <div class="footer-column-subscribe">
-          <h4 id="ft-stay">STAY IN THE LOOP</h4>
-          <form class="subscribe-form">
-            <input type="email" placeholder="Email" required>
-            <button id="ft-Sub" type="submit">SUBSCRIBE</button>
-          </form>
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
+          <!-- Drop down khi ấn vào profile -->
+          <div class="dropdown" id="drd">
+            <a style="text-decoration: none" href="#/profile">
+              <p id="profile-1">My Profile</p>
+            </a>
+            <p id="profile-2" onclick="navigateOrderPage()">Orders</p>
+            <p id="profile-3" onclick="logout()">Logout</p>
           </div>
         </div>
-      </div>
 
-      <!-- Dòng bản quyền và thanh toán -->
-      <div class="footer-bottom">
-        <div class="payment-icons">
-          <i class="fab fa-cc-visa"></i>
-          <i class="fab fa-cc-mastercard"></i>
-          <i class="fab fa-cc-paypal"></i>
-          <i class="fab fa-google-pay"></i>
-          <i class="fab fa-cc-apple-pay"></i>
+        <!-- Biểu tượng giỏ hàng -->
+        <a id="cart-icon-nav" href="#/cart" style="position: relative">
+          <img src="assets/cart_icon.png" width="20" alt="" />
+          <p id="cart-amount">0</p>
+        </a>
+        <img
+          onclick="openMenu()"
+          class="menu-icon"
+          src="assets/menu_icon.png"
+          width="20"
+          alt=""
+        />
+      </div>
+    </header>
+
+    <!-- Thanh navigation ở mobile -->
+    <div id="mobile-menu" class="mobile-nav">
+      <div id="div-mobile-menu">
+        <div onclick="closeMenu()">
+          <img src="assets/dropdown_icon.png" height="16" alt="" />
+          <p>Back</p>
         </div>
-        <p>&copy; 2025 HelloShop. All rights reserved</p>
+        <a
+          id="mbnav-home"
+          onclick="closeMenu()"
+          class="link-menu active"
+          href="#/"
+          >HOME</a
+        >
+        <a
+          id="mbnav-collection"
+          onclick="closeMenu()"
+          class="link-menu"
+          href="#/collection"
+          >COLLECTION</a
+        >
+        <a
+          id="mbnav-about"
+          onclick="closeMenu()"
+          class="link-menu"
+          href="#/about"
+          >ABOUT</a
+        >
+        <a
+          id="mbnav-contact"
+          onclick="closeMenu()"
+          class="link-menu"
+          href="#/contact"
+          >CONTACT</a
+        >
       </div>
     </div>
-  </footer>
 
-  <script type="module" src="app.js"></script>
-  <script type="module" src="./javascript/placeorder.js"></script>
-  <script type="module" src="./javascript/order.js"></script>
-  <script type="module" src="./javascript/collection.js"></script>
-  <script type="module" src="./javascript/login.js"></script>
-  <script type="module" src="./javascript/admin.js"></script>
-</body>
+    <!-- Phần main content -->
+    <main onclick="closeDropdown()" id="app"></main>
 
+    <!-- Footer của trang -->
+    <footer id="ft" class="footer">
+      <div class="footer-container">
+        <!-- Các cột nội dung -->
+        <div class="footer-columns">
+          <!-- SHOP -->
+          <div class="footer-column">
+            <h4 id="ft-shop">SHOP</h4>
+            <ul>
+              <li><a id="ft-Kits" href="#">Kits</a></li>
+              <li><a id="ft-Shipping" href="#">Shipping</a></li>
+              <li><a id="ft-Returns" href="#">Returns</a></li>
+              <li><a id="ft-Stockists" href="#">Stockists</a></li>
+              <li><a id="ft-Private" href="#">Private workshops</a></li>
+              <li><a id="ft-Wholesale" href="#">Wholesale</a></li>
+            </ul>
+          </div>
+
+          <!-- ABOUT -->
+          <div class="footer-column">
+            <h4 id="ft-about">ABOUT</h4>
+            <ul>
+              <li><a id="ft-Our" href="#">Our Story</a></li>
+              <li><a id="ft-Blog" href="#">Blog</a></li>
+              <li><a id="ft-Jobs" href="#">Jobs</a></li>
+              <li><a id="ft-Privacy" href="#">Privacy Policy</a></li>
+              <li><a id="ft-Terms" href="#">Terms & Conditions</a></li>
+              <li><a id="ft-Access" href="#">Accessibility Statement</a></li>
+            </ul>
+          </div>
+
+          <!-- HELP -->
+          <div class="footer-column">
+            <h4 id="ft-help">HELP</h4>
+            <ul>
+              <li><a id="ft-Tutorials" href="#">Tutorials</a></li>
+              <li><a id="ft-Office" href="#">Office Hours</a></li>
+              <li><a id="ft-FAQ" href="#">FAQ</a></li>
+              <li><a id="ft-Contact" href="#">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <!-- STAY IN THE LOOP -->
+          <div class="footer-column-subscribe">
+            <h4 id="ft-stay">STAY IN THE LOOP</h4>
+            <form class="subscribe-form">
+              <input type="email" placeholder="Email" required />
+              <button id="ft-Sub" type="submit">SUBSCRIBE</button>
+            </form>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dòng bản quyền và thanh toán -->
+        <div class="footer-bottom">
+          <div class="payment-icons">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fab fa-cc-paypal"></i>
+            <i class="fab fa-google-pay"></i>
+            <i class="fab fa-cc-apple-pay"></i>
+          </div>
+          <p>&copy; 2025 HelloShop. All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+    <script type="module" src="./javascript/placeorder.js"></script>
+    <script type="module" src="./javascript/order.js"></script>
+    <script type="module" src="./javascript/collection.js"></script>
+    <script type="module" src="./javascript/login.js"></script>
+    <script type="module" src="./javascript/admin.js"></script>
+    <script type="module" src="./javascript/register.js"></script>
+  </body>
 </html>

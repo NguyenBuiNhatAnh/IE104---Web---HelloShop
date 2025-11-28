@@ -1,3 +1,55 @@
-<div>
-    làm trong này
-</div>
+<section class="register-section">
+  <div class="register-container">
+    <div class="register-box">
+      <h2 id="register-1">Welcome !</h2>
+      <p id="register-2">Register your account</p>
+
+      <!-- Fromregister -->
+      <form onsubmit="register(event)">
+        <!-- Email -->
+        <div class="input-group">
+          <label id="register-3" for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="input-group">
+          <label id="register-4" for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <!-- Confirm password -->
+        <div class="input-group">
+          <label id="register-4" for="confirm-password"
+            >Confirm your password</label
+          >
+          <input
+            type="password"
+            id="confirm-password"
+            placeholder="Enter your password again"
+            required
+          />
+        </div>
+
+        <button id="register-6" type="submit" class="btn-register">
+          Register
+        </button>
+
+        <p class="register-text">
+          <span id="register-7">Already had an account ?</span>
+          <a id="register-8" href="#/login">Sign In</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>

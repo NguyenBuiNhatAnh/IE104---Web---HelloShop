@@ -1,3 +1,121 @@
-<div>
-    làm trong này
+<div class="container">
+  <h1>Hồ sơ khách hàng</h1>
+  <section class="card">
+    <!-- Thông tin cá nhân -->
+    <h2>Thông tin cá nhân</h2>
+    <div class="avatar">
+      <img src="/images/anh_avatar.png" alt="Avatar" />
+      <button>Đổi ảnh</button>
+    </div>
+    <div class="grid">
+      <div>
+        <label class="lable">Họ và tên</label
+        ><input class="input" type="text" value="Nguyễn Văn A" readonly />
+      </div>
+      <div>
+        <label class="lable">Giới tính</label
+        ><input class="input" type="text" value="Nam" readonly />
+      </div>
+      <div>
+        <label class="lable">Ngày sinh</label
+        ><input class="input" type="text" value="01/10/2000" readonly />
+      </div>
+      <div>
+        <label class="lable">Số điện thoại</label
+        ><input class="input" type="tel" value="0987654321" readonly />
+      </div>
+      <div>
+        <label class="lable">Email</label
+        ><input class="input" type="email" value="muasam@gmail.com" readonly />
+      </div>
+      <div>
+        <label class="lable">Địa chỉ</label
+        ><input
+          class="input"
+          type="text"
+          value="Tân Phú - Quận 9 - TP.HCM"
+          readonly
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Đăng nhập & bảo mật -->
+  <section class="card">
+    <h2>Đăng nhập & Bảo mật</h2>
+    <div class="grid">
+      <div>
+        <label class="lable">Tên tài khoản</label
+        ><input class="input" type="text" value="Quoc Doan" readonly />
+      </div>
+      <div>
+        <label class="lable">Mật khẩu</label
+        ><input class="input" value="••••••••" readonly />
+      </div>
+      <div>
+        <label class="label">Xác thực hai bước (2FA)</label
+        ><select class="select">
+          <option>Bật</option>
+          <option>Tắt</option>
+        </select>
+      </div>
+    </div>
+    <button class="change_password">Đổi mật khẩu</button>
+  </section>
+
+  <!-- Ưu đãi & thành viên -->
+  <section class="card">
+    <h2>Ưu đãi & Thành viên</h2>
+    <ul class="uu_dai">
+      <li>Điểm thưởng: <strong>1200</strong></li>
+      <li>Cấp độ: <strong>VIP</strong></li>
+      <li>Mã giảm giá: <strong>SALE2025</strong></li>
+    </ul>
+  </section>
+
+  <!-- Quản lý đơn hàng -->
+  <section class="card">
+    <h2>Đơn hàng của bạn</h2>
+    <ul class="orders">
+      <li>
+        #A1023 - Áo thun nam cổ tròn chất liệu cotton nguyên chất - Đang xử lý
+      </li>
+      <li>#A1011 - Áo thun cotton cổ tròn cho nữ - Đang xử lý</li>
+      <li>
+        #A1010 - Áo thun nam cổ tròn chất liệu cotton nguyên chất - Đã giao
+      </li>
+      <li>#A1032 - Quần ống côn nam dáng suông, mặt phẳng - Đã giao</li>
+      <li>#A1056 - Áo thun cotton cổ tròn cho bé gái - Đã giao</li>
+      <li>#A1043 - Áo thun cotton cổ tròn cho nữ - Đã giao</li>
+      <li>#A1000 - Giày chạy bộ - Đã giao</li>
+    </ul>
+  </section>
+  <!-- Cài đặt & thông báo -->
+  <section class="card">
+    <h2>Cài đặt & Thông báo</h2>
+    <div class="grid">
+      <div>
+        <label class="lable">Ngôn ngữ</label
+        ><select class="select">
+          <option>Tiếng Việt</option>
+          <option>English</option>
+        </select>
+      </div>
+      <div>
+        <label class="lable">Giao diện</label>
+        <select class="select">
+          <option>Tối</option>
+          <option>Sáng</option>
+        </select>
+      </div>
+      <div>
+        <label class="lable">Nhận thông báo</label>
+        <select class="select">
+          <option>Nhận email thông báo</option>
+          <option>Nhận SMS</option>
+          <option>Nhận email thông báo và SMS</option>
+        </select>
+      </div>
+    </div>
+  </section>
 </div>

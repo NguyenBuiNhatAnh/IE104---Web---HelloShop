@@ -1,0 +1,98 @@
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 20px;
+  color: black;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #f43f5e;
+}
+
+.avatar button {
+  padding: 8px 12px;
+  background: #f43f5e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  list-style-type: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #374151;
+}
+
+.input,
+.select {
+  width: 300px;
+  padding: 5px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #f9fafb;
+}
+
+.change_password {
+  margin-top: 16px;
+  padding: 10px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.orders,
+.uu_dai {
+  padding: 0px;
+  list-style-type: none;
+}
+.orders li,
+.uu_dai li {
+  padding: 5px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+input[readonly] {
+  border: none;
+  color: #111827;
+  outline: none;
+}

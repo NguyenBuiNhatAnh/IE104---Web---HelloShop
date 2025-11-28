@@ -55,7 +55,7 @@ h1 {
 }
 
 .grid {
-  display: list-item;
+  display: grid;
   list-style-type: none;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
@@ -86,4 +86,14 @@ select {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+}
+.orders,
+.uu_dai {
+  padding: 0px;
+  list-style-type: none;
+}
+.orders li,
+.uu_dai li {
+  padding: 5px;
+  border-bottom: 1px solid #e5e7eb;
 }

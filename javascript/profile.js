@@ -30,12 +30,12 @@ export function handleChangePassword() {
 
     // --- Validate cơ bản ---
     if (!currentPassInput || !newPassInput || !confirmPassInput) {
-        showPopup("Vui lòng điền đầy đủ thông tin!");
+        showPopup("Please complete all the required information!","Vui lòng điền đầy đủ thông tin!",true);
         return;
     }
 
     if (newPassInput !== confirmPassInput) {
-        showPopup("Mật khẩu mới và xác nhận không khớp!");
+        showPopup("The new password and confirmation do not match!","Mật khẩu mới và xác nhận không khớp!",true);
         return;
     }
 
@@ -43,7 +43,7 @@ export function handleChangePassword() {
     // --- Xử lý Logic tìm và đổi mật khẩu ---
 
     if (token === "user" || token === "admin") {
-        showPopup("Tài khoản Demo không thể đổi mật khẩu!");
+        showPopup("Demo accounts cannot change their password!","Tài khoản Demo không thể đổi mật khẩu!",true);
         return;
     }
 
@@ -54,7 +54,7 @@ export function handleChangePassword() {
     if (userIndex !== -1) {
 
         if (users[userIndex].password !== currentPassInput) {
-            showPopup("Mật khẩu hiện tại không đúng!");
+            showPopup("The entered current password is invalid!","Mật khẩu hiện tại không đúng!",true);
             return;
         }
 
@@ -62,14 +62,14 @@ export function handleChangePassword() {
 
         localStorage.setItem("registeredUsers", JSON.stringify(users));
 
-        showPopup("Đổi mật khẩu thành công!");
+        showPopup("Password changed successfully!","Đổi mật khẩu thành công!");
         
         document.getElementById("old-pass").value = "";
         document.getElementById("new-pass").value = "";
         document.getElementById("confirm-password").value = "";
         togglePasswordForm(); // Đóng form
     } else {
-        showPopup("Không tìm thấy thông tin người dùng!");
+        showPopup("User information not found!","Không tìm thấy thông tin người dùng!",true);
     }
 }
 

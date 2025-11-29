@@ -35,7 +35,7 @@ export function OrderAdmin(formSubmit) {
             const p = document.createElement('p');
             p.textContent = item.name + " x " + item.quantity + " x " + item.size;
             divInfoForm.appendChild(p);
-            price += item.price;
+            price += item.price * item.quantity;
         }
     })
     const pName = document.createElement('p');

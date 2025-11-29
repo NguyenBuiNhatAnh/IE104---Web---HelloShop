@@ -45,7 +45,28 @@
         <input id="pro-password" class="input" value="••••••••" readonly />
       </div>
     </div>
-    <button class="change_password" id="profile-11">Change Password</button>
+    <button class="change_password" id="profile-11" onclick="togglePasswordForm()">Change Password</button>
+
+    <div id="password-form" class ="password-dropdown">
+        <div class="grid">
+            <div>
+                <label class="label">Old Password</label>
+                <input id="old-pass" class="input" type="password" placeholder="Enter old password" />
+            </div>
+            <div>
+                <label class="label">New Password</label>
+                <input id="new-pass" class="input" type="password" placeholder="Enter new password" />
+            </div>
+            <div>
+                <label class="label">Confirm Password</label>
+                <input id="confirm-password" class="input" type="password" placeholder="Confirm new password" />
+            </div>
+        </div>
+        <div>
+             <button class="change_password" onclick="handleChangePassword()">Confirm</button>
+             <button class="change_password" onclick="togglePasswordForm()">Cancel</button>
+        </div>
+    </div>
   </section>
 
   <!-- Rewards & Membership -->

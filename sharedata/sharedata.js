@@ -307,5 +307,55 @@ export const langJSON = [
     { "id": "register-5", "EN": "Confirm your password", "VN": "Xác nhận mật khẩu" },
     { "id": "register-6", "EN": "Register", "VN": "Đăng ký" },
     { "id": "register-7", "EN": "Already had an account ?", "VN": "Đã có tài khoản ?" },
-    { "id": "register-8", "EN": "Sign In", "VN": "Đăng nhập" }
+    { "id": "register-8", "EN": "Sign In", "VN": "Đăng nhập" },
+    {
+        "id": "ct-1",
+        "EN": "CONTACT US",
+        "VN": "LIÊN HỆ CHÚNG TÔI"
+    },
+    {
+        "id": "ct-2",
+        "EN": "Do you have any questions or want to collaborate? We look forward to hearing from you.",
+        "VN": "Bạn có câu hỏi hoặc muốn hợp tác? Chúng tôi rất mong được lắng nghe bạn."
+    },
+    {
+        "id": "ct-3",
+        "EN": "Our Website",
+        "VN": "Trang web của chúng tôi"
+    },
+    {
+        "id": "ct-4",
+        "EN": "Call Us On",
+        "VN": "Gọi cho chúng tôi"
+    },
+    {
+        "id": "ct-5",
+        "EN": "Email Us",
+        "VN": "Gửi email cho chúng tôi"
+    },
+    {
+        "id": "ct-6",
+        "EN": "support@helloshop.vn",
+        "VN": "support@helloshop.vn"
+    },
+    {
+        "id": "ct-7",
+        "EN": "Our Location",
+        "VN": "Địa chỉ của chúng tôi"
+    },
+    {
+        "id": "ct-8",
+        "EN": "10th Floor, HD Bank Building, 25Bis Nguyen Thi Minh Khai, Ben Nghe Ward, District 1, HCMC",
+        "VN": "Tầng 10, Tòa nhà HD Bank, 25Bis Nguyễn Thị Minh Khai, Phường Bến Nghé, Quận 1, TP.HCM"
+    },
+    {
+        "id": "ct-9",
+        "EN": "12th Floor, Ladeco Building, 266 Doi Can, Lieu Giai Ward, Ba Dinh District, Hanoi",
+        "VN": "Tầng 12, Tòa nhà Ladeco, 266 Đội Cấn, Phường Liễu Giai, Quận Ba Đình, Hà Nội"
+    },
+    {
+        "id": "ct-10",
+        "EN": "OUR LOCATION",
+        "VN": "VÍ TRÍ CỦA CHÚNG TÔI"
+    }
 ]

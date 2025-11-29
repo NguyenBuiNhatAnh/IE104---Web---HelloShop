@@ -1,23 +1,56 @@
+/* CONTACT CSS */
 
-@media (max-width: 640px) {
-  .contact-section {
-    padding-left: 4vw;
-    padding-right: 4vw;
-  }
+/* SECTION HERO */
+.section-hero {
+  background: radial-gradient(#fff, #ffd6d6);
+  padding: 50px 70px;
+}
+.contact-hero {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 50px;
+  align-items: center;
+  gap: 20px;
 }
 
+.contact-hero .content-1 {
+  font-size: 16px;
+  padding: 10px 20px;
+  border: 1px solid #000;
+  border-radius: 50px;
+  width: fit-content;
+  align-items: center;
+}
+
+.contact-hero .content-2 {
+  font-size: 55px;
+  font-weight: 800;
+  margin-bottom: 0;
+}
+
+.contact-hero .content-3 {
+  font-size: 20px;
+  color: #555;
+  text-align: center;
+  max-width: 600px;
+  margin-top: 0;
+}
+/* END SECTION HERO */
+
+/* SECTION ONE */
 .section-one {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 50px;
-    background: radial-gradient(#fff,#ffd6d6);
-    border-radius: 30px;
-    padding-bottom: 30px;
-    padding-right: 50px;
-    padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  background: url(../images/contact-bg.jpg);
+  background-size: cover;
+  border-radius: 30px;
+  padding-bottom: 30px;
+  padding-right: 50px;
+  padding-top: 30px;
 }
 
-/* === ẢNH BÊN TRÁI === */
+/* ẢNH BÊN TRÁI */
 .contact-image {
   background-size: cover;
   background-position: right;
@@ -26,89 +59,91 @@
 
 /* FORM BÊN PHẢI */
 .contact-wrap {
-    width: 50%;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 40px 50px;
+  width: 50%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 40px 50px;
 }
 
 /* CONTENT */
 .contact-content h3 {
-    font-size: 25px;
-    font-weight: 700;
-    color: #333;
-    margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
 }
 
 .contact-content p {
-    font-size: 15px;
-    color: #555;
-    margin-bottom: 25px;
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 25px;
 }
 
 /* FORM */
 
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .form-row {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap; /* thêm để responsive */
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* thêm để responsive */
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column; 
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
 }
 
-.form-group input, .form-group textarea {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 10px 12px;
-    font-size: 14px;
-    outline: none;
-    transition: 0.3s;
+.form-group input,
+.form-group textarea {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
 }
 
 .form-group textarea {
-    resize: none;
+  resize: none;
 }
 
-.form-group input:focus, .form-group textarea:focus {
-    border-color: #ff8888;
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #ff8888;
 }
 
 /* SUBMIT */
 .submit {
-    width: 30%;
-    background-color: #000;
-    color: #fff;
-    border-radius: 6px;
-    font-weight: 600;
-    padding: 13px;
-    cursor: pointer;
-    transition: 0.3s;
+  width: 30%;
+  background-color: #000;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+  padding: 13px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .submit:hover {
-    background: #ff8a80;
+  background: #ff8a80;
 }
 
 /* SECTION TWO */
 .section-two {
   background-color: #f9f9f9;
   padding: 40px 20px;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .contact-info {
@@ -169,4 +204,9 @@
   }
 }
 
-
+@media (max-width: 640px) {
+  .contact-section {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+}

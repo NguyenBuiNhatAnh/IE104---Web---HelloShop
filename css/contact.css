@@ -14,12 +14,15 @@
 }
 
 .contact-hero .content-1 {
-  font-size: 16px;
+  background: #ff6e3b;
+  color: #fff;
+  font-size: 20px;
   padding: 10px 20px;
   border: 1px solid #000;
   border-radius: 50px;
   width: fit-content;
   align-items: center;
+  font-weight: 600;
 }
 
 .contact-hero .content-2 {
@@ -35,41 +38,35 @@
   max-width: 600px;
   margin-top: 0;
 }
-/* END SECTION HERO */
 
-/* SECTION CARDS */
-.section-cards {
-  background: #FAFAFA;
-}
-
-.section-cards-info {
+/* CONTACT CARDS */
+.contact-cards {
   display: flex;
   justify-content: space-evenly;
-  padding: 40px 20px;
-  gap: 20px;
+  gap: 60px;
   flex-wrap: wrap;
 }
 
-.section-cards-info .inner-card {
+.contact-cards .inner-card {
   background: #fff;
   border-radius: 15px;
   padding: 30px 5px;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: calc(100%/3 - 50px);
+  width: calc(100%/4 - 50px);
 }
 
-.section-cards-info .inner-card h3 {
+.contact-cards .inner-card h3 {
   font-size: 22px;
 }
 
-.section-cards-info .inner-card p {
+.contact-cards .inner-card p {
   font-size: 16px;
   color: #555;
   margin-top: 10px;
 }
 
-.section-cards-info .inner-card i {
+.contact-cards .inner-card i {
   padding: 20px;
   font-size: 30px;
   border: 1px solid #ccc;
@@ -77,13 +74,13 @@
   background: #ff6e3b;
   color: #fff;
 }
+/* END CONTACT CARDS */
+/* END SECTION HERO */
 
-/* END SECTION CARDS */
 
 /* Location */
 .section-location {
-  padding: 0 200px 120px 200px;
-  margin-top: -20px;
+  padding: 70px 200px 120px 200px;
 }
 
 /* SECTION ONE */

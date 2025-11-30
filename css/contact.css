@@ -44,18 +44,19 @@
 
 .section-cards-info {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 40px 20px;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .section-cards-info .inner-card {
   background: #fff;
   border-radius: 15px;
-  padding: 30px 20px;
+  padding: 30px 5px;
   text-align: center;
-  flex: 1;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: calc(100%/3 - 50px);
 }
 
 .section-cards-info .inner-card h3 {
@@ -78,6 +79,12 @@
 }
 
 /* END SECTION CARDS */
+
+/* Location */
+.section-location {
+  padding: 0 200px 120px 200px;
+  margin-top: -20px;
+}
 
 /* SECTION ONE */
 .section-one {

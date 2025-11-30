@@ -3,7 +3,7 @@
 /* SECTION HERO */
 .section-hero {
   background: radial-gradient(#fff, #ffd6d6);
-  padding: 50px 70px;
+  padding: 15px 70px;
 }
 .contact-hero {
   display: flex;
@@ -28,6 +28,7 @@
 .contact-hero .content-2 {
   font-size: 55px;
   font-weight: 800;
+  margin-top: 25px;
   margin-bottom: 0;
 }
 
@@ -58,39 +59,39 @@
 
 .contact-cards .inner-card h3 {
   font-size: 22px;
+  color: #333;
 }
 
-.contact-cards .inner-card p {
+.contact-cards .inner-card .card-desc {
   font-size: 16px;
   color: #555;
   margin-top: 10px;
 }
 
-.contact-cards .inner-card i {
+.contact-cards .inner-card .icon {
   padding: 20px;
   font-size: 30px;
   border: 1px solid #ccc;
-  border-radius: 50%;
+  border-radius: 30%;
   background: #ff6e3b;
   color: #fff;
 }
+.contact-cards .inner-card .link {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  color: #ff6e3b;
+  font-weight: 600;
+  text-decoration: none;
+}
 /* END CONTACT CARDS */
 /* END SECTION HERO */
-
-
-/* Location */
-.section-location {
-  padding: 70px 200px 120px 200px;
-}
 
 /* SECTION ONE */
 .section-one {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 50px;
-  background: url(../images/contact-bg.jpg);
-  background-size: cover;
-  border-radius: 30px;
   padding-bottom: 30px;
   padding-right: 50px;
   padding-top: 30px;
@@ -123,6 +124,8 @@
   font-size: 15px;
   color: #555;
   margin-bottom: 25px;
+  line-height: 2.2;
+  word-spacing: 1.6px;
 }
 
 /* FORM */
@@ -172,7 +175,7 @@
 /* SUBMIT */
 .submit {
   width: 30%;
-  background-color: #000;
+  background-color: #ff6e3b;
   color: #fff;
   border-radius: 6px;
   font-weight: 600;
@@ -182,13 +185,12 @@
 }
 
 .submit:hover {
-  background: #ff8a80;
+  background: #000;
 }
 /* END SECTION ONE */
 
 /* SECTION TWO */
 .section-two {
-  background-color: #f9f9f9;
   padding: 40px 20px;
   font-family: "Segoe UI", sans-serif;
 }
@@ -211,6 +213,7 @@
 .contact-info h3 {
   font-size: 22px;
   color: #333;
+  margin-top: 15px;
   margin-bottom: 15px;
 }
 
@@ -230,6 +233,39 @@
   text-decoration: underline;
 }
 /* END SECTION TWO */
+
+/* Location */
+.section-location {
+  padding-top: 10px;
+  padding-bottom: 100px;
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+.section-location .location-desc {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-location .location-desc h3 {
+  font-size: 25px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.section-location .location-desc p {
+  font-size: 18px;
+  color: #555;
+}
+
+.section-location .location-map {
+  padding: 0px 100px;
+}
+
+.section-location .location-map iframe {
+  border-radius: 15px;
+}
+/* END Location */
 
 /* Responsive layout for smaller screens */
 @media (max-width: 768px) {
